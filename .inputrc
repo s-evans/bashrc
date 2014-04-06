@@ -1,1 +1,21 @@
-/home/sean/.inputrc
+# Set vi mode
+set editing-mode vi 
+
+# Show modeline (newer versions of bash/readline only)
+set show-mode-in-prompt on
+
+# Get rid of the bell
+set bell-style none
+
+# Custom vi mode maps
+$if mode=vi
+    set keymap vi-command
+    "gg": beginning-of-history
+    "G": end-of-history
+
+    set keymap vi-insert
+    "jj": vi-movement-mode
+    "\C-w": backward-kill-word
+    "\C-p": history-search-backward
+$endif
+
