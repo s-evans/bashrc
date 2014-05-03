@@ -11,4 +11,5 @@ alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-ti
 alias grep='grep --color'                     # show differences in colour
 alias egrep='egrep --color=auto'              # show differences in colour
 alias fgrep='fgrep --color=auto'              # show differences in colour
+alias esc='sed "s/./\\&/g"'                   # escape all characters for sanitizing filenames with 'find | xargs'
 
