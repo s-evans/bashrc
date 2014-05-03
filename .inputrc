@@ -17,5 +17,6 @@ $if mode=vi
     "jj": vi-movement-mode
     "\C-w": backward-kill-word
     "\C-p": history-search-backward
+    "\C-i": complete
 $endif
 
