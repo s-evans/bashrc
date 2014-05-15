@@ -1,3 +1,5 @@
+# TODO: Aliases/functions for `find -type f | grep`, `find -type d | grep`, `find -type f | <esc> | xargs grep`
+# TODO: Find some git maps online
 
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
