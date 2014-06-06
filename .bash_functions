@@ -57,3 +57,5 @@ cd_func ()
     return 0
 }
 
+export -f cd_func
+

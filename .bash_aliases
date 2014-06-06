@@ -12,4 +12,7 @@ alias grep='grep --color'                     # show differences in colour
 alias egrep='egrep --color=auto'              # show differences in colour
 alias fgrep='fgrep --color=auto'              # show differences in colour
 alias esc='sed "s/./\\&/g"'                   # escape all characters for sanitizing filenames with 'find | xargs'
-
+alias p='pwd'
+alias f='find'
+alias ff='find -type f'
+alias fd='find -type d'
