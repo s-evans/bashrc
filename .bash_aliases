@@ -18,4 +18,7 @@ alias ...='cd ../..'     # Go up two directories
 alias ....='cd ../../..' # Go up three directories
 alias -- -='cd -'        # Go back
 alias h='history'        # Shell History
-
+alias p='pwd'
+alias f='find'
+alias ff='find -type f'
+alias fd='find -type d'
