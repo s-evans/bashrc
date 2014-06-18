@@ -5,15 +5,13 @@ alias l.='ls -d .* --color=auto'
 alias ll='ls -l --color=auto'
 alias lla='ls -al --color=auto'
 alias ls='ls --color=auto'
-alias la='ls -A'                              # all but . and ..
-alias l='ls -CF'                              #
+alias la='ls -A'
+alias l='ls -CF'
 alias sl='ls'
 
-alias vi='vim'
-alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
-alias grep='grep --color'                     # show differences in colour
-alias egrep='egrep --color=auto'              # show differences in colour
-alias fgrep='fgrep --color=auto'              # show differences in colour
+alias grep='grep --color'                     # show differences in color
+alias egrep='egrep --color=auto'              # show differences in color
+alias fgrep='fgrep --color=auto'              # show differences in color
 alias esc='sed "s/./\\&/g"'                   # escape all characters for sanitizing filenames with 'find | xargs'
 
 alias ..='cd ..'         # Go up one directory
@@ -21,9 +19,13 @@ alias ...='cd ../..'     # Go up two directories
 alias ....='cd ../../..' # Go up three directories
 alias -- -='cd -'        # Go back
 
-alias h='history'        # Shell History
+alias g='grep'
+alias h='history'
 alias p='pwd'
-
+alias xa='xargs'
+alias vi='vim'
+alias psa='ps aux'
+alias neta='netstat -anop'
 alias f='find'
 alias ff='find -type f'
 alias fd='find -type d'

@@ -1,2 +1,2 @@
-shell "/usr/bin/bash"
+shell "bash"
 defscrollback 2000
