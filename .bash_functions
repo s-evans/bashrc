@@ -58,4 +58,5 @@ cd_func ()
 }
 
 export -f cd_func
+alias cd='cd_func'
 

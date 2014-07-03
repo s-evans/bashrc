@@ -1,6 +1,4 @@
 
-alias cd=cd_func
-
 alias l.='ls -d .* --color=auto'
 alias ll='ls -l --color=auto'
 alias lla='ls -al --color=auto'
