@@ -65,3 +65,5 @@ alias tt='tar tzvf'
 alias tc='tar czvf'
 alias tx='tar xzvf'
 
+alias rs='rsync'
+alias rsa='rsync -avz'
