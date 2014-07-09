@@ -6,6 +6,12 @@ alias ls='ls --color=auto'
 alias la='ls -A'
 alias l='ls -CF'
 alias sl='ls'
+alias lx='ls -lXB'              # sort by extension
+alias lk='ls -lSr'              # sort by size
+alias lc='ls -lcr'              # sort by change time
+alias lu='ls -lur'              # sort by access time
+alias lr='ls -lR'               # recursive ls
+alias lt='ls -ltr'              # sort by date
 
 alias grep='grep --color'                     # show differences in color
 alias egrep='egrep --color=auto'              # show differences in color
@@ -21,9 +27,12 @@ alias g='grep'
 alias h='history'
 alias p='pwd'
 alias xa='xargs'
+alias xag='xargs grep'
 alias vi='vim'
 alias psa='ps aux'
 alias neta='netstat -anop'
+alias ifc='ifconfig'
+
 alias f='find'
 alias ff='find -type f'
 alias fd='find -type d'
@@ -51,4 +60,8 @@ alias svnd='svn diff'
 alias svnrv='svn revert'
 alias svnrv='svn rm'
 alias svna='svn add'
+
+alias tt='tar tzvf'
+alias tc='tar czvf'
+alias tx='tar xzvf'
 
