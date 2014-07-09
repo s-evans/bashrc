@@ -16,7 +16,7 @@ alias lt='ls -ltr'              # sort by date
 alias grep='grep --color'                     # show differences in color
 alias egrep='egrep --color=auto'              # show differences in color
 alias fgrep='fgrep --color=auto'              # show differences in color
-alias esc='sed "s/./\\&/g"'                   # escape all characters for sanitizing filenames with 'find | xargs'
+alias esc='sed "s/./\\\\&/g"'                 # escape all characters for sanitizing filenames with 'find | xargs'
 
 alias ..='cd ..'         # Go up one directory
 alias ...='cd ../..'     # Go up two directories
