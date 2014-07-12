@@ -60,8 +60,6 @@ cd_func ()
 
 alias cd='cd_func'
 
-# Easily extract files
-
 extract () 
 {
     while (( "$#" )); do 
@@ -87,8 +85,6 @@ extract ()
         shift
     done
 }
-
-# Compresses files
 
 compress () 
 {

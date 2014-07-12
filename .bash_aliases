@@ -24,7 +24,6 @@ alias g='grep'
 alias grep='grep --color'                     # show differences in color
 alias egrep='egrep --color=auto'              # show differences in color
 alias fgrep='fgrep --color=auto'              # show differences in color
-alias esc='sed "s/./\\\\&/g"'                 # escape all characters for sanitizing filenames with 'find | xargs'
 
 ## NAVIGATION ##
 alias ..='cd ..'         # Go up one directory
@@ -91,11 +90,19 @@ alias mk='make'
 alias exp='export'
 alias src='source'
 alias scr='screen'
+alias scrr='screen -r'
+alias scrl='screen -list'
 alias ec='echo'
 alias mkdir='mkdir -pv'
 alias mkd='mkdir -pv'
 alias mnt='mount'
 alias wa='watch'
+alias esc='sed "s/./\\\\&/g"'    # escape all characters for sanitizing filenames with 'find | xargs'
+alias k='kill'
+alias k9='kill -9'
+alias ka='killall'
+alias ka9='killall -9'
+alias le='less'
 
 ## HEAD AND TAIL ##
 alias t='tail'
