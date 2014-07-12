@@ -30,6 +30,7 @@ alias ..='cd ..'         # Go up one directory
 alias ...='cd ../..'     # Go up two directories
 alias ....='cd ../../..' # Go up three directories
 alias -- -='cd -'        # Go back
+alias cd..='cd ..'
 
 ## NETWORKING ##
 alias neta='netstat -anop'
@@ -103,6 +104,7 @@ alias k9='kill -9'
 alias ka='killall'
 alias ka9='killall -9'
 alias le='less'
+alias cs='cscope -Rqbk'
 
 ## HEAD AND TAIL ##
 alias t='tail'
