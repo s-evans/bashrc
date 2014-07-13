@@ -26,11 +26,20 @@ alias egrep='egrep --color=auto'              # show differences in color
 alias fgrep='fgrep --color=auto'              # show differences in color
 
 ## NAVIGATION ##
-alias ..='cd ..'         # Go up one directory
-alias ...='cd ../..'     # Go up two directories
-alias ....='cd ../../..' # Go up three directories
-alias -- -='cd -'        # Go back
 alias cd..='cd ..'
+alias cd-='cd -'
+alias ..='cd ..'
+alias -- -='cd -'
+alias .2='cd ../..'
+alias .3='cd ../../..'
+alias .4='cd ../../../..'
+alias .5='cd ../../../../..'
+alias .6='cd ../../../../../..'
+alias .7='cd ../../../../../../..'
+alias .8='cd ../../../../../../../..'
+alias .9='cd ../../../../../../../../..'
+alias .10='cd ../../../../../../../../../..'
+alias .11='cd ../../../../../../../../../../..'
 
 ## NETWORKING ##
 alias neta='netstat -anop'
@@ -91,7 +100,7 @@ alias mk='make'
 alias exp='export'
 alias src='source'
 alias scr='screen'
-alias scrr='screen -r'
+alias scrr='screen -Rd'
 alias scrl='screen -list'
 alias ec='echo'
 alias mkdir='mkdir -pv'
