@@ -80,6 +80,7 @@ alias tx='tar xzvf'
 ## RSYNC ##
 alias rs='rsync'
 alias rsa='rsync -avz'
+alias rsr='rsync -av'
 
 ## DEBIAN ##
 alias agud='sudo apt-get update'
