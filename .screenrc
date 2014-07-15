@@ -1,2 +1,5 @@
 shell "bash"
 defscrollback 2000
+shelltitle "$ |bash"
+autodetach on
+

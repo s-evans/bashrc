@@ -1,5 +1,4 @@
-# TODO: Aliases/functions for `find -type f | grep`, `find -type d | grep`, `find -type f | <esc> | xargs grep`
-# TODO: Find some git maps online
+#!/bin/bash
 
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
@@ -19,6 +18,22 @@ if [ -f "${HOME}/.bash_local" ]; then
   source "${HOME}/.bash_local"
 fi
 
-PS1="\u@\h:\W\\$ "
-EDITOR=vim
+# Screen settings
+if [[ "$TERM" == screen* ]]; then
+    screen_set_window_title () {
+        local HPWD="$PWD"
+        case $HPWD in
+            $HOME) HPWD="~";;
+            $HOME/*) HPWD="~${HPWD#$HOME}";;
+        esac
+        printf '\ek%s\e\\' "$USER@$HOSTNAME:$HPWD"
+    }
+    PROMPT_COMMAND="screen_set_window_title; $PROMPT_COMMAND"
+fi
+
+PS1='\u@\h:\W$ '
+EDITOR='vim'
+PAGER='less'
+USER=`whoami`
+USERNAME=$USER
 
