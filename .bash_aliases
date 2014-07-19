@@ -4,15 +4,13 @@
 # sed -i 
 # sed -i '$1d' $2
 # mkdir -p $1; cd $1;
-# filename without final extension = sed 's/\.[^\.]*$//'
-# final extension = sed 's/^.*\.//'
 # TAR COMPARE
 ## tar --compare --file=archive-file.tar -C /some/where/
 ## tar --compare --file=archive-file.tar
 ## tar --diff -vf directory_name.zip
 # date time and size related listings
-# xargs dirname
-# xargs basename
+# full file extension
+# full file name
 
 ## LISTING FILES ## 
 alias l.='ls -d .* --color=auto'
@@ -146,10 +144,13 @@ alias cs='cscope -Rqbk'
 alias sha1='openssl sha1'
 alias bn='basename'
 alias dn='dirname'
-alias dn='dirname'
+alias xbn='xargs -n1 basename'
+alias xdn='xargs -n1 dirname'
 alias xcp='xargs cp -t'
 alias xmv='xargs mv -t' 
 alias sp='ssh -p'
+alias fnf='sed "s/\\.[^\\.]*$//"'
+alias fef='sed "s/^.*\\.//"'
 
 ## HEAD AND TAIL ##
 alias t='tail'
