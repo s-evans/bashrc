@@ -1,5 +1,19 @@
 #!/bin/bash
 
+# TODO
+# sed -i 
+# sed -i '$1d' $2
+# mkdir -p $1; cd $1;
+# filename without final extension = sed 's/\.[^\.]*$//'
+# final extension = sed 's/^.*\.//'
+# TAR COMPARE
+## tar --compare --file=archive-file.tar -C /some/where/
+## tar --compare --file=archive-file.tar
+## tar --diff -vf directory_name.zip
+# date time and size related listings
+# xargs dirname
+# xargs basename
+
 ## LISTING FILES ## 
 alias l.='ls -d .* --color=auto'
 alias ll='ls -l --color=auto'
@@ -21,6 +35,9 @@ alias fd='find -type d'
 
 ## GREP ## 
 alias g='grep'
+alias gi='grep -i'
+alias gv='grep -v'
+alias giv='grep -i -v'
 alias grep='grep --color'                     # show differences in color
 alias egrep='egrep --color=auto'              # show differences in color
 alias fgrep='fgrep --color=auto'              # show differences in color
@@ -49,6 +66,8 @@ alias ifc='ifconfig'
 ## GIT ##
 alias ga='git add'
 alias gps='git push'
+alias gpso='git push origin'
+alias gpsom='git push origin master'
 alias gl='git log'
 alias gs='git status'
 alias gd='git diff'
@@ -56,6 +75,8 @@ alias gb='git branch'
 alias gci='git commit -m'
 alias gco='git checkout'
 alias gpl='git pull'
+alias gplo='git pull origin'
+alias gplom='git pull origin master'
 alias gcl='git clone'
 alias gsm='git submodule'
 alias gmv='git mv'
@@ -67,10 +88,16 @@ alias svco='svn checkout'
 alias svi='svn info'
 alias svs='svn status'
 alias svu='svn up'
+alias svuin='svn up --set-depth=infinity'
+alias svuim='svn up --set-depth=immediates'
 alias svd='svn diff'
 alias svrv='svn revert'
 alias svrm='svn rm'
 alias sva='svn add'
+alias svli='svn list'
+alias svlir='svn list --recursive'
+alias svlo='svn log'
+alias svlod='svn log --diff'
 
 ## TAR ##
 alias tt='tar tzvf'
@@ -113,8 +140,16 @@ alias k='kill'
 alias k9='kill -9'
 alias ka='killall'
 alias ka9='killall -9'
+alias jk='jobs -p | xargs kill -9'
 alias le='less'
 alias cs='cscope -Rqbk'
+alias sha1='openssl sha1'
+alias bn='basename'
+alias dn='dirname'
+alias dn='dirname'
+alias xcp='xargs cp -t'
+alias xmv='xargs mv -t' 
+alias sp='ssh -p'
 
 ## HEAD AND TAIL ##
 alias t='tail'
@@ -122,6 +157,11 @@ alias tf='tail -f'
 alias tn='tail -n'
 alias he='head'
 alias hn='head -n'
+
+## DIFF ## 
+alias dr='diff -r'
+alias dw='diff -w'
+alias drw='diff -rw'
 
 ## FILE PERMISSIONS ##
 alias +x='chmod +x'
