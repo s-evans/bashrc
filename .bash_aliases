@@ -4,11 +4,6 @@
 # sed -i 
 # sed -i '$1d' $2
 # mkdir -p $1; cd $1;
-# TAR COMPARE
-## tar --compare --file=archive-file.tar -C /some/where/
-## tar --compare --file=archive-file.tar
-## tar --diff -vf directory_name.zip
-# date time and size related listings
 # full file extension
 # full file name
 
@@ -101,6 +96,9 @@ alias svlod='svn log --diff'
 alias tt='tar tzvf'
 alias tc='tar czvf'
 alias tx='tar xzvf'
+alias td='tar dzvf'
+alias tu='tar uzvf'
+alias tr='tar rzvf'
 
 ## RSYNC ##
 alias rs='rsync'
