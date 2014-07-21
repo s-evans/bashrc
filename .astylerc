@@ -1,0 +1,9 @@
+--style=kr
+--break-blocks
+--pad-oper
+--unpad-paren
+--pad-paren-in
+--align-pointer=type
+--indent-col1-comments
+--add-brackets
+--pad-header
