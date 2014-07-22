@@ -110,13 +110,13 @@ mkcd()
 
 dl()
 {
-    if [[ $# != 2 ]]; then
+    if [[ $# < 2 ]]; then
         echo "invalid argument list"
         return
     fi
 
-    LINENO=$1
+    LINE="$1"
     shift
-    sed -i "${LINENO}d" $@
+    sed -i "${LINE}d" $@
 }
 
