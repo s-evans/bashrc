@@ -2,10 +2,13 @@
 
 # TODO
 # sed -i 
-# sed -i '$1d' $2
-# mkdir -p $1; cd $1;
 # full file extension
 # full file name
+
+## CONDITIONAL ALIASES ##
+if [[ $ZSH == "" ]]; then
+    alias cd='cd_func'
+fi
 
 ## LISTING FILES ## 
 alias l.='ls -d .* --color=auto'
@@ -149,6 +152,7 @@ alias xmv='xargs mv -t'
 alias sp='ssh -p'
 alias fnf='sed "s/\\.[^\\.]*$//"'
 alias fef='sed "s/^.*\\.//"'
+alias fp='readlink -f'
 
 ## HEAD AND TAIL ##
 alias t='tail'
@@ -163,7 +167,7 @@ alias dw='diff -w'
 alias drw='diff -rw'
 
 ## FILE PERMISSIONS ##
-alias +x='chmod +x'
+alias -- +x='chmod +x'
 alias 000='chmod 000'
 alias 400='chmod 400'
 alias 600='chmod 600'

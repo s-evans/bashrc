@@ -58,8 +58,6 @@ cd_func ()
     return 0
 }
 
-alias cd='cd_func'
-
 extract () 
 {
     while (( "$#" )); do 
@@ -99,3 +97,29 @@ compress ()
         *)          echo "Filetype not recognized"  ;;
     esac
 }
+
+mkcd() 
+{
+    if [[ $# != 1 ]]; then
+        echo "invalid argument list"
+        return
+    fi
+    mkdir -p $1
+    cd $1
+}
+
+dl()
+{
+    if [[ $# != 2 ]]; then
+        echo "invalid argument list"
+        return
+    fi
+
+    if [[ ! -f $1 ]]; then
+        echo "file '$1' does not exist"
+        return
+    fi
+
+    sed -i "${2}d" $1
+}
+
