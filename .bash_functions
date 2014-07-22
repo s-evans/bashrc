@@ -115,11 +115,8 @@ dl()
         return
     fi
 
-    if [[ ! -f $1 ]]; then
-        echo "file '$1' does not exist"
-        return
-    fi
-
-    sed -i "${2}d" $1
+    LINENO=$1
+    shift
+    sed -i "${LINENO}d" $@
 }
 
