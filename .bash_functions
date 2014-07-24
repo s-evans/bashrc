@@ -188,10 +188,10 @@ img2txt ()
         return 1
     fi
 
-    local MULTI=false
+    local CMD='tesseract "$TMPTIF" stdout'
 
     if [[ $# > 1 ]]; then
-        local MULTI=true
+        local CMD=$CMD' | xargs -d \\n printf "$1: %s\n"'
     fi
 
     while [[ $# != 0 ]]; do
@@ -218,11 +218,7 @@ img2txt ()
             -compress zip                             \
             "$TMPTIF"
 
-        if [[ $MULTI == true ]]; then
-            tesseract "$TMPTIF" stdout | xargs -d \\n printf "$1: %s\n"
-        else
-            tesseract "$TMPTIF" stdout 
-        fi
+        eval $CMD
 
         rm -f "$TMPTIF" 
 
@@ -243,10 +239,10 @@ pdf2txt()
         return 1
     fi
 
-    local MULTI=false
+    local CMD='pdftotext -q -layout "$1" -'
 
     if [[ $# > 1 ]]; then
-        local MULTI=true
+        local CMD=$CMD' | xargs -d \\n printf "$1: %s\n"'
     fi
 
     while [[ $# != 0 ]]; do
@@ -257,11 +253,7 @@ pdf2txt()
             continue
         fi
 
-        if [[ $MULTI == true ]]; then
-            pdftotext -q -layout $1 - | xargs -d \\n printf "$1: %s\n"
-        else
-            pdftotext -q -layout $1 - 
-        fi
+        eval $CMD
 
         shift
     done
