@@ -160,15 +160,18 @@ swap()
     mv $TMPFILE "$2"
 }
 
-# TODO: Improve this
-# parallelization
-# filename support
-
-imgtotxt ()
+# requires imagemagick and tesseract
+img2txt ()
 {
+    local MULTI=false
+
+    if [[ $# > 1 ]]; then
+        local MULTI=true
+    fi
+
     while [[ $# != 0 ]]; do
         local TMPTIF=`mktemp --suffix=.tif`
-        local TMPTXT=`mktemp`
+
         convert "$1"                                  \
             -scale 1000%                              \
             -blur 1x65535 -blur 1x65535 -blur 1x65535 \
@@ -182,10 +185,14 @@ imgtotxt ()
             -gamma 100                                \
             -compress zip                             \
             "$TMPTIF"
-        tesseract "$TMPTIF" "$TMPTXT" 2> /dev/null
-        local TMPTXT=${TMPTXT}.txt
-        cat "${TMPTXT}"
-        rm -f "$TMPTIF" "${TMPTXT}"
+
+        if [[ $MULTI == true ]]; then
+            tesseract "$TMPTIF" stdout | xargs printf "$1: %s\n"
+        else
+            tesseract "$TMPTIF" stdout 
+        fi
+
+        rm -f "$TMPTIF" 
         shift
     done
 }
@@ -193,4 +200,3 @@ imgtotxt ()
 # TODO: PDFTOTEXT
 # requires poppler utilities
 
-# TODO: lsof -p `pidof $1`

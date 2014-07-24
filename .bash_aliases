@@ -154,6 +154,7 @@ alias fnf='sed "s/\\.[^\\.]*$//"'
 alias fef='sed "s/^.*\\.//"'
 alias fp='readlink -f'
 alias path='echo -e ${PATH//:/\\n}'
+alias po='pidof'
 
 ## HEAD AND TAIL ##
 alias t='tail'

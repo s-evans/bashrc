@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # TODO
-# bash completion: git, svn
 # zsh screen integration
 
 ## NON-INTERACTIVE ONLY ##
