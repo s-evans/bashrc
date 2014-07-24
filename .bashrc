@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# TODO
-# zsh screen integration
-
 ## NON-INTERACTIVE ONLY ##
 [[ "$-" != *i* ]] && return
 

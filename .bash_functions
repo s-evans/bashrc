@@ -20,7 +20,6 @@ cd_func ()
     [[ -z $1 ]] && the_new_dir=$HOME
 
     if [[ ${the_new_dir:0:1} == '-' ]]; then
-        #
         # Extract dir N from dirs
         index=${the_new_dir:1}
         [[ -z $index ]] && index=1
@@ -56,25 +55,33 @@ cd_func ()
 
 extract () 
 {
-    while (( "$#" )); do 
-        if [ -f $1 ] ; then
-            case $1 in
-                *.tar.bz2)  tar         xvjf    $1    ;;
-                *.tar.gz)   tar         xvzf    $1    ;;
-                *.bz2)      bunzip2     $1      ;;
-                *.rar)      rar         x       $1    ;;
-                *.gz)       gunzip      $1      ;;
-                *.tar)      tar         xvf     $1    ;;
-                *.tbz2)     tar         xvjf    $1    ;;
-                *.tgz)      tar         xvzf    $1    ;;
-                *.zip)      unzip       $1      ;;
-                *.Z)        uncompress  $1      ;;
-                *.7z)       7z          x       $1    ;;
-                *)          echo "don't know how to extract '$1'..."  ;;
-            esac
-        else
-            echo "'$1' is not a valid file!"
+    if [[ $# == 0 ]]; then
+        echo "invalid argument count"
+        return
+    fi
+
+    while [[ $# != 0 ]]; do 
+
+        if [[ ! -f $1 ]] ; then
+            echo "file '$1' not found"
+            shift
+            continue
         fi
+
+        case $1 in
+            *.tar.bz2)  tar         xvjf    $1    ;;
+            *.tar.gz)   tar         xvzf    $1    ;;
+            *.bz2)      bunzip2     $1      ;;
+            *.rar)      rar         x       $1    ;;
+            *.gz)       gunzip      $1      ;;
+            *.tar)      tar         xvf     $1    ;;
+            *.tbz2)     tar         xvjf    $1    ;;
+            *.tgz)      tar         xvzf    $1    ;;
+            *.zip)      unzip       $1      ;;
+            *.Z)        uncompress  $1      ;;
+            *.7z)       7z          x       $1    ;;
+            *)          echo "don't know how to extract '$1'..."  ;;
+        esac
 
         shift
     done
@@ -100,12 +107,13 @@ mkcd()
         echo "invalid argument list"
         return
     fi
+
     mkdir -p $1
     cd $1
 }
 
 dl()
-{
+{ 
     if [[ $# < 2 ]]; then
         echo "invalid argument list"
         return
@@ -163,6 +171,23 @@ swap()
 # requires imagemagick and tesseract
 img2txt ()
 {
+    if [[ ! `which convert` ]]; then
+        echo "convert not found"
+        echo "install imagemagick"
+        return 1
+    fi
+
+    if [[ ! `which tesseract` ]]; then
+        echo "tesseract not found"
+        echo "install tesseract"
+        return 1
+    fi
+    
+    if [[ $# == 0 ]]; then
+        echo "missing filename(s)"
+        return 1
+    fi
+
     local MULTI=false
 
     if [[ $# > 1 ]]; then
@@ -170,6 +195,13 @@ img2txt ()
     fi
 
     while [[ $# != 0 ]]; do
+
+        if [[ ! -f $1 ]]; then
+            echo "file '$1' not found"
+            shift
+            continue
+        fi
+
         local TMPTIF=`mktemp --suffix=.tif`
 
         convert "$1"                                  \
@@ -187,16 +219,51 @@ img2txt ()
             "$TMPTIF"
 
         if [[ $MULTI == true ]]; then
-            tesseract "$TMPTIF" stdout | xargs printf "$1: %s\n"
+            tesseract "$TMPTIF" stdout | xargs -d \\n printf "$1: %s\n"
         else
             tesseract "$TMPTIF" stdout 
         fi
 
         rm -f "$TMPTIF" 
+
         shift
     done
 }
 
-# TODO: PDFTOTEXT
-# requires poppler utilities
+pdf2txt() 
+{
+    if [[ ! `which pdftotext` ]]; then
+        echo "pdftotext not found"
+        echo "install poppler utilities"
+        return 1
+    fi
+
+    if [[ $# == 0 ]]; then
+        echo "missing filename(s)"
+        return 1
+    fi
+
+    local MULTI=false
+
+    if [[ $# > 1 ]]; then
+        local MULTI=true
+    fi
+
+    while [[ $# != 0 ]]; do
+
+        if [[ ! -f $1 ]]; then
+            echo "file '$1' not found"
+            shift
+            continue
+        fi
+
+        if [[ $MULTI == true ]]; then
+            pdftotext -q -layout $1 - | xargs -d \\n printf "$1: %s\n"
+        else
+            pdftotext -q -layout $1 - 
+        fi
+
+        shift
+    done
+}
 
