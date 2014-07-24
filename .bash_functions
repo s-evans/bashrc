@@ -305,3 +305,11 @@ environ()
     done
 }
 
+limits()
+{
+    while [[ $# != 0 ]]; do
+        cat /proc/$1/limits
+        shift
+    done
+}
+
