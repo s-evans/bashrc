@@ -168,7 +168,6 @@ swap()
     mv $TMPFILE "$2"
 }
 
-# requires imagemagick and tesseract
 img2txt ()
 {
     if [[ ! `which convert` ]]; then
