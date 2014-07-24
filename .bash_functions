@@ -259,3 +259,26 @@ pdf2txt()
     done
 }
 
+lo2txt()
+{
+    if [[ ! `which libreoffice` ]]; then
+        echo "libreoffice not found"
+        echo "install libreoffice"
+        return 1
+    fi
+
+    if [[ $# == 0 ]]; then
+        echo "missing filename(s)"
+        return 1
+    fi
+
+    local TMPDIR=`mktemp -d`
+    libreoffice --headless --convert-to pdf --outdir $TMPDIR $* > /dev/null
+
+    cd $TMPDIR
+    pdf2txt `ls`
+    cd -
+
+    rm -rf $TMPDIR
+}
+
