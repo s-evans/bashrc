@@ -24,7 +24,7 @@ $endif
 set bind-tty-special-chars on
 set blink-matching-paren on
 set byte-oriented off
-set completion-ignore-case off
+set completion-ignore-case on
 set convert-meta off
 set disable-completion off
 set echo-control-characters on

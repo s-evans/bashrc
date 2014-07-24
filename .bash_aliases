@@ -153,6 +153,7 @@ alias sp='ssh -p'
 alias fnf='sed "s/\\.[^\\.]*$//"'
 alias fef='sed "s/^.*\\.//"'
 alias fp='readlink -f'
+alias path='echo -e ${PATH//:/\\n}'
 
 ## HEAD AND TAIL ##
 alias t='tail'

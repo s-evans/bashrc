@@ -29,21 +29,17 @@ cd_func ()
         the_new_dir=$adir
     fi
 
-    #
     # '~' has to be substituted by ${HOME}
     [[ ${the_new_dir:0:1} == '~' ]] && the_new_dir="${HOME}${the_new_dir:1}"
 
-    #
     # Now change to the new dir and add to the top of the stack
     pushd "${the_new_dir}" > /dev/null
     [[ $? -ne 0 ]] && return 1
     the_new_dir=$(pwd)
 
-    #
     # Trim down everything beyond 11th entry
     popd -n +11 2>/dev/null 1>/dev/null
 
-    #
     # Remove any other occurence of this dir, skipping the top of the stack
     for ((cnt=1; cnt <= 10; cnt++)); do
         x2=$(dirs +${cnt} 2>/dev/null)
@@ -120,3 +116,81 @@ dl()
     sed -i "${LINE}d" $@
 }
 
+urlencode() 
+{
+    local LANG=C
+    arg="$1"
+    i="0"
+    while [ "$i" -lt ${#arg} ]; do
+        c=${arg:$i:1}
+        if echo "$c" | grep -q '[a-zA-Z/:_\.\-]'; then
+            echo -n "$c"
+        else
+            echo -n "%"
+            printf "%X" "'$c'"
+        fi
+        i=$((i+1))
+    done
+}
+
+urldecode() 
+{
+    local LANG=C
+    arg="$1"
+    i="0"
+    while [ "$i" -lt ${#arg} ]; do
+        c0=${arg:$i:1}
+        if [ "x$c0" = "x%" ]; then
+            c1=${arg:$((i+1)):1}
+            c2=${arg:$((i+2)):1}
+            printf "\x$c1$c2"
+            i=$((i+3))
+        else
+            echo -n "$c0"
+            i=$((i+1))
+        fi
+    done
+}
+
+swap()
+{
+    local TMPFILE=tmp.$$
+    mv "$1" $TMPFILE
+    mv "$2" "$1"
+    mv $TMPFILE "$2"
+}
+
+# TODO: Improve this
+# parallelization
+# filename support
+
+imgtotxt ()
+{
+    while [[ $# != 0 ]]; do
+        local TMPTIF=`mktemp --suffix=.tif`
+        local TMPTXT=`mktemp`
+        convert "$1"                                  \
+            -scale 1000%                              \
+            -blur 1x65535 -blur 1x65535 -blur 1x65535 \
+            -contrast                                 \
+            -normalize                                \
+            -despeckle -despeckle                     \
+            -type grayscale                           \
+            -sharpen 1                                \
+            -posterize 3                              \
+            -negate                                   \
+            -gamma 100                                \
+            -compress zip                             \
+            "$TMPTIF"
+        tesseract "$TMPTIF" "$TMPTXT" 2> /dev/null
+        local TMPTXT=${TMPTXT}.txt
+        cat "${TMPTXT}"
+        rm -f "$TMPTIF" "${TMPTXT}"
+        shift
+    done
+}
+
+# TODO: PDFTOTEXT
+# requires poppler utilities
+
+# TODO: lsof -p `pidof $1`

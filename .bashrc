@@ -1,24 +1,28 @@
 #!/bin/bash
 
-# If not running interactively, don't do anything
+# TODO
+# bash completion: git, svn
+# zsh screen integration
+
+## NON-INTERACTIVE ONLY ##
 [[ "$-" != *i* ]] && return
 
-# Functions
+## FUNCTIONS ## 
 if [ -f "${HOME}/.bash_functions" ]; then
     source "${HOME}/.bash_functions"
 fi
 
-# Aliases
+## ALIASES ## 
 if [ -f "${HOME}/.bash_aliases" ]; then
   source "${HOME}/.bash_aliases"
 fi
 
-# Local (for things that are system specific)
+## SYSTEM SPECIFIC ##
 if [ -f "${HOME}/.bash_local" ]; then
   source "${HOME}/.bash_local"
 fi
 
-# Screen settings
+## SCREEN SETTINGS ##
 if [[ "$TERM" == screen* ]]; then
     screen_set_window_title () {
         local HPWD="$PWD"
@@ -31,9 +35,16 @@ if [[ "$TERM" == screen* ]]; then
     PROMPT_COMMAND="screen_set_window_title; $PROMPT_COMMAND"
 fi
 
+## VARIABLES ##
 PS1='\u@\h:\W$ '
 EDITOR='vim'
 PAGER='less'
 USER=`whoami`
 USERNAME=$USER
+
+## SHELL OPTIONS ##
+shopt -s cdspell
+shopt -s autocd
+shopt -s extglob
+shopt -s cmdhist
 
