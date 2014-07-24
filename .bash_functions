@@ -259,6 +259,22 @@ pdf2txt()
     done
 }
 
+lo2pdf()
+{
+    if [[ ! `which libreoffice` ]]; then
+        echo "libreoffice not found"
+        echo "install libreoffice"
+        return 1
+    fi
+
+    if [[ $# == 0 ]]; then
+        echo "missing filename(s)"
+        return 1
+    fi
+
+    libreoffice --headless --convert-to pdf $* 
+}
+
 lo2txt()
 {
     if [[ ! `which libreoffice` ]]; then
