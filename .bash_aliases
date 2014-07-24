@@ -4,6 +4,7 @@
 # sed -i 
 # full file extension
 # full file name
+# xargs with functions
 
 ## CONDITIONAL ALIASES ##
 if [[ $ZSH == "" ]]; then
@@ -155,6 +156,7 @@ alias fef='sed "s/^.*\\.//"'
 alias fp='readlink -f'
 alias path='echo -e ${PATH//:/\\n}'
 alias po='pidof'
+alias lo='lsof'
 
 ## HEAD AND TAIL ##
 alias t='tail'

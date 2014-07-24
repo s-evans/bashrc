@@ -297,3 +297,11 @@ lo2txt()
     rm -rf $TMPDIR
 }
 
+environ()
+{
+    while [[ $# != 0 ]]; do
+        strings /proc/$1/environ
+        shift
+    done
+}
+
