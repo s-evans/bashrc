@@ -290,9 +290,9 @@ lo2txt()
     local TMPDIR=`mktemp -d`
     libreoffice --headless --convert-to pdf --outdir $TMPDIR $* > /dev/null
 
-    cd $TMPDIR
+    cd $TMPDIR > /dev/null
     pdf2txt `ls`
-    cd -
+    cd - > /dev/null
 
     rm -rf $TMPDIR
 }
