@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# TODO: Additional pdf functions
+# wrap pdftoppm: multiple files, convert to text
+# wrap pdfimages: multiple files, convert to text
+# wrap pdfinfo: multiple files
+# wrap pdffonts: multiple files 
+
 # This function defines a 'cd' replacement function capable of keeping, 
 # displaying and accessing history of visited directories, up to 10 entries.
 # To use it, uncomment it, source this file and try 'cd --'.
