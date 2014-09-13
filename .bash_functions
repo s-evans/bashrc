@@ -84,6 +84,7 @@ extract ()
             *.tbz2)     tar         xvjf    $1    ;;
             *.tgz)      tar         xvzf    $1    ;;
             *.zip)      unzip       $1      ;;
+            *.jar)      unzip       $1      ;;
             *.Z)        uncompress  $1      ;;
             *.7z)       7z          x       $1    ;;
             *)          echo "don't know how to extract '$1'..."  ;;
@@ -101,6 +102,7 @@ compress ()
         *.tar.bz2)  tar   cjf        $FILE  $*           ;;
         *.tar.gz)   tar   czf        $FILE  $*           ;;
         *.tgz)      tar   czf        $FILE  $*           ;;
+        *.jar)      zip   $FILE      $*     ;;
         *.zip)      zip   $FILE      $*     ;;
         *.rar)      rar   $FILE      $*     ;;
         *)          echo "Filetype not recognized"  ;;

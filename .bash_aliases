@@ -156,6 +156,7 @@ alias fp='readlink -f'
 alias path='echo -e ${PATH//:/\\n}'
 alias po='pidof'
 alias lop='lsof -p'
+alias hd='hexdump -Cv'
 
 ## HEAD AND TAIL ##
 alias t='tail'

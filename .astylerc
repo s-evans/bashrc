@@ -4,6 +4,10 @@
 --unpad-paren
 --pad-paren-in
 --align-pointer=type
+--align-reference=type
 --indent-col1-comments
 --add-brackets
 --pad-header
+--indent-preproc-define 
+--indent-switches 
+--convert-tabs
