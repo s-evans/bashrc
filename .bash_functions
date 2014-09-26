@@ -321,3 +321,13 @@ limits()
     done
 }
 
+symdiff()
+{
+    if [[ $# != 2 ]]; then
+        echo "argument count != 2"
+        return 1
+    fi
+
+    sort $1 $2 | uniq -u
+}
+
