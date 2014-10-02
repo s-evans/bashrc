@@ -61,6 +61,8 @@ alias ifc='ifconfig'
 
 ## GIT ##
 alias ga='git add'
+alias grm='git rm'
+alias grmr='git rm -r'
 alias gps='git push'
 alias gpso='git push origin'
 alias gpsom='git push origin master'
