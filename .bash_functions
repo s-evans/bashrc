@@ -99,12 +99,12 @@ compress ()
     FILE=$1
     shift
     case $FILE in
-        *.tar.bz2)  tar   cjf        $FILE  $*           ;;
-        *.tar.gz)   tar   czf        $FILE  $*           ;;
-        *.tgz)      tar   czf        $FILE  $*           ;;
-        *.jar)      zip   $FILE      $*     ;;
-        *.zip)      zip   $FILE      $*     ;;
-        *.rar)      rar   $FILE      $*     ;;
+        *.tar.bz2)  tar   cjf        $FILE  "$@"           ;;
+        *.tar.gz)   tar   czf        $FILE  "$@"           ;;
+        *.tgz)      tar   czf        $FILE  "$@"           ;;
+        *.jar)      zip   $FILE      "$@"     ;;
+        *.zip)      zip   $FILE      "$@"     ;;
+        *.rar)      rar   $FILE      "$@"     ;;
         *)          echo "Filetype not recognized"  ;;
     esac
 }
@@ -129,7 +129,7 @@ dl()
 
     LINE="$1"
     shift
-    sed -i "${LINE}d" $@
+    sed -i "${LINE}d" "$@"
 }
 
 urlencode() 
@@ -279,7 +279,7 @@ lo2pdf()
         return 1
     fi
 
-    libreoffice --headless --convert-to pdf $* 
+    libreoffice --headless --convert-to pdf "$@" 
 }
 
 lo2txt()
@@ -296,7 +296,7 @@ lo2txt()
     fi
 
     local TMPDIR=`mktemp -d`
-    libreoffice --headless --convert-to pdf --outdir $TMPDIR $* > /dev/null
+    libreoffice --headless --convert-to pdf --outdir $TMPDIR "$@" > /dev/null
 
     cd $TMPDIR > /dev/null
     pdf2txt `ls`
