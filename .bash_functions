@@ -331,3 +331,36 @@ symdiff()
     sort $1 $2 | uniq -u
 }
 
+ssh-config()
+{
+    if [[ $# < 2 ]]; then
+        echo "creates a public key if necessary and deploys it to the given system"
+        echo "parameters: <key_file_stem> <ssh_arguments>"
+        echo "example: id_rsa -p 90 user@192.168.1.20"
+        return 1
+    fi
+
+    if [[ ! `which ssh` && `which ssh-keygen` ]]; then
+        echo "error: local ssh utilities missing"
+        return 1
+    fi
+
+    mkdir -p ~/.ssh
+    chmod 700 ~/.ssh
+
+    if [[ ! -f ~/.ssh/${1}.pub ]]; then
+        ssh-keygen -t rsa -f ~/.ssh/$1
+    fi
+
+    if [[ ! -f ~/.ssh/${1}.pub ]]; then
+        echo "file ~/.ssh/${1}.pub missing"
+        return 1
+    fi
+
+    KEYS=$(< ~/.ssh/${1}.pub )
+
+    shift
+
+    ssh $@ "mkdir -p ~/.ssh; chmod 700 ~/.ssh; cd ~/.ssh; touch authorized_keys; chmod 600 authorized_keys; echo \"$KEYS\" >> authorized_keys"
+}
+
