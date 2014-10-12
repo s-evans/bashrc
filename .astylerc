@@ -8,6 +8,5 @@
 --indent-col1-comments
 --add-brackets
 --pad-header
---indent-preproc-define 
 --indent-switches 
 --convert-tabs
