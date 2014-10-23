@@ -6,6 +6,8 @@
 # wrap pdfinfo: multiple files
 # wrap pdffonts: multiple files 
 
+# TODO: cross platform system version function
+
 # This function defines a 'cd' replacement function capable of keeping, 
 # displaying and accessing history of visited directories, up to 10 entries.
 # To use it, uncomment it, source this file and try 'cd --'.
@@ -87,6 +89,7 @@ extract ()
             *.jar)      unzip       $1      ;;
             *.Z)        uncompress  $1      ;;
             *.7z)       7z          x       $1    ;;
+            *.xz)       unxz        $1      ;;
             *)          echo "don't know how to extract '$1'..."  ;;
         esac
 
