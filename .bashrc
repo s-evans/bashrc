@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ## NON-INTERACTIVE ONLY ##
 [[ "$-" != *i* ]] && return
@@ -36,6 +36,7 @@ PS1='\u@\h:\W$ '
 EDITOR='vim'
 PAGER='less'
 USER=`whoami`
+SHELL=`which bash`
 USERNAME=$USER
 
 ## SHELL OPTIONS ##

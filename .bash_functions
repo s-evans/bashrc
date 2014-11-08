@@ -14,6 +14,8 @@
 # acd_func 1.0.5, 10-nov-2004
 # Petar Marinov, http:/geocities.com/h2428, this is public domain
 
+# TODO: Fix this for cases that the current directory doesn't exist
+
 cd_func ()
 {
     local x2 the_new_dir adir index
