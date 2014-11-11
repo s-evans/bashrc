@@ -31,13 +31,17 @@ if [[ "$TERM" == screen* ]]; then
     PROMPT_COMMAND="screen_set_window_title; $PROMPT_COMMAND"
 fi
 
+## LESS SETTINGS ##
+export LESSOPEN="| (type src-hilite-lesspipe.sh >/dev/null 2>&1 && src-hilite-lesspipe.sh %s)"
+export LESS=' -R -N '
+
 ## VARIABLES ##
-PS1='\u@\h:\W$ '
-EDITOR='vim'
-PAGER='less'
-USER=`whoami`
-SHELL=`which bash`
-USERNAME=$USER
+export PS1='\u@\h:\W$ '
+export EDITOR='vim'
+export PAGER='less'
+export USER=`whoami`
+export USERNAME=$USER
+export SHELL=`type -p bash`
 
 ## SHELL OPTIONS ##
 shopt -s cdspell

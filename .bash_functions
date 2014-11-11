@@ -336,7 +336,7 @@ symdiff()
     sort $1 $2 | uniq -u
 }
 
-ssh-config()
+ssh_config()
 {
     if [[ $# < 2 ]]; then
         echo "creates a public key if necessary and deploys it to the given system"
