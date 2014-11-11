@@ -38,7 +38,7 @@ export LESS=' -R -N '
 ## VARIABLES ##
 export PS1='\u@\h:\W$ '
 export EDITOR='vim'
-export PAGER='less'
+export PAGER='less -s -n '
 export USER=`whoami`
 export USERNAME=$USER
 export SHELL=`type -p bash`

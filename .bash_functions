@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # TODO: Additional pdf functions
 # wrap pdftoppm: multiple files, convert to text
@@ -183,13 +183,13 @@ swap()
 
 img2txt ()
 {
-    if [[ ! `which convert` ]]; then
+    if [[ ! `type -p convert` ]]; then
         echo "convert not found"
         echo "install imagemagick"
         return 1
     fi
 
-    if [[ ! `which tesseract` ]]; then
+    if [[ ! `type -p tesseract` ]]; then
         echo "tesseract not found"
         echo "install tesseract"
         return 1
@@ -240,7 +240,7 @@ img2txt ()
 
 pdf2txt() 
 {
-    if [[ ! `which pdftotext` ]]; then
+    if [[ ! `type -p pdftotext` ]]; then
         echo "pdftotext not found"
         echo "install poppler utilities"
         return 1
@@ -273,7 +273,7 @@ pdf2txt()
 
 lo2pdf()
 {
-    if [[ ! `which libreoffice` ]]; then
+    if [[ ! `type -p libreoffice` ]]; then
         echo "libreoffice not found"
         echo "install libreoffice"
         return 1
@@ -289,7 +289,7 @@ lo2pdf()
 
 lo2txt()
 {
-    if [[ ! `which libreoffice` ]]; then
+    if [[ ! `type -p libreoffice` ]]; then
         echo "libreoffice not found"
         echo "install libreoffice"
         return 1
@@ -345,7 +345,7 @@ ssh_config()
         return 1
     fi
 
-    if [[ ! `which ssh` && `which ssh-keygen` ]]; then
+    if [[ ! `type -p ssh` && `type -p ssh-keygen` ]]; then
         echo "error: local ssh utilities missing"
         return 1
     fi
@@ -367,5 +367,27 @@ ssh_config()
     shift
 
     ssh $@ "mkdir -p ~/.ssh; chmod 700 ~/.ssh; cd ~/.ssh; touch authorized_keys; chmod 600 authorized_keys; echo \"$KEYS\" >> authorized_keys"
+}
+
+prepend()
+{
+    if [[ $# != 2 ]]; then
+        echo "prepends a variable with given value"
+        echo "parameters: <variable_name> <value>"
+        return 1
+    fi
+
+    eval ${1}=${2/ /\\ }\${$1}
+}
+
+append()
+{
+    if [[ $# != 2 ]]; then
+        echo "appends a variable with given value"
+        echo "parameters: <variable_name> <value>"
+        return 1
+    fi
+
+    eval ${1}=\${$1}${2/ /\\ }
 }
 
