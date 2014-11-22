@@ -36,7 +36,7 @@ export LESSOPEN="| (type src-hilite-lesspipe.sh >/dev/null 2>&1 && src-hilite-le
 export LESS=' -R '
 
 ## VARIABLES ##
-export PS1='\u@\h:\W$ '
+export PS1='\[\e[1;32m\]\u@\h:\W$\[\e[0m\] '
 export EDITOR='vim'
 export PAGER='less -s '
 export USER=`whoami`
