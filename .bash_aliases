@@ -26,8 +26,6 @@ alias lr='ls -lR'               # recursive ls
 alias lt='ls -ltr'              # sort by date
 alias l.='ls -d .* --color=auto'
 alias f='find'
-alias ff='find -type f'
-alias fd='find -type d'
 
 ## GREP ## 
 alias g='grep'

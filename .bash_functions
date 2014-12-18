@@ -391,3 +391,13 @@ sfx()
     eval ${1}=\${$1}${2/ /\\ }
 }
 
+fd()
+{
+    find $@ -type d
+}
+
+ff()
+{
+    find $@ -type f
+}
+
