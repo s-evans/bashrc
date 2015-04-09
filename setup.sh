@@ -20,6 +20,9 @@ ln -sf $DIRPATH/.astylerc ~/.astylerc
 echo "Creating symbolic link for inputrc"
 ln -sf $DIRPATH/.inputrc ~/.inputrc
 
+echo "Reloading inputrc"
+bind -f ~/.inputrc
+
 echo "Creating symbolic link for minttyrc"
 ln -sf $DIRPATH/.minttyrc ~/.minttyrc
 

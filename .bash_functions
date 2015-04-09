@@ -401,3 +401,24 @@ ff()
     find $@ -type f
 }
 
+txd()
+{
+    if [[ $# != 1 ]]; then
+        echo "extracts a tar.gz file to a new directory using its filename"
+        echo "parameters: <path_to_tar_gz_file>"
+        return 1
+    fi
+
+    if [[ ! -e $1 ]]; then
+        echo "File $1 does not exist"
+        return 1
+    fi
+
+    filename=${1##*/}
+
+    filename=${filename%%.*}
+
+    mkdir $filename || (echo "failed to create directory" && return 1)
+
+    tar xzvf $1 -C $filename
+}
