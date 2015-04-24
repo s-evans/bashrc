@@ -6,8 +6,6 @@
 # wrap pdfinfo: multiple files
 # wrap pdffonts: multiple files 
 
-# TODO: cross platform system version function
-
 # This function defines a 'cd' replacement function capable of keeping, 
 # displaying and accessing history of visited directories, up to 10 entries.
 # To use it, uncomment it, source this file and try 'cd --'.
@@ -422,3 +420,4 @@ txd()
 
     tar xzvf $1 -C $filename
 }
+

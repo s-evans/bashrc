@@ -195,3 +195,34 @@ alias countof='grep -xc'
 alias intersection='grep -xF -f'
 alias compliment='grep -vxF -f'
 
+## CLIPBOARD ##
+
+case "$OSTYPE" in
+
+    darwin*)
+        alias c='pbcopy'
+        alias v='pbpaste'
+        ;; 
+
+    linux*)
+        alias c='xclip -i -selection clipboard'
+        alias v='xclip -o -selection clipboard' 
+        ;;
+
+    cygwin*)
+        if [[ `type putclip 2>&1 > /dev/null` ]]; then
+            alias c='putclip'
+            alias v='getclip'
+        else
+            alias c='tee > /dev/clipboard 2> /dev/null'
+            alias v='cat /dev/clipboard'
+        fi
+        ;;
+
+    *) 
+        alias c='echo not supported'
+        alias v='echo not supported'
+        ;;
+
+esac
+
