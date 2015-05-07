@@ -57,20 +57,20 @@ alias nsl='nslookup'
 
 case "$OSTYPE" in
 
-    linux*)
-        alias neta='netstat -anop'
-        alias ifc='ifconfig'
-        alias nbl='nmblookup'
-        ;;
-
     cygwin*)
         alias neta='netstat -ano'
         alias ifc='ipconfig'
+        alias ifca='ipconfig /all'
         alias nbl='nblookup'
+        alias tracert='tracert'
         ;;
 
     *) 
-        alias ifc='echo not supported'
+        alias neta='netstat -anop'
+        alias ifc='ifconfig'
+        alias ifca='ifconfig -a'
+        alias nbl='nmblookup'
+        alias tracert='traceroute'
         ;;
 
 esac
@@ -221,11 +221,6 @@ case "$OSTYPE" in
     darwin*)
         alias c='pbcopy'
         alias v='pbpaste'
-        ;; 
-
-    linux*)
-        alias c='xclip -i -selection clipboard'
-        alias v='xclip -o -selection clipboard' 
         ;;
 
     cygwin*)
@@ -239,8 +234,8 @@ case "$OSTYPE" in
         ;;
 
     *) 
-        alias c='echo not supported'
-        alias v='echo not supported'
+        alias c='xclip -i -selection clipboard'
+        alias v='xclip -o -selection clipboard'
         ;;
 
 esac
