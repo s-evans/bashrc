@@ -58,19 +58,23 @@ alias nsl='nslookup'
 case "$OSTYPE" in
 
     cygwin*)
-        alias neta='netstat -ano'
+        alias ns='netstat -ano'
         alias ifc='ipconfig'
         alias ifca='ipconfig /all'
         alias nbl='nblookup'
         alias tracert='tracert'
+        alias rt='route PRINT'
+        alias arpp='arp -a'
         ;;
 
     *) 
-        alias neta='netstat -anop'
+        alias ns='netstat -anop'
         alias ifc='ifconfig'
         alias ifca='ifconfig -a'
         alias nbl='nmblookup'
         alias tracert='traceroute'
+        alias rt='route -n'
+        alias arpp='arp -n'
         ;;
 
 esac
@@ -134,6 +138,7 @@ alias agud='sudo apt-get update'
 alias agug='sudo apt-get upgrade'
 alias agrm='sudo apt-get remove'
 alias agin='sudo apt-get install'
+alias sudo='sudo ' # enable alias expansion following sudo
 
 ## GENERAL ##
 alias xa='xargs '
