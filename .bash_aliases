@@ -53,9 +53,28 @@ alias .10='cd ../../../../../../../../../..'
 alias .11='cd ../../../../../../../../../../..'
 
 ## NETWORKING ##
-alias neta='netstat -anop'
 alias nsl='nslookup'
-alias ifc='ifconfig'
+
+case "$OSTYPE" in
+
+    linux*)
+        alias neta='netstat -anop'
+        alias ifc='ifconfig'
+        alias nbl='nmblookup'
+        ;;
+
+    cygwin*)
+        alias neta='netstat -ano'
+        alias ifc='ipconfig'
+        alias nbl='nblookup'
+        ;;
+
+    *) 
+        alias ifc='echo not supported'
+        ;;
+
+esac
+
 
 ## GIT ##
 alias ga='git add'
