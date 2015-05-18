@@ -143,6 +143,10 @@ alias sudo='sudo ' # enable alias expansion following sudo
 ## GENERAL ##
 alias xa='xargs '
 alias vi='vim'
+alias v='vim'
+alias ed='vim'
+alias :ed='vim'
+alias :e='vim'
 alias psa='ps aux'
 alias h='history'
 alias p='pwd'
