@@ -120,6 +120,9 @@ alias svlo='svn log'
 alias svlod='svn log --diff'
 alias svlodw='svn log --diff -x -w'
 
+## CLEARCASE ##
+alias ct=cleartool
+
 ## TAR ##
 alias tt='tar tzvf'
 alias tc='tar czvf'
