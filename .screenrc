@@ -1,5 +1,46 @@
+# set the default shell 
 shell "bash"
-defscrollback 2000
+
+# set the number of lines in the history buffer
+defscrollback 10000
+
+# set the default title
 shelltitle "$ |bash"
+
+# make screen resumable
 autodetach on
 
+# disable the startup message
+startup_message off
+
+# disable visualbell
+vbell off
+
+# hardstatus settings
+hardstatus alwayslastline "%{= .y}(%H) %{-}%L=%-w%40L>%{=bu rW}%n %t%{-}%+w %-10<%="
+
+# caption for each window (window num, flag, title)
+caption always "%?%F%{= gk}%:%{= KW}%?%2n%f%07=%t"
+
+# wait for messages from screen
+msgwait 2
+msgminwait 0
+
+# suppress trailing whitespace in history buffer
+compacthist on
+
+# enable sending commands to other terminals
+altscreen on
+
+# disable multiuser mode
+multiuser off
+
+# vim-like region mappings
+bind j focus down
+bind k focus up
+bind h focus left
+bind l focus right
+bind o only
+bind q remove
+bind s split
+bind v split -v
