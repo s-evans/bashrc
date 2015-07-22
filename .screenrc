@@ -35,6 +35,9 @@ altscreen on
 # disable multiuser mode
 multiuser off
 
+# default to login
+deflogin on
+
 # vim-like region mappings
 bind j focus down
 bind k focus up
@@ -44,3 +47,6 @@ bind o only
 bind q remove
 bind s split
 bind v split -v
+bind - resize -5
+bind + resize +5
+bind = resize =
