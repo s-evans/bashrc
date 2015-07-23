@@ -4,3 +4,6 @@
 [submodule "bundle/bash-completion"]
 	path = bundle/bash-completion
 	url = git@github.com:s-evans/bash-completion.git
+[submodule "bundle/bash-mercurial"]
+	path = bundle/bash-mercurial
+	url = git@github.com:s-evans/bash-mercurial.git
