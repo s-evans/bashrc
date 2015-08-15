@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-## NON-INTERACTIVE ONLY ##
-[[ "$-" != *i* ]] && return
-
 ## FUNCTIONS ## 
 if [ -f "${HOME}/.bash_functions" ]; then
     source "${HOME}/.bash_functions"
@@ -48,4 +45,8 @@ shopt -s cdspell
 shopt -s autocd
 shopt -s extglob
 shopt -s cmdhist
+
+## ENABLE FUNCTIONS AND ALIASES IN COMMAND MODE ##
+shopt -s expand_aliases
+export BASH_ENV="${HOME}/.bashrc"
 
