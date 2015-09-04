@@ -421,3 +421,33 @@ txd()
     tar xzvf $1 -C $filename
 }
 
+u()
+{
+    if [[ $# > 2 ]]; then
+        echo "navigates up an arbitrary number of directories"
+        echo "parameters: [<number_of_up_directories>]"
+        return 1
+    fi
+
+    if [[ -n $1 ]]; then
+        if [[ ! $1 =~ ^-?[0-9]+$ || $1 -lt 0 ]]; then
+            echo "invalid parameter"
+            return 1
+        fi
+
+        if [[ $1 -eq 0 ]]; then
+            return 0
+        fi
+    fi
+
+    count=0
+    count+=${1}
+    dots=..
+
+    for (( i = 1; i < ${count}; i++ )); do
+        dots+="/.."
+    done
+
+    cd $dots
+}
+
