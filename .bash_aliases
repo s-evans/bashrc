@@ -191,6 +191,7 @@ alias path='echo -e ${PATH//:/\\n}'
 alias po='pidof'
 alias lop='lsof -p'
 alias hd='hexdump -Cv'
+alias info='info --vi-keys'
 
 ## HEAD AND TAIL ##
 alias t='tail'

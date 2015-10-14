@@ -50,3 +50,6 @@ bind v split -v
 bind - resize -5
 bind + resize +5
 bind = resize =
+
+# load local settings
+source ~/.screenrc_local

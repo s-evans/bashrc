@@ -10,11 +10,6 @@ if [ -f "${HOME}/.bash_aliases" ]; then
   source "${HOME}/.bash_aliases"
 fi
 
-## SYSTEM SPECIFIC ##
-if [ -f "${HOME}/.bash_local" ]; then
-  source "${HOME}/.bash_local"
-fi
-
 ## SCREEN SETTINGS ##
 if [[ "$TERM" == screen* ]]; then
     screen_set_window_title () {
@@ -49,4 +44,9 @@ shopt -s cmdhist
 ## ENABLE FUNCTIONS AND ALIASES IN COMMAND MODE ##
 shopt -s expand_aliases
 export BASH_ENV="${HOME}/.bashrc"
+
+## SYSTEM SPECIFIC ##
+if [ -f "${HOME}/.bash_local" ]; then
+  source "${HOME}/.bash_local"
+fi
 
