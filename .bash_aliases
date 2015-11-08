@@ -129,7 +129,6 @@ alias tc='tar czvf'
 alias tx='tar xzvf'
 alias td='tar dzvf'
 alias tu='tar uzvf'
-alias tr='tar rzvf'
 
 ## RSYNC ##
 alias rs='rsync'
@@ -159,7 +158,6 @@ alias which='type -p'
 alias wh='type -p'
 alias mk='make'
 alias exp='export'
-alias src='source'
 alias scr='screen -aA'
 alias scrr='screen -D -RR'
 alias scrl='screen -list'
@@ -192,6 +190,7 @@ alias po='pidof'
 alias lop='lsof -p'
 alias hd='hexdump -Cv'
 alias info='info --vi-keys'
+alias objdumpp='objdump -d -M intel-mnuemonics'
 
 ## HEAD AND TAIL ##
 alias t='tail'
