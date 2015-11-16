@@ -191,6 +191,7 @@ alias lop='lsof -p'
 alias hd='hexdump -Cv'
 alias info='info --vi-keys'
 alias objdumpp='objdump -d -M intel-mnuemonics'
+alias cmdd='cmd /C start cmd'
 
 ## HEAD AND TAIL ##
 alias t='tail'
