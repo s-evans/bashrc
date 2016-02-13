@@ -57,7 +57,7 @@ alias nsl='nslookup'
 
 case "$OSTYPE" in
 
-    cygwin*)
+    cygwin)
         alias ns='netstat -ano'
         alias ifc='ipconfig'
         alias ifca='ipconfig /all'
@@ -78,7 +78,6 @@ case "$OSTYPE" in
         ;;
 
 esac
-
 
 ## GIT ##
 alias ga='git add'
@@ -235,7 +234,7 @@ case "$OSTYPE" in
         alias v='pbpaste'
         ;;
 
-    cygwin*)
+    cygwin)
         if [[ `type putclip 2>&1 > /dev/null` ]]; then
             alias c='putclip'
             alias v='getclip'
@@ -251,4 +250,6 @@ case "$OSTYPE" in
         ;;
 
 esac
+
+[[ $OSTYPE == cygwin ]] && alias su='cygstart --action=runas mintty'
 
