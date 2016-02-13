@@ -251,5 +251,8 @@ case "$OSTYPE" in
 
 esac
 
-[[ $OSTYPE == cygwin ]] && alias su='cygstart --action=runas mintty'
+if [[ $OSTYPE == cygwin ]]; then
+    alias su='cygstart --action=runas mintty'
+    alias sudo='cygstart --action=runas '
+fi
 
