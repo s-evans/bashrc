@@ -223,7 +223,7 @@ alias mode='sort | uniq -c | sort -r | head -n 1'
 alias count='wc -l'
 alias countof='grep -xc'
 alias intersection='grep -xF -f'
-alias compliment='grep -vxF -f'
+alias complement='grep -vxF -f'
 
 ## CLIPBOARD ##
 
