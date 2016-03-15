@@ -254,5 +254,6 @@ esac
 if [[ $OSTYPE == cygwin ]]; then
     alias su='cygstart --action=runas mintty'
     alias sudo='cygstart --action=runas '
+    alias start='cygstart'
 fi
 
