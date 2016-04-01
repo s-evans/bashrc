@@ -41,6 +41,9 @@ shopt -s autocd
 shopt -s extglob
 shopt -s cmdhist
 
+## TTY OPTIONS ##
+stty -ixon
+
 ## ENABLE FUNCTIONS AND ALIASES IN COMMAND MODE ##
 shopt -s expand_aliases
 export BASH_ENV="${HOME}/.bashrc"
