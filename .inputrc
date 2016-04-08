@@ -50,7 +50,7 @@
 # opposite case (g~)
 
 # Set vi mode
-set editing-mode vi 
+set editing-mode vi
 
 # Show modeline (newer versions of bash/readline only)
 set show-mode-in-prompt on
@@ -84,68 +84,107 @@ $if mode=vi
 
     # basic vim text object support
     "daw": "lbdW"
-    "yaw": "lbyW"
-    "caw": "lbcW"
     "diw": "lbdw"
-    "yiw": "lbyw"
+    "caw": "lbcW"
     "ciw": "lbcw"
+    "yaw": "lbyW"
+    "yiw": "lbyw"
+
     "da\"": "lF\"df\""
     "di\"": "lF\"lmtf\"d`t"
-    "ci\"": "di\"i"
-    "ca\"": "da\"i"
+    "ca\"": "lF\"cf\""
+    "ci\"": "lF\"lmtf\"c`t"
+    "ya\"": "lF\"yf\""
+    "yi\"": "lF\"lmtf\"y`t"
+
     "da'": "lF'df'"
     "di'": "lF'lmtf'd`t"
-    "ci'": "di'i"
-    "ca'": "da'i"
+    "ca'": "lF'cf'"
+    "ci'": "lF'lmtf'c`t"
+    "ya'": "lF'yf'"
+    "yi'": "lF'lmtf'y`t"
+
     "da`": "lF\`df\`"
     "di`": "lF\`lmtf\`d`t"
-    "ci`": "di`i"
-    "ca`": "da`i"
+    "ca`": "lF\`cf\`"
+    "ci`": "lF\`lmtf\`c`t"
+    "ya`": "lF\`yf\`"
+    "yi`": "lF\`lmtf\`y`t"
+
     "da(": "lF(d%"
     "di(": "lF(lmth%d`t"
-    "ci(": "di(i"
-    "ca(": "da(i"
-    "da)": "lF(d%"
+    "ca(": "lF(c%"
+    "ci(": "lF(lmth%c`t"
+    "ya(": "lF(y%"
+    "yi(": "lF(lmth%y`t"
+
+    "da)": "da("
     "di)": "di("
-    "ci)": "di(i"
-    "ca)": "da(i"
+    "ca)": "ca("
+    "ci)": "ci("
+    "ya)": "ya("
+    "yi)": "yi("
+
     "da{": "lF{d%"
     "di{": "lF{lmth%d`t"
-    "ci{": "di{i"
-    "ca{": "da{i"
+    "ca{": "lF{c%"
+    "ci{": "lF{lmth%c`t"
+    "ya{": "lF{y%"
+    "yi{": "lF{lmth%y`t"
+
     "da}": "da{"
     "di}": "di{"
-    "ci}": "di}i"
-    "ca}": "da}i"
+    "ca}": "ca{"
+    "ci}": "ci{"
+    "ya}": "ya{"
+    "yi}": "yi{"
+
     "da[": "lF[d%"
     "di[": "lF[lmth%d`t"
-    "ci[": "di[i"
-    "ca[": "da[i"
+    "ca[": "lF[c%"
+    "ci[": "lF[lmth%c`t"
+    "ya[": "lF[y%"
+    "yi[": "lF[lmth%y`t"
+
     "da]": "da["
     "di]": "di["
-    "ci]": "di]i"
-    "ca]": "da]i"
+    "ca]": "ca["
+    "ci]": "ci["
+    "ya]": "ya["
+    "yi]": "yi["
+
     "da<": "lF<df>"
     "di<": "lF<lmtf>d`t"
-    "ci<": "di<i"
-    "ca<": "da<i"
+    "ca<": "lF<cf>"
+    "ci<": "lF<lmtf>c`t"
+    "ya<": "lF<yf>"
+    "yi<": "lF<lmtf>y`t"
+
     "da>": "da<"
     "di>": "di<"
-    "ci>": "di>i"
-    "ca>": "da>i"
+    "ca>": "ca<"
+    "ci>": "ci<"
+    "ya>": "ya<"
+    "yi>": "yi<"
+
     "da/": "lF/df/"
     "di/": "lF/lmtf/d`t"
-    "ci/": "di/i"
-    "ca/": "da/i"
+    "ca/": "lF/cf/"
+    "ci/": "lF/lmtf/c`t"
+    "ya/": "lF/yf/"
+    "yi/": "lF/lmtf/y`t"
+
     "da:": "lF:df:"
     "di:": "lF:lmtf:d`t"
-    "ci:": "di:i"
-    "ca:": "da:i"
+    "ca:": "lF:cf:"
+    "ci:": "lF:lmtf:c`t"
+    "ya:": "lF:yf:"
+    "yi:": "lF:lmtf:y`t"
 
     # basic operators need to be explicitly redefined because text objects seem to have broken them
-    "dd": kill-whole-line
-    "cc": "ddi"
-    "yy": "0y$"
+    "dd": "0D"
+    "cc": "0C"
+    "yy": "0Y"
 
     set keymap vi-insert
     "jk": vi-movement-mode
