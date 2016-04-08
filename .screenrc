@@ -14,7 +14,7 @@ autodetach on
 startup_message off
 
 # disable visualbell
-vbell off
+vbell on
 
 # hardstatus settings
 hardstatus alwayslastline "%{= .y}(%H) %{-}%L=%-w%40L>%{=bu rW}%n %t%{-}%+w %-10<%="
@@ -38,7 +38,7 @@ multiuser off
 # default to login
 deflogin on
 
-# vim-like region mappings
+# vim-like window bindings
 bind j focus down
 bind k focus up
 bind h focus left
@@ -50,6 +50,11 @@ bind v split -v
 bind - resize -5
 bind + resize +5
 bind = resize =
+
+# vim-like copy mode bindings
+markkeys w=W:y=V:' '=v:x=o:' '=y
+bindkey -m yy stuff 0Y
+bindkey -m  stuff coC
 
 # load local settings
 source ~/.screenrc_local
