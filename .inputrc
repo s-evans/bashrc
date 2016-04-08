@@ -1,3 +1,54 @@
+# LIST OF MOTIONS AND TEXT OBJECTS
+# inner word (iw)
+# a word (aw)
+# inner big word (iW)
+# a big word (aW)
+# forward word (w)
+# forward big word (W)
+# backward word (b)
+# backward big word (B)
+# end of word (e)
+# end of big word (E)
+# end of prev word (ge)
+# end of prev big word (gE)
+# inner apostrophe (a' and a')
+# a apostrophe (a' and a')
+# inner quote (a" and a")
+# a quote (a" and a")
+# inner parenthesis (a( and a))
+# a parenthesis (a( and a))
+# inner bracket (a[ and a])
+# a bracket (a[ and a])
+# inner curly brace (i{ and i})
+# a curly brace (a{ and a})
+# inner brace (i< and i>)
+# a brace (a< and a>)
+# carrot (^)
+# dollar ($)
+# zero (0)
+# forward character (l)
+# backward character (h)
+# matching element (%)
+# forward word search (*)
+# reverse word search (#)
+# entire line (repeat last char in mapping)
+# finger (fX)
+# reverse finger (FX)
+# touch (tX)
+# reverse touch (TX)
+# repeat finger or touch (;)
+# backward repeat finger or touch (,)
+# inner backtick (i`)
+# a backtick (a`)
+
+# LIST OF OPERATORS
+# change (c)
+# delete (d)
+# yank (y)
+# uppercase (gU)
+# lowercase (gu)
+# opposite case (g~)
+
 # Set vi mode
 set editing-mode vi 
 
@@ -9,23 +60,106 @@ set bell-style none
 
 # Custom vi mode maps
 $if mode=vi
+
     set keymap vi-command
+    "zz": redraw-current-line
     "gg": beginning-of-history
     "G": end-of-history
 
+    # TODO: ge and gE motions and all operators
+    "ge": "lbbhe"
+    "gE": "BBE"
+
+    # TODO: gu operator with all motions and text objects
+    "guw": downcase-word
+    "gue": downcase-word
+    "guaw": "lbguW"
+    "guiw": "lbguw"
+
+    # TODO: gU operator with all motions and text objects
+    "gUw": upcase-word
+    "gUe": upcase-word
+    "gUaw": "lbgUW"
+    "gUiw": "lbgUw"
+
+    # basic vim text object support
+    "daw": "lbdW"
+    "yaw": "lbyW"
+    "caw": "lbcW"
+    "diw": "lbdw"
+    "yiw": "lbyw"
+    "ciw": "lbcw"
+    "da\"": "lF\"df\""
+    "di\"": "lF\"lmtf\"d`t"
+    "ci\"": "di\"i"
+    "ca\"": "da\"i"
+    "da'": "lF'df'"
+    "di'": "lF'lmtf'd`t"
+    "ci'": "di'i"
+    "ca'": "da'i"
+    "da`": "lF\`df\`"
+    "di`": "lF\`lmtf\`d`t"
+    "ci`": "di`i"
+    "ca`": "da`i"
+    "da(": "lF(d%"
+    "di(": "lF(lmth%d`t"
+    "ci(": "di(i"
+    "ca(": "da(i"
+    "da)": "lF(d%"
+    "di)": "di("
+    "ci)": "di(i"
+    "ca)": "da(i"
+    "da{": "lF{d%"
+    "di{": "lF{lmth%d`t"
+    "ci{": "di{i"
+    "ca{": "da{i"
+    "da}": "da{"
+    "di}": "di{"
+    "ci}": "di}i"
+    "ca}": "da}i"
+    "da[": "lF[d%"
+    "di[": "lF[lmth%d`t"
+    "ci[": "di[i"
+    "ca[": "da[i"
+    "da]": "da["
+    "di]": "di["
+    "ci]": "di]i"
+    "ca]": "da]i"
+    "da<": "lF<df>"
+    "di<": "lF<lmtf>d`t"
+    "ci<": "di<i"
+    "ca<": "da<i"
+    "da>": "da<"
+    "di>": "di<"
+    "ci>": "di>i"
+    "ca>": "da>i"
+    "da/": "lF/df/"
+    "di/": "lF/lmtf/d`t"
+    "ci/": "di/i"
+    "ca/": "da/i"
+    "da:": "lF:df:"
+    "di:": "lF:lmtf:d`t"
+    "ci:": "di:i"
+    "ca:": "da:i"
+
+    # basic operators need to be explicitly redefined because text objects seem to have broken them
+    "dd": kill-whole-line
+    "cc": "ddi"
+    "yy": "0y$"
+
     set keymap vi-insert
     "jk": vi-movement-mode
-    "\C-w": backward-kill-word
-    "\C-p": history-search-backward
-    "\C-i": complete
 
-    # Re-enable Emacs style mappings
+    # Re-enable some Emacs style mappings in insert mode
+    "\C-n": history-search-forward
+    "\C-p": history-search-backward
+
     "\C-a": beginning-of-line
     "\C-e": end-of-line
-    "\C-f": forward-char
-    "\C-b": backward-char
-    "\M-f": forward-word
-    "\M-b": backward-word
+
+    "\C-u": backward-kill-line
+    "\C-k": kill-line
+
 $endif
 
 # Dump of a favorable pedigree
