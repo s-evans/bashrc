@@ -1,94 +1,45 @@
-# LIST OF MOTIONS AND TEXT OBJECTS
-# inner word (iw)
-# a word (aw)
-# inner big word (iW)
-# a big word (aW)
-# forward word (w)
-# forward big word (W)
-# backward word (b)
-# backward big word (B)
-# end of word (e)
-# end of big word (E)
-# end of prev word (ge)
-# end of prev big word (gE)
-# inner apostrophe (a' and a')
-# a apostrophe (a' and a')
-# inner quote (a" and a")
-# a quote (a" and a")
-# inner parenthesis (a( and a))
-# a parenthesis (a( and a))
-# inner bracket (a[ and a])
-# a bracket (a[ and a])
-# inner curly brace (i{ and i})
-# a curly brace (a{ and a})
-# inner brace (i< and i>)
-# a brace (a< and a>)
-# carrot (^)
-# dollar ($)
-# zero (0)
-# forward character (l)
-# backward character (h)
-# matching element (%)
-# forward word search (*)
-# reverse word search (#)
-# entire line (repeat last char in mapping)
-# finger (fX)
-# reverse finger (FX)
-# touch (tX)
-# reverse touch (TX)
-# repeat finger or touch (;)
-# backward repeat finger or touch (,)
-# inner backtick (i`)
-# a backtick (a`)
-
-# LIST OF OPERATORS
-# change (c)
-# delete (d)
-# yank (y)
-# uppercase (gU)
-# lowercase (gu)
-# opposite case (g~)
-
-# Set vi mode
 set editing-mode vi
 
-# Show modeline (newer versions of bash/readline only)
-set show-mode-in-prompt on
-
-# Get rid of the bell
-set bell-style none
-
-# Custom vi mode maps
 $if mode=vi
 
     set keymap vi-command
     "zz": redraw-current-line
     "gg": beginning-of-history
-    "G": end-of-history
+    "G":  end-of-history
 
-    # TODO: ge and gE motions and all operators
-    "ge": "lbbhe"
-    "gE": "BBE"
+    "ge":  "lbbhe"
+    "gE":  "BBE"
+    "cgE": "mtBBEc`t"
+    "dgE": "mtBBEd`t"
+    "ygE": "mtBBEy`t"
+    "cge": "mtlbbhec`t"
+    "dge": "mtlbbhed`t"
+    "yge": "mtlbbhey`t"
 
-    # TODO: gu operator with all motions and text objects
-    "guw": downcase-word
-    "gue": downcase-word
-    "guaw": "lbguW"
+    "guw":  downcase-word
+    "gue":  downcase-word
+    "guaw": "lbguw"
     "guiw": "lbguw"
+    "gu":   abort
 
-    # TODO: gU operator with all motions and text objects
-    "gUw": upcase-word
-    "gUe": upcase-word
-    "gUaw": "lbgUW"
+    "gUw":  upcase-word
+    "gUe":  upcase-word
+    "gUaw": "lbgUw"
     "gUiw": "lbgUw"
+    "gU":   abort
 
-    # basic vim text object support
-    "daw": "lbdW"
+    "daw": "lbdw"
+    "daW": "lBdW"
     "diw": "lbdw"
-    "caw": "lbcW"
+    "diW": "lBdW"
+    "caw": "lbcw"
+    "caW": "lBcW"
     "ciw": "lbcw"
-    "yaw": "lbyW"
+    "ciW": "lBcW"
+    "yaw": "lbyw"
+    "yaW": "lByW"
     "yiw": "lbyw"
+    "yiW": "lByW"
 
     "da\"": "lF\"df\""
     "di\"": "lF\"lmtf\"d`t"
@@ -181,7 +132,6 @@ $if mode=vi
     "ya:": "lF:yf:"
     "yi:": "lF:lmtf:y`t"
 
-    # basic operators need to be explicitly redefined because text objects seem to have broken them
     "dd": "0D"
     "cc": "0C"
     "yy": "0Y"
@@ -189,7 +139,6 @@ $if mode=vi
     set keymap vi-insert
     "jk": vi-movement-mode
 
-    # Re-enable some Emacs style mappings in insert mode
     "\C-n": history-search-forward
     "\C-p": history-search-backward
 
@@ -201,36 +150,41 @@ $if mode=vi
 
 $endif
 
-# Dump of a favorable pedigree
-set bind-tty-special-chars on
-set blink-matching-paren on
-set byte-oriented off
-set completion-ignore-case on
-set convert-meta off
-set disable-completion off
-set echo-control-characters on
-set enable-keypad off
-set enable-meta-key on
-set expand-tilde off
-set history-preserve-point off
-set horizontal-scroll-mode off
-set input-meta on
-set mark-directories on
-set mark-modified-lines off
-set mark-symlinked-directories off
-set match-hidden-files on
-set meta-flag on
-set output-meta on
-set page-completions on
-set prefer-visible-bell on
-set print-completions-horizontally off
-set revert-all-at-newline off
-set show-all-if-ambiguous on
-set show-all-if-unmodified off
-set skip-completed-text off
-set visible-stats off
-set comment-begin #
+set bell-style                       visible
+set bind-tty-special-chars           on
+set blink-matching-paren             on
+set byte-oriented                    off
+set colored-stats                    on
+set comment-begin                    #
+set completion-display-width         -1
+set completion-ignore-case           on
+set completion-map-case              on
 set completion-prefix-display-length 0
-set completion-query-items 100
-set history-size 1000
-
+set completion-query-items           200
+set convert-meta                     off
+set disable-completion               off
+set echo-control-characters          on
+set enable-keypad                    off
+set enable-meta-key                  on
+set expand-tilde                     off
+set history-preserve-point           off
+set history-size                     -1
+set horizontal-scroll-mode           on
+set input-meta                       on
+set keyseq-timeout                   500
+set mark-directories                 on
+set mark-modified-lines              on
+set mark-symlinked-directories       on
+set match-hidden-files               on
+set menu-complete-display-prefix     off
+set meta-flag                        on
+set output-meta                      on
+set page-completions                 on
+set prefer-visible-bell              on
+set print-completions-horizontally   on
+set revert-all-at-newline            off
+set show-all-if-ambiguous            on
+set show-all-if-unmodified           off
+set show-mode-in-prompt              on
+set skip-completed-text              on
+set visible-stats                    off
