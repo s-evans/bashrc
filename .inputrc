@@ -2534,6 +2534,11 @@ $if mode=vi
     # ie. using "ds'" on "as|df'fdsa'" should result in "asdffdsa"
     # ie. using "ds'" on "as|df'fdsa" should result in "asdf'fdsa"
 
+    # TODO: add gdb readline equivalents
+    # gdb doesn't appear to support using f, F, t, T or ` with operators
+    # try "$if gdb" ?
+    # gdb equivalents will likely just x for deletion
+
     "ds ":  "lT dF t mtylf pd`t"
     "ds!":  "lT!dF!t!mtylf!pd`t"
     "ds#":  "lT#dF#t#mtylf#pd`t"

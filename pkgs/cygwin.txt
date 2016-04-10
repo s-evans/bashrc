@@ -1,331 +1,348 @@
-Cygwin Package Information
-Package                      Version
-_autorebase                  001003-1
-_update-info-dir             03000-1
-alternatives                 1.3.30c-10
-astyle                       2.05.1-1
-autoconf                     13-1
-autoconf2.1                  2.13-12
-autoconf2.5                  2.69-3
-automake                     9-1
-automake1.10                 1.10.3-2
-automake1.11                 1.11.6-2
-automake1.12                 1.12.6-2
-automake1.13                 1.13.4-1
-automake1.14                 1.14.1-2
-automake1.15                 1.15-1
-automake1.4                  1.4p6-11
-automake1.5                  1.5-11
-automake1.6                  1.6.3-12
-automake1.7                  1.7.9-11
-automake1.8                  1.8.5-11
-automake1.9                  1.9.6-11
-base-cygwin                  3.8-1
-base-files                   4.2-4
-bash                         4.3.42-4
-bash-completion              2.1-2
-binutils                     2.25-4
-bsdiff                       4.3-5
-bzip2                        1.0.6-2
-ca-certificates              2.6-1
-clang                        3.7.1-1
-clang-analyzer               3.7.1-1
-cmake                        3.3.2-1
-coreutils                    8.24-3
-crypt                        1.2-1
-cscope                       15.8.0.1-2
-csih                         0.9.9-1
-ctags                        5.8-1
-curl                         7.47.1-1
-cvs                          1.11.23-2
-cygcheck-dep                 2.1-1
-cygrunsrv                    1.62-1
-cygutils                     1.4.15-2
-cygutils-extra               1.4.15-2
-cygutils-x11                 1.4.15-2
-cygwin                       2.4.1-1
-cygwin-devel                 2.4.1-1
-dash                         0.5.8-3
-dbus-bash-completion         0.102-1
-desktop-file-utils           0.22-1
-diffutils                    3.3-3
-dri-drivers                  11.0.9-2
-editrights                   1.03-1
-file                         5.25-1
-findutils                    4.5.12-1
-font-adobe-dpi75             7.5-2
-font-alias                   7.5-2
-font-misc-misc               7.5-2
-gamin                        0.1.10-15
-gawk                         4.1.3-1
-gcc-core                     5.3.0-3
-gcc-g++                      5.3.0-3
-gdb                          7.10.1-1
-getent                       2.18.90-4
-git                          2.7.0-1
-git-completion               2.7.0-1
-grep                         2.21-2
-groff                        1.22.3-1
-gsettings-desktop-schemas    3.18.1-1
-gzip                         1.6-1
-hostname                     3.13-1
-ImageMagick                  6.9.1.3-3
-ImageMagick-doc              6.9.1.3-3
-info                         6.1-2
-ipc-utils                    1.0-1
-less                         481-1
-libapr1                      1.5.2-2
-libaprutil1                  1.5.4-2
-libarchive13                 3.1.2-3
-libargp                      20110921-2
-libatomic1                   5.3.0-3
-libattr1                     2.4.46-1
-libautotrace3                0.31.1-16
-libblkid1                    2.25.2-2
-libboost-devel               1.58.0-1
-libboost_atomic1.58          1.58.0-1
-libboost_chrono1.58          1.58.0-1
-libboost_container1.58       1.58.0-1
-libboost_context1.58         1.58.0-1
-libboost_coroutine1.58       1.58.0-1
-libboost_date_time1.58       1.58.0-1
-libboost_filesystem1.58      1.58.0-1
-libboost_graph1.58           1.58.0-1
-libboost_iostreams1.58       1.58.0-1
-libboost_locale1.58          1.58.0-1
-libboost_log1.58             1.58.0-1
-libboost_math1.58            1.58.0-1
-libboost_program_options1.58 1.58.0-1
-libboost_python1.58          1.58.0-1
-libboost_python3-devel       1.58.0-1
-libboost_python3_1.58        1.58.0-1
-libboost_random1.58          1.58.0-1
-libboost_regex1.58           1.58.0-1
-libboost_serialization1.58   1.58.0-1
-libboost_signals1.58         1.58.0-1
-libboost_system1.58          1.58.0-1
-libboost_test1.58            1.58.0-1
-libboost_thread1.58          1.58.0-1
-libboost_timer1.58           1.58.0-1
-libboost_wave1.58            1.58.0-1
-libbz2_1                     1.0.6-2
-libcairo2                    1.14.4-1
-libcatgets1                  1.1-2
-libcharset1                  1.14-3
-libclang                     3.5.2-1
-libclang3.7                  3.7.1-1
-libcloog-isl4                0.18.0-2
-libcom_err2                  1.42.12-2
-libcroco0.6_3                0.6.9-1
-libcurl4                     7.47.1-1
-libdatrie1                   0.2.8-1
-libdb4.8                     4.8.30-1
-libdbus-glib_1_2             0.102-1
-libdbus1_3                   1.8.16-1
-libedit0                     20130712-1
-libEGL1                      11.0.9-2
-libEMF1                      1.0.7-2
-libevent2.0_5                2.0.22-1
-libexpat1                    2.1.0-3
-libfam0                      0.1.10-15
-libffi6                      3.2.1-1
-libfftw3_3                   3.3.4-2
-libfontconfig1               2.11.1-3
-libfpx1                      1.3.1.4-1
-libfreetype6                 2.5.5-2
-libgcc1                      5.3.0-3
-libgd3                       2.1.1-1
-libgdbm4                     1.8.3-20
-libgdk_pixbuf2.0_0           2.32.2-1
-libgif4                      4.1.6-10
-libGL1                       11.0.9-2
-libglapi0                    11.0.9-2
-libglib2.0_0                 2.46.2-2
-libgmp10                     6.1.0-3p1
-libgnutls28                  3.3.17-1
-libgomp1                     5.3.0-3
-libgraphite2_3               1.3.6-1
-libgs9                       9.15-2
-libgssapi_krb5_2             1.13.2-4
-libguile17                   1.8.8-1
-libharfbuzz0                 1.0.6-1
-libhogweed2                  2.7-2
-libICE6                      1.0.9-1
-libiconv                     1.14-3
-libiconv-devel               1.14-3
-libiconv2                    1.14-3
-libicu-devel                 56.1-1
-libicu56                     56.1-1
-libidn11                     1.29-1
-libintl-devel                0.19.5.1-2
-libintl8                     0.19.5.1-2
-libiodbc2                    3.52.8-2
-libisl10                     0.11.1-2
-libisl13                     0.14.1-1
-libjasper1                   1.900.1-15
-libjbig2                     2.0-14
-libjpeg8                     1.4.2-1
-libk5crypto3                 1.13.2-4
-libkrb5_3                    1.13.2-4
-libkrb5support0              1.13.2-4
-liblcms2_2                   2.6-1
-libleptonica_3               1.72-2
-libleptonica_5               1.73-1
-libllvm3.5                   3.5.2-1
-libllvm3.7                   3.7.1-1
-libltdl7                     2.4.6-3
-liblzma5                     5.2.2-1
-liblzo2_2                    2.08-1
-libMagickC++6_5              6.9.0.0-4
-libMagickCore6_2             6.9.1.3-3
-libMagickWand6_2             6.9.1.3-3
-libmetalink3                 0.1.2-1
-libming1                     0.4.7-1
-libmpc3                      1.0.3-1
-libmpfr4                     3.1.3-1
-libmysqlclient18             5.5.45-1
-libncursesw10                6.0-3.20160213
-libneon27                    0.30.1-1
-libnettle4                   2.7-2
-libnghttp2_14                1.7.1-1
-libopenjpeg1                 1.5.2-3
-libopenldap2_4_2             2.4.42-1
-libopenssl100                1.0.2g-2
-libp11-kit0                  0.22.1-1
-libpango1.0_0                1.38.1-1
-libpaper-common              1.1.24-2
-libpaper1                    1.1.24-2
-libpcre1                     8.38-2
-libpipeline1                 1.4.0-1
-libpixman1_0                 0.32.8-1
-libplotter2                  2.6-4
-libpng16                     1.6.20-1
-libpoppler55                 0.36.0-2
-libpq5                       9.5.1-1
-libproxy1                    0.4.11-5
-libpsl5                      0.12.0-1
-libpstoedit0                 3.70-1
-libquadmath0                 5.3.0-3
-libreadline7                 6.3.8-1
-librsvg2_2                   2.40.11-1
-libsasl2_3                   2.1.26-9
-libserf1_0                   1.3.8-1
-libsigsegv2                  2.10-2
-libSM6                       1.2.2-1
-libsmartcols1                2.25.2-2
-libsource-highlight-common   3.1.8-2
-libsource-highlight4         3.1.8-2
-libsqlite3_0                 3.11.0-2
-libssh2_1                    1.7.0-1
-libssp0                      5.3.0-3
-libstdc++6                   5.3.0-3
-libtasn1_6                   4.7-1
-libtesseract-ocr_3           3.04.01-1
-libthai0                     0.1.21-1
-libtidy0_99_0                20090325-1
-libtiff6                     4.0.6-1
-libunistring2                0.9.6-1
-libupower-glib1              0.9.23-2
-libusb1.0                    1.0.20-1
-libuuid-devel                2.25.2-2
-libuuid1                     2.25.2-2
-libvpx1                      1.3.0-2
-libvtv0                      5.3.0-3
-libwebp5                     0.4.3-1
-libX11-xcb1                  1.6.3-1
-libX11_6                     1.6.3-1
-libXau6                      1.0.8-1
-libXaw7                      1.0.13-1
-libxcb-glx0                  1.11.1-1
-libxcb-render0               1.11.1-1
-libxcb-shm0                  1.11.1-1
-libxcb1                      1.11.1-1
-libXdmcp6                    1.1.2-1
-libXext6                     1.3.3-1
-libXft2                      2.3.2-1
-libXinerama1                 1.1.3-1
-libxml2                      2.9.3-1
-libXmu6                      1.1.2-1
-libXpm4                      3.5.11-1
-libXrandr2                   1.5.0-1
-libXrender1                  0.9.9-1
-libXt6                       1.1.5-1
-libzip2                      0.11.2-2
-llvm                         3.7.1-1
-login                        1.11-1
-luit                         20130217-1
-lynx                         2.8.7-1
-m4                           1.4.17-2
-make                         4.1-1
-man-db                       2.7.4-1
-mercurial                    3.6.3-1
-mintty                       2.2.3-0
-nasm                         2.10.05-1
-nc                           1.107-3
-nc6                          1.0-1
-ncurses                      6.0-3.20160213
-openssh                      7.2p1-1
-openssl                      1.0.2g-2
-p11-kit                      0.22.1-1
-p11-kit-trust                0.22.1-1
-p7zip                        15.09-2
-patch                        2.7.4-1
-patchutils                   0.3.3-1
-perl                         5.22.1-1
-perl-Carp                    1.38-1
-perl-Error                   0.17024-1
-perl-Pod-Simple              3.32-1
-perl-TermReadKey             2.33-1
-perl-Unicode-Normalize       1.25-1
-perl_autorebase              5.22.1-1
-perl_base                    5.22.1-1
-ping                         1.0.2-1
-poppler                      0.36.0-2
-poppler-data                 0.4.6-1
-popt                         1.16-1
-pylint                       1.3.1-1
-python                       2.7.10-1
-python-logilab-astng         0.24.3-1
-python-logilab-common        0.62.0-1
-python3                      3.4.3-1
-rebase                       4.4.1-1
-rsync                        3.1.2-1
-run                          1.3.4-2
-screen                       4.3.1-1
-sed                          4.2.2-3
-shared-mime-info             1.6-2
-source-highlight             3.1.8-2
-subversion                   1.9.3-1
-tar                          1.28-1
-tcsh                         6.19.00-2
-terminfo                     6.0-3.20160213
-tesseract-ocr                3.04.01-1
-tesseract-ocr-eng            3.04-1
-texinfo                      6.1-2
-tftp                         5.2-1
-tidy                         20090325-1
-tmux                         2.1-1
-tree                         1.7.0-1
-tzcode                       2016a-1
-unzip                        6.0-15
-upower                       0.9.23-2
-usbutils                     007-1
-util-linux                   2.25.2-2
-vim                          7.4.1459-1
-vim-common                   7.4.1459-1
-vim-minimal                  7.4.1459-1
-w32api-headers               4.0.4-1
-w32api-runtime               4.0.4-1
-wget                         1.17.1-1
-which                        2.20-2
-windows-default-manifest     6.4-1
-xorg-x11-fonts-dpi75         7.5-2
-xorg-x11-fonts-misc          7.5-2
-xrandr                       1.4.3-1
-xterm                        320-1
-xxd                          7.4.1459-1
-xz                           5.2.2-1
-zip                          3.0-12
-zlib-devel                   1.2.8-3
-zlib0                        1.2.8-3
-zsh                          5.1.1-1
+_autorebase
+_update-info-dir
+alternatives
+astyle
+autoconf
+autoconf2.1
+autoconf2.5
+automake
+automake1.10
+automake1.11
+automake1.12
+automake1.13
+automake1.14
+automake1.15
+automake1.4
+automake1.5
+automake1.6
+automake1.7
+automake1.8
+automake1.9
+autossh
+base-cygwin
+base-files
+bash
+bash-completion
+binutils
+bsdiff
+bzip2
+ca-certificates
+clang
+clang-analyzer
+cmake
+coreutils
+crypt
+cscope
+csih
+ctags
+curl
+cvs
+cygcheck-dep
+cygrunsrv
+cygutils
+cygutils-extra
+cygutils-x11
+cygwin
+cygwin-devel
+dash
+dbus
+dbus-x11
+dbus-bash-completion
+desktop-file-utils
+diffutils
+dri-drivers
+editrights
+file
+findutils
+font-adobe-dpi75
+font-alias
+font-misc-misc
+gamin
+gawk
+gcc-core
+gcc-g++
+gdb
+getent
+git
+git-completion
+grep
+groff
+gsettings-desktop-schemas
+gzip
+hostname
+ImageMagick
+ImageMagick-doc
+info
+ipc-utils
+less
+libapr1
+libaprutil1
+libarchive13
+libargp
+libatomic1
+libattr1
+libautotrace3
+libblkid1
+libboost-devel
+libboost_atomic1.58
+libboost_chrono1.58
+libboost_container1.58
+libboost_context1.58
+libboost_coroutine1.58
+libboost_date_time1.58
+libboost_filesystem1.58
+libboost_graph1.58
+libboost_iostreams1.58
+libboost_locale1.58
+libboost_log1.58
+libboost_math1.58
+libboost_program_options1.58
+libboost_python1.58
+libboost_python3-devel
+libboost_python3_1.58
+libboost_random1.58
+libboost_regex1.58
+libboost_serialization1.58
+libboost_signals1.58
+libboost_system1.58
+libboost_test1.58
+libboost_thread1.58
+libboost_timer1.58
+libboost_wave1.58
+libbz2_1
+libcairo2
+libcatgets1
+libcharset1
+libclang
+libclang-devel
+libclang-devel-static
+libclang3.7
+libcloog-isl4
+libcom_err2
+libcroco0.6_3
+libcurl4
+libdatrie1
+libdb4.8
+libdbus1_3
+libedit0
+libEGL1
+libEMF1
+libevent2.0_5
+libexpat1
+libfam0
+libffi6
+libfftw3_3
+libfontconfig1
+libfpx1
+libfreetype6
+libgcc1
+libgd3
+libgdbm4
+libgdk_pixbuf2.0_0
+libgif4
+libGL1
+libglapi0
+libglib2.0_0
+libgmp10
+libgnutls28
+libgomp1
+libgraphite2_3
+libgs9
+libgssapi_krb5_2
+libguile17
+libharfbuzz0
+libhogweed2
+libICE6
+libiconv
+libiconv-devel
+libiconv2
+libicu-devel
+libicu56
+libidn11
+libintl-devel
+libintl8
+libiodbc2
+libisl10
+libisl13
+libjasper1
+libjbig2
+libjpeg8
+libk5crypto3
+libkrb5_3
+libkrb5support0
+liblcms2_2
+libleptonica_3
+libleptonica_5
+libllvm3.5
+libllvm3.7
+libltdl7
+liblzma5
+liblzo2_2
+libMagickC++6_5
+libMagickCore6_2
+libMagickWand6_2
+libmetalink3
+libming1
+libmpc3
+libmpfr4
+libmysqlclient18
+libncursesw10
+libneon27
+libnettle4
+libnghttp2_14
+libopenjpeg1
+libopenldap2_4_2
+libopenssl100
+libp11-kit0
+libpango1.0_0
+libpaper-common
+libpaper1
+libpcre1
+libpipeline1
+libpixman1_0
+libplotter2
+libpng16
+libpoppler55
+libpq5
+libproxy1
+libpsl5
+libpstoedit0
+libquadmath0
+libreadline7
+librsvg2_2
+libsasl2_3
+libserf1_0
+libsigsegv2
+libSM6
+libsmartcols1
+libsource-highlight-common
+libsource-highlight4
+libsqlite3_0
+libssh2_1
+libssp0
+libstdc++6
+libtasn1_6
+libtesseract-ocr_3
+libthai0
+libtidy0_99_0
+libtiff6
+libunistring2
+libupower-glib1
+libusb1.0
+libuuid-devel
+libuuid1
+libvpx1
+libvtv0
+libwebp5
+libX11-xcb1
+libX11_6
+libXau6
+libXaw7
+libxcb-glx0
+libxcb-render0
+libxcb-shm0
+libxcb1
+libXdmcp6
+libXext6
+libXft2
+libXinerama1
+libxml2
+libXmu6
+libXpm4
+libXrandr2
+libXrender1
+libXt6
+libzip2
+llvm
+login
+luit
+lynx
+m4
+make
+man-db
+mercurial
+mintty
+nasm
+nc
+nc6
+ncurses
+openssh
+openssl
+p11-kit
+p11-kit-trust
+p7zip
+patch
+patchutils
+perl
+perl-Carp
+perl-Error
+perl-Pod-Simple
+perl-TermReadKey
+perl-Unicode-Normalize
+perl_autorebase
+perl_base
+ping
+poppler
+poppler-data
+popt
+pylint
+python
+python-clang
+python-logilab-astng
+python-logilab-common
+python3
+python3-clang
+rebase
+rsync
+run
+screen
+sed
+shared-mime-info
+source-highlight
+subversion
+tar
+tcsh
+terminfo
+tesseract-ocr
+tesseract-ocr-eng
+texinfo
+tftp
+tidy
+tmux
+tree
+tzcode
+unzip
+upower
+usbutils
+util-linux
+vim
+vim-common
+vim-minimal
+w32api-headers
+w32api-runtime
+wget
+which
+windows-default-manifest
+xauth
+xcursor-themes
+xdg-user-dirs
+xeyes
+xf86-video-dummy
+xf86-video-nested
+xinit
+xkbcomp
+xkeyboard-config
+xmodmap
+xorg-server
+xorg-server-common
+xorg-x11-fonts-dpi100
+xorg-x11-fonts-dpi75
+xorg-x11-fonts-misc
+xrandr
+xterm
+xxd
+xz
+zip
+zlib-devel
+zlib0
+zsh
