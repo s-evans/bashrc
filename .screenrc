@@ -62,6 +62,7 @@ bindkey -m yy stuff 0Y
 bindkey -m  stuff Coco
 bindkey -m  stuff coCo
 bindkey -m B stuff BBw
+bindkey -m E stuff lEh
 
 # load local settings
 source ~/.screenrc_local
