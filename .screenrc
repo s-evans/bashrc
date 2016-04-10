@@ -38,6 +38,8 @@ multiuser off
 # default to login
 deflogin on
 
+maptimeout 1000
+
 # vim-like window bindings
 bind j focus down
 bind k focus up
@@ -52,9 +54,14 @@ bind + resize +5
 bind = resize =
 
 # vim-like copy mode bindings
-markkeys w=W:y=V:' '=v:x=o:' '=y
+markkeys y=V:' '=v:x=o:' '=y
+bindkey -m W stuff Ew
+bindkey -m gE stuff EwBBh
+bindkey -m ge stuff lbbhe
 bindkey -m yy stuff 0Y
-bindkey -m  stuff coC
+bindkey -m  stuff Coco
+bindkey -m  stuff coCo
+bindkey -m B stuff BBw
 
 # load local settings
 source ~/.screenrc_local
