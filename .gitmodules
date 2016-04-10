@@ -1,3 +1,6 @@
 [submodule "bundle/bash-completion"]
 	path = bundle/bash-completion
 	url = git@github.com:s-evans/bash-completion.git
+[submodule "bundle/bit-utils"]
+	path = bundle/bit-utils
+	url = git@github.com:s-evans/bit-utils.git
