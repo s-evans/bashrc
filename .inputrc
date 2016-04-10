@@ -1646,6 +1646,8 @@ $if mode=vi
     # TODO: CHANGING FROM OPENING MATCHING GLYPHS SHOULD REMOVE SPACES #
     # ie. "cs()" should remove spaces ( asdf ) -> (asdf)
 
+    # TODO: MAKE CHANGE SURROUND SAFER IF YOU'RE NOT ACTUALLY SURROUNDED #
+
     "cs  ": "lF r f r "
     "cs !": "lF r!f r!"
     "cs #": "lF r#f r#"
@@ -2518,6 +2520,8 @@ $if mode=vi
     "cs}\"": "lF{%%mt%r\"`tr\""
     "cs(\"": "lF(%%mt%r\"`tr\""
     "cs)\"": "lF(%%mt%r\"`tr\""
+
+    # TODO: MAKE DELETE SURROUND SAFER IF YOU'RE NOT ACTUALLY SURROUNDED #
 
     "ds ":  "lF xf x"
     "ds!":  "lF!xf!x"
