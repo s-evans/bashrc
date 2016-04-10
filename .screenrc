@@ -38,8 +38,6 @@ multiuser off
 # default to login
 deflogin on
 
-maptimeout 1000
-
 # vim-like window bindings
 bind j focus down
 bind k focus up
