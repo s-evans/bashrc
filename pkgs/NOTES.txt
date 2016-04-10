@@ -1,2 +1,7 @@
 # CYGWIN #
+
+## LISTING INSTALLED PKGS ##
+cygcheck -cd
+
+## INSTALLING PKGS ##
 ./setup-<architecture>.exe <other options> --packages <comma separated package names>
