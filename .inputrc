@@ -2,7 +2,7 @@
 # TODO: fix incorrect behavior when within a matching text object and having a nested text object to the left of the current cursor position
 # ie. using "di)" on "(foo(asdf)b|ar)" should result in "()" while it currently results in "(foo()bar)"
 
-# NOTE: When generating macros, quotation marks (") don't have to be escaped unles they follow a "t" or "T" command
+# NOTE: When generating macros, quotation marks (") don't have to be escaped unles they follow a "T" command
 
 # NOTE: readline vi-mode behavior differences from vi
 # "t" motion: using "dt'" on "foo|''" does nothing in readline while it results in "foo|'" in vi
@@ -2551,11 +2551,11 @@ $if mode=vi
     "ds;":  "lT;dF;t;mtylf;pd`t"
     "ds>":  "lT<dF<t>mtylf>pd`t"
     "ds@":  "lT@dF@t@mtylf@pd`t"
+    "ds\"": "lT"dF"t"mtylf"pd`t"
     "ds^":  "lT^dF^t^mtylf^pd`t"
     "ds_":  "lT_dF_t_mtylf_pd`t"
     "ds`":  "lT`dF`t`mtylf`pd`t"
     "ds|":  "lT|dF|t|mtylf|pd`t"
-    "ds\"": "lT"dF"t"mtylf"pd`t"
 
     # TODO: MAKE SAFER IF WE'RE NOT SURROUNDED OR ONLY PARTIALLY SURROUNDED #
     "ds<":  "lF<r dwf>ylPr BEldf>"
