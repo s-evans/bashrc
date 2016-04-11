@@ -2,11 +2,42 @@
 # TODO: fix incorrect behavior when within a matching text object and having a nested text object to the left of the current cursor position
 # ie. using "di)" on "(foo(asdf)b|ar)" should result in "()" while it currently results in "(foo()bar)"
 
-# NOTE: When generating macros, quotation marks (") don't have to be escaped unles they follow a "T" command
+# TODO: add yank surround motions
+# mark motions
+# f motions
+# t motions
+
+# TODO: changing to opening matching glyphs should add spaces
+# ie. "cs'(" should add spaces 'asdf' -> ( asdf )
+
+# TODO: changing from opening matching glyphs should remove spaces
+# ie. "cs()" should remove spaces ( asdf ) -> (asdf)
+
+# TODO: make change surround safer if you're not actually surrounded
+
+# TODO: fix behavior when next to partial or fully surrounded sibling object but not currently surrounded
+# ie. using "ds'" on "as|df'fdsa'" should result in "asdffdsa"
+# ie. using "ds'" on "as|df'fdsa" should result in "asdf'fdsa"
+
+# TODO: add gdb readline equivalents
+# gdb doesn't appear to support using f, F, t, T or ` with operators
+# try "$if gdb" when defining new macros
+# gdb equivalents will likely just x for deletion
+
+# NOTE: Macros containing quotation marks (")
+# Quotation marks must be escaped on the left hand side of a macro assignment
+# Quotation marks must be escaped if they directly follow a "T" command
+# Otherwise, quotation marks need not be escaped
 
 # NOTE: readline vi-mode behavior differences from vi
 # "t" motion: using "dt'" on "foo|''" does nothing in readline while it results in "foo|'" in vi
 # "r" operator: using "r" in vi doesn't change the paste register while it sets the paste register to the removed character in readline
+
+# NOTE: bash/readline versions may impact how vi-mode works
+# in bash 4.3.42(4)-release (i686-pc-cygwin): most things work but there are still weird differences between vi-mode and actual vi (see above)
+# in bash 4.1.2(1)-release (i386-redhat-linux-gnu): current yank surround binding replaces the first character instead of inserting a character
+# in gdb (Cygwin 7.10.1-1) 7.10.1: delete and change surround mappings fail to make changes to the string; some yank surround bindings work and some do not alter the string; functional yank surround bindings always wait until the next character on the command line to actually run;
+# in gdb (Red Hat Enterprise Linux (7.2-56.el6): delete surround copies the string inside and pastes it on the right hand side; change surround does not alter the string; yank surround does not alter the string;
 
 set editing-mode vi
 
@@ -1645,19 +1676,6 @@ $if mode=vi
     "ysi{{": "lF{%%mtlylPr{pr `t%ylpr pr}"
     "ysi{(": "lF{%%mtlylPr(pr `t%ylpr pr)"
 
-    # TODO: ADD YANK SURROUND MOTIONS #
-    # MARK MOTIONS #
-    # F MOTIONS #
-    # T MOTIONS #
-
-    # TODO: CHANGING TO OPENING MATCHING GLYPHS SHOULD ADD SPACES #
-    # ie. "cs'(" should add spaces 'asdf' -> ( asdf )
-
-    # TODO: CHANGING FROM OPENING MATCHING GLYPHS SHOULD REMOVE SPACES #
-    # ie. "cs()" should remove spaces ( asdf ) -> (asdf)
-
-    # TODO: MAKE CHANGE SURROUND SAFER IF YOU'RE NOT ACTUALLY SURROUNDED #
-
     "cs  ": "lF r f r "
     "cs !": "lF r!f r!"
     "cs #": "lF r#f r#"
@@ -2530,15 +2548,6 @@ $if mode=vi
     "cs(\"": "lF(%%mt%r"`tr""
     "cs)\"": "lF(%%mt%r"`tr""
 
-    # TODO: FIX BEHAVIOR WHEN NEXT TO PARTIAL OR FULLY SURROUNDED SIBLING OBJECT BUT NOT CURRENTLY SURROUNDED #
-    # ie. using "ds'" on "as|df'fdsa'" should result in "asdffdsa"
-    # ie. using "ds'" on "as|df'fdsa" should result in "asdf'fdsa"
-
-    # TODO: add gdb readline equivalents
-    # gdb doesn't appear to support using f, F, t, T or ` with operators
-    # try "$if gdb" ?
-    # gdb equivalents will likely just x for deletion
-
     "ds ":  "lT dF t mtylf pd`t"
     "ds!":  "lT!dF!t!mtylf!pd`t"
     "ds#":  "lT#dF#t#mtylf#pd`t"
@@ -2562,15 +2571,15 @@ $if mode=vi
     "ds`":  "lT`dF`t`mtylf`pd`t"
     "ds|":  "lT|dF|t|mtylf|pd`t"
 
-    # TODO: MAKE SAFER IF WE'RE NOT SURROUNDED OR ONLY PARTIALLY SURROUNDED #
+    # TODO: make safer if we're not surrounded or only partially surrounded
     "ds<":  "lF<r dwf>ylPr BEldf>"
 
-    # TODO: MAKE SAFER IF WE'RE NOT SURROUNDED OR ONLY PARTIALLY SURROUNDED #
+    # TODO: make safer if we're not surrounded or only partially surrounded
     "ds]":  "lF[%%mt%x`tldF["
     "ds}":  "lF{%%mt%x`tldF{"
     "ds)":  "lF(%%mt%x`tldF("
 
-    # TODO: MAKE SAFER IF WE'RE NOT SURROUNDED OR ONLY PARTIALLY SURROUNDED #
+    # TODO: make safer if we're not surrounded or only partially surrounded
     "ds[":  "lF[%%mt%ylPr BEldf]`tr dw"
     "ds{":  "lF{%%mt%ylPr BEldf}`tr dw"
     "ds(":  "lF(%%mt%ylPr BEldf)`tr dw"
@@ -2587,7 +2596,7 @@ $if mode=vi
     "\C-u": backward-kill-line
     "\C-k": kill-line
 
-    # TODO: Add mappings for single command mode
+    # TODO: add mappings for single command mode
     "\C-ox": delete-char
     "\C-oX": backward-delete-char
     "\C-o`": vi-goto-mark
