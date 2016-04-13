@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-# TODO: Additional pdf functions
-# wrap pdftoppm: multiple files, convert to text
-# wrap pdfimages: multiple files, convert to text
-# wrap pdfinfo: multiple files
-# wrap pdffonts: multiple files 
-
 # This function defines a 'cd' replacement function capable of keeping, 
 # displaying and accessing history of visited directories, up to 10 entries.
 # To use it, uncomment it, source this file and try 'cd --'.
@@ -234,78 +228,6 @@ img2txt ()
 
         shift
     done
-}
-
-pdf2txt() 
-{
-    if [[ ! `type -p pdftotext` ]]; then
-        echo "pdftotext not found"
-        echo "install poppler utilities"
-        return 1
-    fi
-
-    if [[ $# == 0 ]]; then
-        echo "missing filename(s)"
-        return 1
-    fi
-
-    local CMD='pdftotext -q -layout "$1" -'
-
-    if [[ $# > 1 ]]; then
-        local CMD=$CMD' | xargs -d \\n printf "$1: %s\n"'
-    fi
-
-    while [[ $# != 0 ]]; do
-
-        if [[ ! -f $1 ]]; then
-            echo "file '$1' not found"
-            shift
-            continue
-        fi
-
-        eval $CMD
-
-        shift
-    done
-}
-
-lo2pdf()
-{
-    if [[ ! `type -p libreoffice` ]]; then
-        echo "libreoffice not found"
-        echo "install libreoffice"
-        return 1
-    fi
-
-    if [[ $# == 0 ]]; then
-        echo "missing filename(s)"
-        return 1
-    fi
-
-    libreoffice --headless --convert-to pdf "$@" 
-}
-
-lo2txt()
-{
-    if [[ ! `type -p libreoffice` ]]; then
-        echo "libreoffice not found"
-        echo "install libreoffice"
-        return 1
-    fi
-
-    if [[ $# == 0 ]]; then
-        echo "missing filename(s)"
-        return 1
-    fi
-
-    local TMPDIR=`mktemp -d`
-    libreoffice --headless --convert-to pdf --outdir $TMPDIR "$@" > /dev/null
-
-    cd $TMPDIR > /dev/null
-    pdf2txt `ls`
-    cd - > /dev/null
-
-    rm -rf $TMPDIR
 }
 
 environ()

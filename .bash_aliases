@@ -1,16 +1,19 @@
 #!/usr/bin/env bash
 
 # TODO
-# sed -i 
+# sed -i
 # full file extension
 # full file name
+
+# TODO: Additional xargs pdf utility wrappers
+# pdftoppm, pdftops, pdfimages, pdfinfo, pdftohtml, pdfdetach, pdffonts
 
 ## CONDITIONAL ALIASES ##
 if [[ $ZSH == "" ]]; then
     alias cd='cd_func'
 fi
 
-## LISTING FILES ## 
+## LISTING FILES ##
 alias l.='ls -d .* --color=auto'
 alias ll='ls -l --color=auto'
 alias lla='ls -al --color=auto'
@@ -18,23 +21,23 @@ alias ls='ls --color=auto'
 alias la='ls -A'
 alias l='ls -CF'
 alias sl='ls'
-alias lx='ls -lXB'              # sort by extension
-alias lk='ls -lSr'              # sort by size
-alias lc='ls -lcr'              # sort by change time
-alias lu='ls -lur'              # sort by access time
-alias lr='ls -lR'               # recursive ls
-alias lt='ls -ltr'              # sort by date
+alias lx='ls -lXB'
+alias lk='ls -lSr'
+alias lc='ls -lcr'
+alias lu='ls -lur'
+alias lr='ls -lR'
+alias lt='ls -ltr'
 alias l.='ls -d .* --color=auto'
 alias f='find'
 
-## GREP ## 
+## GREP ##
 alias g='grep'
 alias gi='grep -i'
 alias gv='grep -v'
 alias giv='grep -i -v'
-alias grep='grep --color'                     # show differences in color
-alias egrep='egrep --color=auto'              # show differences in color
-alias fgrep='fgrep --color=auto'              # show differences in color
+alias grep='grep --color'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
 
 ## NAVIGATION ##
 alias cd..='cd ..'
@@ -54,9 +57,7 @@ alias .11='cd ../../../../../../../../../../..'
 
 ## NETWORKING ##
 alias nsl='nslookup'
-
 case "$OSTYPE" in
-
     cygwin)
         alias ns='netstat -ano'
         alias ifc='ipconfig'
@@ -66,8 +67,7 @@ case "$OSTYPE" in
         alias rt='route PRINT'
         alias arpp='arp -a'
         ;;
-
-    *) 
+    *)
         alias ns='netstat -anop'
         alias ifc='ifconfig'
         alias ifca='ifconfig -a'
@@ -76,7 +76,6 @@ case "$OSTYPE" in
         alias rt='route -n'
         alias arpp='arp -n'
         ;;
-
 esac
 
 ## GIT ##
@@ -142,55 +141,76 @@ alias agin='sudo apt-get install'
 alias sudo='sudo ' # enable alias expansion following sudo
 
 ## GENERAL ##
-alias xa='xargs '
-alias vi='vim'
-alias v='vim'
-alias ed='vim'
-alias :ed='vim'
-alias :e='vim'
-alias psa='ps aux'
-alias h='history'
-alias p='pwd'
-alias ppwd='pwd | sed "s/./\\\\&/g" | xargs cygpath -aw'
-alias al='alias'
-alias which='type -p'
-alias wh='type -p'
-alias mk='make'
-alias exp='export'
-alias scr='screen -aA'
-alias scrr='screen -D -RR'
-alias scrl='screen -list'
 alias ec='echo'
-alias mkdir='mkdir -pv'
-alias mkd='mkdir -pv'
+alias ed='vim'
+alias exp='export'
+alias fef='sed "s/^.*\\.//"'
+alias fnf='sed "s/\\.[^\\.]*$//"'
+alias h='history'
+alias info='info --vi-keys'
+alias le='less'
 alias mnt='mount'
+alias p='pwd'
+alias sp='ssh -p'
+alias v='vim'
+alias vi='vim'
 alias wa='watch'
-alias esc='sed "s/./\\\\&/g"'    # escape all characters for sanitizing filenames with 'find | xargs'
+alias wh='type -p'
+alias xa='xargs '
+
+## DEV RELATED ##
+alias cs='cscope -Rqbk'
+alias mk='make'
+
+## FILE PATH UTILS ##
+alias bn='basename'
+alias dn='dirname'
+alias esc='sed "s/./\\\\&/g"'
+alias fp='readlink -f'
+alias mkd='mkdir -pv'
+alias mkdir='mkdir -pv'
+alias path='echo -e ${PATH//:/\\n}'
+alias which='type -p'
+
+## PROCESSES ##
 alias k='kill'
 alias k9='kill -9'
 alias ka='killall'
 alias ka9='killall -9'
 alias jk='jobs -p | xargs kill -9'
-alias le='less'
-alias cs='cscope -Rqbk'
+alias po='pidof'
+alias lop='lsof -p'
+alias psa='ps aux'
+
+## BITS AND BYTES ##
 alias sha1='openssl sha1'
-alias bn='basename'
-alias dn='dirname'
+alias objdumpp='objdump -d -M intel-mnuemonics'
+alias hd='hexdump -Cv'
+
+## VIM MISTAKES ##
+alias :q=exit
+alias :ed='vim'
+alias :e='vim'
+
+## SCREEN ##
+alias scr='screen -aA'
+alias scrr='screen -D -RR'
+alias scrl='screen -list'
+
+## FILE CONVERSION ##
+alias pdf2txt='pdftotext -layout'
+alias lo2pdf='libreoffice --headless --convert-to pdf'
+
+## XARGS SHORTCUTS ##
 alias xbn='xargs -n1 basename'
 alias xdn='xargs -n1 dirname'
 alias xcp='xargs cp -t'
-alias xmv='xargs mv -t' 
-alias sp='ssh -p'
-alias fnf='sed "s/\\.[^\\.]*$//"'
-alias fef='sed "s/^.*\\.//"'
-alias fp='readlink -f'
-alias path='echo -e ${PATH//:/\\n}'
-alias po='pidof'
-alias lop='lsof -p'
-alias hd='hexdump -Cv'
-alias info='info --vi-keys'
-alias objdumpp='objdump -d -M intel-mnuemonics'
+alias xmv='xargs mv -t'
+alias xpdf2txt='xargs -n1 pdftotext -layout'
+
+## CYGWIN SPECIFIC ##
 alias cmdd='cmd /C start cmd'
+alias ppwd='pwd | sed "s/./\\\\&/g" | xargs cygpath -aw'
 
 ## HEAD AND TAIL ##
 alias t='tail'
@@ -199,7 +219,7 @@ alias tn='tail -n'
 alias he='head'
 alias hn='head -n'
 
-## DIFF ## 
+## DIFF ##
 alias dr='diff -r'
 alias dw='diff -w'
 alias drw='diff -rw'
@@ -226,14 +246,11 @@ alias intersection='grep -xF -f'
 alias complement='grep -vxF -f'
 
 ## CLIPBOARD ##
-
 case "$OSTYPE" in
-
     darwin*)
         alias c='pbcopy'
         alias v='pbpaste'
         ;;
-
     cygwin)
         if [[ `type putclip 2>&1 > /dev/null` ]]; then
             alias c='putclip'
@@ -243,14 +260,13 @@ case "$OSTYPE" in
             alias v='cat /dev/clipboard'
         fi
         ;;
-
-    *) 
+    *)
         alias c='xclip -i -selection clipboard'
         alias v='xclip -o -selection clipboard'
         ;;
-
 esac
 
+## OS SUPPORT ##
 if [[ $OSTYPE == cygwin ]]; then
     alias su='cygstart --action=runas mintty'
     alias sudo='cygstart --action=runas '
