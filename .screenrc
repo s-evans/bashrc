@@ -1,66 +1,43 @@
-# set the default shell 
-shell "bash"
-
-# set the number of lines in the history buffer
-defscrollback 10000
-
-# set the default title
-shelltitle "$ |bash"
-
-# make screen resumable
+# variables
+altscreen on
 autodetach on
-
-# disable the startup message
+caption always "%?%F%{= gk}%:%{= KW}%?%2n%f%07=%t"
+compacthist on
+deflogin on
+defscrollback 10000
+hardstatus alwayslastline "%{= .y}(%H) %{-}%L=%-w%40L>%{=bu rW}%n %t%{-}%+w %-10<%="
+ignorecase on
+msgminwait 0
+msgwait 2
+multiuser off
+shell "bash"
+shelltitle "$ |bash"
 startup_message off
-
-# disable visualbell
 vbell on
 
-# hardstatus settings
-hardstatus alwayslastline "%{= .y}(%H) %{-}%L=%-w%40L>%{=bu rW}%n %t%{-}%+w %-10<%="
-
-# caption for each window (window num, flag, title)
-caption always "%?%F%{= gk}%:%{= KW}%?%2n%f%07=%t"
-
-# wait for messages from screen
-msgwait 2
-msgminwait 0
-
-# suppress trailing whitespace in history buffer
-compacthist on
-
-# enable sending commands to other terminals
-altscreen on
-
-# disable multiuser mode
-multiuser off
-
-# default to login
-deflogin on
-
 # vim-like window bindings
+bind + resize +5
+bind - resize -5
+bind = resize =
+bind h focus left
 bind j focus down
 bind k focus up
-bind h focus left
 bind l focus right
 bind o only
 bind q remove
 bind s split
 bind v split -v
-bind - resize -5
-bind + resize +5
-bind = resize =
 
 # vim-like copy mode bindings
 markkeys y=V:' '=v:x=o:' '=y
+bindkey -m  stuff coCo
+bindkey -m  stuff Coco
+bindkey -m B stuff BBw
+bindkey -m E stuff lEh
 bindkey -m W stuff Ew
 bindkey -m gE stuff EwBBh
 bindkey -m ge stuff lbbhe
 bindkey -m yy stuff 0Y
-bindkey -m  stuff Coco
-bindkey -m  stuff coCo
-bindkey -m B stuff BBw
-bindkey -m E stuff lEh
 
 # load local settings
 source ~/.screenrc_local
