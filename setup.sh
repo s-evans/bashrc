@@ -32,5 +32,9 @@ ln -sf $DIRPATH/.tmux.conf ~/.tmux.conf
 echo "Creating symbolic link for .screenrc"
 ln -sf $DIRPATH/.screenrc ~/.screenrc
 
+echo "Copying .bash_local"
+cp -n $DIRPATH/.bash_local ~/.bash_local
+
 echo "Reloading inputrc"
 bind -f ~/.inputrc
+
