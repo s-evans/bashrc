@@ -1,0 +1,45 @@
+#!/usr/bin/env sh
+
+# NOTE:
+# This file is provided as a starting point for system specific shell settings
+
+# enable bash completion
+
+. ~/.bash/bundle/bash-completion/bash_completion
+
+# enable automatic caching for certain bash completion scripts upon load
+
+export _wmic_auto_init_cache=1
+export _cleartool_auto_init_cache=1
+
+# X settings
+
+export DISPLAY=:0
+
+# paths to visual studio dev utils
+
+# TODO:
+# add path detection / search
+# avoid unconditional append to reduce redundant path entries
+
+PATH+=":/cygdrive/c/Program Files (x86)/Microsoft Help Viewer/v2.2"
+PATH+=":/cygdrive/c/Program Files (x86)/Microsoft Visual Studio 14.0/Common7/IDE"
+PATH+=":/cygdrive/c/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin"
+PATH+=":/cygdrive/c/Program Files (x86)/MSBuild/14.0/Bin"
+
+# set MANPATH so it includes users' private man if it exists
+
+if [ -d "${HOME}/man" ]; then
+  MANPATH="${HOME}/man:${MANPATH}"
+fi
+
+# set INFOPATH so it includes users' private info if it exists
+
+if [ -d "${HOME}/info" ]; then
+  INFOPATH="${HOME}/info:${INFOPATH}"
+fi
+
+# TODO:
+# paths to java utils
+# paths to android utils
+

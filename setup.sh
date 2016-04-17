@@ -39,5 +39,13 @@ echo "Creating symbolic link for gnome-terminal config"
 mkdir -p ~/.gconf/apps/gnome-terminal/profiles/Default/
 ln -sf $DIRPATH/%gconf.xml ~/.gconf/apps/gnome-terminal/profiles/Default
 
+echo "Copying .bash_local"
+cp -n $DIRPATH/.bash_local ~/.bash_local
+
 echo "Reloading inputrc"
 bind -f ~/.inputrc
+
+echo "Pulling all git submodules"
+cd $DIRPATH
+git submodule update --init --recursive
+

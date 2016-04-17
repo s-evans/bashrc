@@ -289,28 +289,6 @@ ssh_config()
     ssh $@ "mkdir -p ~/.ssh; chmod 700 ~/.ssh; cd ~/.ssh; touch authorized_keys; chmod 600 authorized_keys; echo \"$KEYS\" >> authorized_keys"
 }
 
-pfx()
-{
-    if [[ $# != 2 ]]; then
-        echo "prepends a variable with given value"
-        echo "parameters: <variable_name> <value>"
-        return 1
-    fi
-
-    eval ${1}=${2/ /\\ }\${$1}
-}
-
-sfx()
-{
-    if [[ $# != 2 ]]; then
-        echo "appends a variable with given value"
-        echo "parameters: <variable_name> <value>"
-        return 1
-    fi
-
-    eval ${1}=\${$1}${2/ /\\ }
-}
-
 fd()
 {
     find $@ -type d
