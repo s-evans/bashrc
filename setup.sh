@@ -39,6 +39,10 @@ echo "Creating symbolic link for gnome-terminal config"
 mkdir -p ~/.gconf/apps/gnome-terminal/profiles/Default/
 ln -sf $DIRPATH/%gconf.xml ~/.gconf/apps/gnome-terminal/profiles/Default
 
+echo "Creating symbolic link for xterm config"
+ln -sf $DIRPATH/.Xresources ~/.Xresources
+ln -sf $DIRPATH/.Xresources ~/.Xdefaults
+
 echo "Copying .bash_local"
 cp -n $DIRPATH/.bash_local ~/.bash_local
 
