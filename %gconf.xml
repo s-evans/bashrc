@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="scrollback_unlimited" mtime="1460834676" type="bool" value="true"/>
+	<entry name="silent_bell" mtime="1460834676" type="bool" value="true"/>
+	<entry name="default_show_menubar" mtime="1460834676" type="bool" value="false"/>
+	<entry name="use_theme_colors" mtime="1460834676" type="bool" value="false"/>
+	<entry name="background_type" mtime="1460831379" type="string">
+		<stringvalue>solid</stringvalue>
+	</entry>
+	<entry name="visible_name" mtime="1460834676" type="string">
+		<stringvalue>Default</stringvalue>
+	</entry>
+	<entry name="palette" mtime="1460834676" type="string">
+		<stringvalue>#000000000000:#CDCD00000000:#0000CDCD0000:#CDCDCDCD0000:#00000000CDCD:#CDCD0000CDCD:#0000CDCDCDCD:#FAFAEBEBD7D7:#404040404040:#FFFF00000000:#0000FFFF0000:#FFFFFFFF0000:#00000000FFFF:#FFFF0000FFFF:#0000FFFFFFFF:#FFFFFFFFFFFF</stringvalue>
+	</entry>
+	<entry name="background_color" mtime="1460834676" type="string">
+		<stringvalue>#000000000000</stringvalue>
+	</entry>
+	<entry name="foreground_color" mtime="1460834676" type="string">
+		<stringvalue>#FFFFFFFFFFFF</stringvalue>
+	</entry>
+	<entry name="bold_color" mtime="1460834676" type="string">
+		<stringvalue>#000000000000</stringvalue>
+	</entry>
+</gconf>
