@@ -32,9 +32,20 @@ ln -sf $DIRPATH/.tmux.conf ~/.tmux.conf
 echo "Creating symbolic link for .screenrc"
 ln -sf $DIRPATH/.screenrc ~/.screenrc
 
+echo "Creating symbolic link for .startxwinrc"
+ln -sf $DIRPATH/.startxwinrc ~/.startxwinrc
+
+echo "Creating symbolic link for gnome-terminal config"
+mkdir -p ~/.gconf/apps/gnome-terminal/profiles/Default/
+ln -sf $DIRPATH/%gconf.xml ~/.gconf/apps/gnome-terminal/profiles/Default
+
 echo "Copying .bash_local"
 cp -n $DIRPATH/.bash_local ~/.bash_local
 
 echo "Reloading inputrc"
 bind -f ~/.inputrc
+
+echo "Pulling all git submodules"
+cd $DIRPATH
+git submodule update --init --recursive
 
