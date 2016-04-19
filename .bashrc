@@ -1,27 +1,36 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-## FUNCTIONS ## 
+## FUNCTIONS ##
 if [ -f "${HOME}/.bash_functions" ]; then
-    source "${HOME}/.bash_functions"
+    . "${HOME}/.bash_functions"
 fi
 
-## ALIASES ## 
+## ALIASES ##
 if [ -f "${HOME}/.bash_aliases" ]; then
-  source "${HOME}/.bash_aliases"
+    . "${HOME}/.bash_aliases"
 fi
 
 ## SCREEN SETTINGS ##
-if [[ "$TERM" == screen* ]]; then
-    screen_set_window_title () {
-        local HPWD="$PWD"
-        case $HPWD in
-            $HOME) HPWD="~";;
-            $HOME/*) HPWD="~${HPWD#$HOME}";;
-        esac
-        printf '\ek%s\e\\' "$USER@$HOSTNAME:$HPWD"
-    }
-    PROMPT_COMMAND="screen_set_window_title; $PROMPT_COMMAND"
-fi
+
+screen_set_window_title ()
+{
+    local HPWD="$PWD"
+    case $HPWD in
+        $HOME)
+            HPWD="~"
+            ;;
+        $HOME/*)
+            HPWD="~${HPWD#$HOME}"
+            ;;
+    esac
+    printf '\ek%s\e\\' "$USER@$HOSTNAME:$HPWD"
+}
+
+case "$TERM" in
+    screen*)
+        PROMPT_COMMAND="screen_set_window_title; $PROMPT_COMMAND"
+        ;;
+esac
 
 ## LESS SETTINGS ##
 export LESSOPEN="| (type src-hilite-lesspipe.sh >/dev/null 2>&1 && src-hilite-lesspipe.sh %s)"
@@ -34,16 +43,21 @@ export EDITOR='vim'
 export PAGER='less -s '
 export USER=`whoami`
 export USERNAME=$USER
-export SHELL=`type -p bash`
 
 ## SHELL OPTIONS ##
-shopt -s cdspell
-shopt -s autocd
-shopt -s extglob
-shopt -s cmdhist
+case "$SHELL" in
+    *bash)
+        shopt -s cdspell
+        shopt -s autocd
+        shopt -s extglob
+        shopt -s cmdhist
+        ;;
+esac
 
 ## TTY OPTIONS ##
-stty -ixon
+if [ -t 0 ]; then
+    stty -ixon
+fi
 
 ## ENABLE FUNCTIONS AND ALIASES IN COMMAND MODE ##
 shopt -s expand_aliases
@@ -51,6 +65,6 @@ export BASH_ENV="${HOME}/.bashrc"
 
 ## SYSTEM SPECIFIC ##
 if [ -f "${HOME}/.bash_local" ]; then
-  source "${HOME}/.bash_local"
+    . "${HOME}/.bash_local"
 fi
 

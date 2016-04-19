@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # TODO
 # sed -i
@@ -9,7 +9,7 @@
 # pdftoppm, pdftops, pdfimages, pdfinfo, pdftohtml, pdfdetach, pdffonts
 
 ## CONDITIONAL ALIASES ##
-if [[ $ZSH == "" ]]; then
+if [ "$ZSH" = "" ]; then
     alias cd='cd_func'
 fi
 
@@ -59,22 +59,22 @@ alias .11='cd ../../../../../../../../../../..'
 alias nsl='nslookup'
 case "$OSTYPE" in
     cygwin)
-        alias ns='netstat -ano'
+        alias arpp='arp -a'
         alias ifc='ipconfig'
         alias ifca='ipconfig /all'
         alias nbl='nblookup'
-        alias tracert='tracert'
+        alias ns='netstat -ano'
         alias rt='route PRINT'
-        alias arpp='arp -a'
+        alias tracert='tracert'
         ;;
     *)
-        alias ns='netstat -anop'
+        alias arpp='arp -n'
         alias ifc='ifconfig'
         alias ifca='ifconfig -a'
         alias nbl='nmblookup'
-        alias tracert='traceroute'
+        alias ns='netstat -anop'
         alias rt='route -n'
-        alias arpp='arp -n'
+        alias tracert='traceroute'
         ;;
 esac
 
@@ -258,7 +258,7 @@ case "$OSTYPE" in
         alias v='pbpaste'
         ;;
     cygwin)
-        if [[ `type putclip 2>&1 > /dev/null` ]]; then
+        if [ `type putclip 2>&1 > /dev/null` ]; then
             alias c='putclip'
             alias v='getclip'
         else
@@ -273,7 +273,7 @@ case "$OSTYPE" in
 esac
 
 ## OS SUPPORT ##
-if [[ $OSTYPE == cygwin ]]; then
+if [ "$OSTYPE" = "cygwin" ]; then
     alias su='cygstart --action=runas mintty'
     alias sudo='cygstart --action=runas '
     alias start='cygstart'

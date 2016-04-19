@@ -27,6 +27,7 @@ binutils
 bsdiff
 bzip2
 ca-certificates
+checkbashisms
 clang
 clang-analyzer
 cmake
@@ -46,10 +47,11 @@ cygwin
 cygwin-devel
 dash
 dbus
-dbus-x11
 dbus-bash-completion
+dbus-x11
 desktop-file-utils
 diffutils
+dos2unix
 dri-drivers
 editrights
 file

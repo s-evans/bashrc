@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# This function defines a 'cd' replacement function capable of keeping, 
+# This function defines a 'cd' replacement function capable of keeping,
 # displaying and accessing history of visited directories, up to 10 entries.
 # To use it, uncomment it, source this file and try 'cd --'.
 # acd_func 1.0.5, 10-nov-2004
@@ -55,14 +55,14 @@ cd_func ()
     return 0
 }
 
-extract () 
+extract ()
 {
     if [[ $# == 0 ]]; then
         echo "invalid argument count"
         return
     fi
 
-    while [[ $# != 0 ]]; do 
+    while [[ $# != 0 ]]; do
 
         if [[ ! -f $1 ]] ; then
             echo "file '$1' not found"
@@ -91,7 +91,7 @@ extract ()
     done
 }
 
-compress () 
+compress ()
 {
     FILE=$1
     shift
@@ -106,7 +106,7 @@ compress ()
     esac
 }
 
-mkcd() 
+mkcd()
 {
     if [[ $# != 1 ]]; then
         echo "invalid argument list"
@@ -118,7 +118,7 @@ mkcd()
 }
 
 dl()
-{ 
+{
     if [[ $# < 2 ]]; then
         echo "invalid argument list"
         return
@@ -129,7 +129,7 @@ dl()
     sed -i "${LINE}d" "$@"
 }
 
-urlencode() 
+urlencode()
 {
     local LANG=C
     arg="$1"
@@ -146,7 +146,7 @@ urlencode()
     done
 }
 
-urldecode() 
+urldecode()
 {
     local LANG=C
     arg="$1"
@@ -186,7 +186,7 @@ img2txt ()
         echo "install tesseract"
         return 1
     fi
-    
+
     if [[ $# == 0 ]]; then
         echo "missing filename(s)"
         return 1
@@ -224,7 +224,7 @@ img2txt ()
 
         eval $CMD
 
-        rm -f "$TMPTIF" 
+        rm -f "$TMPTIF"
 
         shift
     done
@@ -418,4 +418,4 @@ function alias_completion {
         echo "$new_completion" >> "$tmp_file"
     done < <(alias -p | sed -Ene "s/$alias_regex/\1 '\2' '\3'/p")
     source "$tmp_file" && rm -f "$tmp_file"
-}; 
+};
