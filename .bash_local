@@ -40,6 +40,5 @@ if [ -d "${HOME}/info" ]; then
 fi
 
 # TODO:
-# paths to java utils
-# paths to android utils
+# settings for: java, android, python, sysinternals
 
