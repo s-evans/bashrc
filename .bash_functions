@@ -351,6 +351,73 @@ u()
     cd $dots
 }
 
+http_server()
+{
+    local PORT=80
+    if [ $# -ge 1 ]; then
+        PORT=$1
+    fi
+    python -m SimpleHTTPServer $PORT
+}
+
+https_server()
+{
+    local PORT=443
+    if [ $# -ge 1 ]; then
+        PORT=$1
+    fi
+    python -c "
+from OpenSSL import crypto, SSL
+from pprint import pprint
+from socket import gethostname
+from time import gmtime, mktime
+import BaseHTTPServer, SimpleHTTPServer
+import os.path
+import ssl
+
+CERT_FILE = '$HOME/.https.selfsigned.crt'
+KEY_FILE = '$HOME/.https.private.key'
+
+def create_self_signed_cert():
+        # create a key pair
+        k = crypto.PKey()
+        k.generate_key(crypto.TYPE_RSA, 1024)
+
+        # create a self-signed cert
+        cert = crypto.X509()
+        cert.get_subject().C = 'UK'
+        cert.get_subject().ST = 'London'
+        cert.get_subject().L = 'London'
+        cert.get_subject().O = 'Dummy Company Ltd'
+        cert.get_subject().OU = 'Dummy Company Ltd'
+        cert.get_subject().CN = gethostname()
+        cert.set_serial_number(100)
+        cert.gmtime_adj_notBefore(0)
+        cert.gmtime_adj_notAfter(10*365*24*60*60)
+        cert.set_issuer(cert.get_subject())
+        cert.set_pubkey(k)
+        cert.sign(k, 'sha1')
+        open(CERT_FILE, 'wt').write(
+            crypto.dump_certificate(crypto.FILETYPE_PEM, cert))
+        open(KEY_FILE, 'wt').write(
+            crypto.dump_privatekey(crypto.FILETYPE_PEM, k))
+
+if not ( os.path.exists(KEY_FILE) and os.path.exists(CERT_FILE) ):
+    create_self_signed_cert()
+httpd = BaseHTTPServer.HTTPServer(('0.0.0.0', $PORT), SimpleHTTPServer.SimpleHTTPRequestHandler)
+httpd.socket = ssl.wrap_socket (httpd.socket, keyfile=KEY_FILE, certfile=CERT_FILE, server_side=True)
+httpd.serve_forever()"
+}
+
+smtp_server()
+{
+    local PORT=25
+    if [ $# -ge 1 ]; then
+        PORT=$1
+    fi
+    python -m smtpd -d -n -c DebuggingServer 0.0.0.0:$PORT
+}
+
 # Automatically add completion for all aliases to commands having completion functions
 function alias_completion {
     local namespace="alias_completion"
