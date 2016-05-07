@@ -32,12 +32,6 @@ bind v split -v
 markkeys y=V:' '=v:x=o:' '=y
 bindkey -m  stuff coCo
 bindkey -m  stuff Coco
-bindkey -m B stuff BBw
-bindkey -m E stuff lEh
-bindkey -m W stuff Ew
-bindkey -m gE stuff EwBBh
-bindkey -m ge stuff lbbhe
-bindkey -m yy stuff 0Y
 
 # load local settings
 source ~/.screenrc_local

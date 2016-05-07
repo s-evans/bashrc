@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO: dumping a windows share file list recursively to file
+
 # This function defines a 'cd' replacement function capable of keeping,
 # displaying and accessing history of visited directories, up to 10 entries.
 # To use it, uncomment it, source this file and try 'cd --'.
@@ -415,7 +417,7 @@ smtp_server()
     if [ $# -ge 1 ]; then
         PORT=$1
     fi
-    python -m smtpd -d -n -c DebuggingServer 0.0.0.0:$PORT
+    python -m smtpd -d -n -c DebuggingServer 0.0.0.0:$PORT 0.0.0.0:25
 }
 
 # Automatically add completion for all aliases to commands having completion functions
