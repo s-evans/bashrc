@@ -334,6 +334,7 @@ xf86-video-nested
 xinit
 xkbcomp
 xkeyboard-config
+xmlstarlet
 xmodmap
 xorg-server
 xorg-server-common
