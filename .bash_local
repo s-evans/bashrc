@@ -16,27 +16,38 @@ export _cleartool_auto_init_cache=1
 
 export DISPLAY=:0
 
-# paths to visual studio dev utils
+# set paths 
 
-# TODO:
-# add path detection / search
-# avoid unconditional append to reduce redundant path entries
+if [ -z "$_PATH_SET" ]; then
 
-PATH+=":/cygdrive/c/Program Files (x86)/Microsoft Help Viewer/v2.2"
-PATH+=":/cygdrive/c/Program Files (x86)/Microsoft Visual Studio 14.0/Common7/IDE"
-PATH+=":/cygdrive/c/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin"
-PATH+=":/cygdrive/c/Program Files (x86)/MSBuild/14.0/Bin"
+    # visual studio dev utils
+
+    PATH="${PATH}$(find /cygdrive/c/Program\ Files\ \(x86\)/Microsoft\ Help\ Viewer/ -maxdepth 2 -type f -name HlpViewer.exe -printf :%h 2> /dev/null)"
+    PATH="${PATH}$(find /cygdrive/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio*/Common7/IDE -maxdepth 1 -type f -name devenv.exe -printf :%h 2> /dev/null)"
+    PATH="${PATH}$(find /cygdrive/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio*/VC/bin -maxdepth 1 -type f -name cl.exe -printf :%h 2> /dev/null)"
+    PATH="${PATH}$(find /cygdrive/c/Program\ Files\ \(x86\)/MSBuild/*/Bin -maxdepth 1 -type f -name MSBuild.exe -printf :%h 2> /dev/null)"
+    PATH="${PATH}$(find /cygdrive/c/Windows/Microsoft.NET/Framework/* -maxdepth 1 -type f -name MSBuild.exe -printf :%h 2> /dev/null)"
+
+    # bit-utils
+
+    if [ -d "${HOME}/.bash/bundle/bit-utils" ]; then
+        PATH="${PATH}:${HOME}/.bash/bundle/bit-utils"
+    fi
+
+fi
+
+export _PATH_SET=true
 
 # set MANPATH so it includes users' private man if it exists
 
 if [ -d "${HOME}/man" ]; then
-  MANPATH="${HOME}/man:${MANPATH}"
+    MANPATH="${HOME}/man:${MANPATH}"
 fi
 
 # set INFOPATH so it includes users' private info if it exists
 
 if [ -d "${HOME}/info" ]; then
-  INFOPATH="${HOME}/info:${INFOPATH}"
+    INFOPATH="${HOME}/info:${INFOPATH}"
 fi
 
 # TODO:
