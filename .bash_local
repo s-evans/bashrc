@@ -28,6 +28,10 @@ if [ -z "$_PATH_SET" ]; then
     PATH="${PATH}$(find /cygdrive/c/Program\ Files\ \(x86\)/MSBuild/*/Bin -maxdepth 1 -type f -name MSBuild.exe -printf :%h 2> /dev/null)"
     PATH="${PATH}$(find /cygdrive/c/Windows/Microsoft.NET/Framework/* -maxdepth 1 -type f -name MSBuild.exe -printf :%h 2> /dev/null)"
 
+    # ida
+
+    PATH="${PATH}$(find /cygdrive/c/Program\ Files\ \(x86\)/IDA\ * -maxdepth 0 -type d -printf :%h/%f 2> /dev/null)"
+
     # bit-utils
 
     if [ -d "${HOME}/.bash/bundle/bit-utils" ]; then
