@@ -35,6 +35,9 @@ ln -sf $DIRPATH/.screenrc ~/.screenrc
 echo "Creating symbolic link for .startxwinrc"
 ln -sf $DIRPATH/.startxwinrc ~/.startxwinrc
 
+echo "Creating symbolic link for .infokey"
+ln -sf $DIRPATH/.infokey ~/.infokey
+
 echo "Creating symbolic link for gnome-terminal config"
 mkdir -p ~/.gconf/apps/gnome-terminal/profiles/Default/
 ln -sf $DIRPATH/%gconf.xml ~/.gconf/apps/gnome-terminal/profiles/Default
