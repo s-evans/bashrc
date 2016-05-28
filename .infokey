@@ -15,8 +15,6 @@ G       end-of-node
 \ke     end-of-node
 \t      select-reference-this-line
 -       history-node
-n       next-node
-p       prev-node
 u       up-node
 t       top-node
 d       dir-node
