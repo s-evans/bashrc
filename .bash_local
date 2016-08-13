@@ -20,17 +20,40 @@ export DISPLAY=:0
 
 if [ -z "$_PATH_SET" ]; then
 
+    # help viewer
+
+    PATH="${PATH}$(find /cygdrive/c/Program\ Files*/Microsoft\ Help\ Viewer/ -maxdepth 2 -type f -name HlpViewer.exe -printf :%h 2> /dev/null)"
+
     # visual studio dev utils
 
-    PATH="${PATH}$(find /cygdrive/c/Program\ Files\ \(x86\)/Microsoft\ Help\ Viewer/ -maxdepth 2 -type f -name HlpViewer.exe -printf :%h 2> /dev/null)"
-    PATH="${PATH}$(find /cygdrive/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio*/Common7/IDE -maxdepth 1 -type f -name devenv.exe -printf :%h 2> /dev/null)"
-    PATH="${PATH}$(find /cygdrive/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio*/VC/bin -maxdepth 1 -type f -name cl.exe -printf :%h 2> /dev/null)"
-    PATH="${PATH}$(find /cygdrive/c/Program\ Files\ \(x86\)/MSBuild/*/Bin -maxdepth 1 -type f -name MSBuild.exe -printf :%h 2> /dev/null)"
+    PATH="${PATH}$(find /cygdrive/c/Program\ Files*/Microsoft\ Visual\ Studio*/Common7/IDE -maxdepth 1 -type f -name devenv.exe -printf :%h 2> /dev/null)"
+    PATH="${PATH}$(find /cygdrive/c/Program\ Files*/Microsoft\ Visual\ Studio*/VC/bin -maxdepth 1 -type f -name cl.exe -printf :%h 2> /dev/null)"
+
+    # windows debugging tools
+
+    PATH="${PATH}$(find /cygdrive/c/Program\ Files*/Windows\ Kits/*/Debuggers/* -maxdepth 1 -type f -name windbg.exe -printf :%h 2> /dev/null)"
+    PATH="${PATH}$(find /cygdrive/c/Program\ Files*/Windows\ Kits/*/bin/* -maxdepth 1 -type f -name wsddebug_client.exe -printf :%h 2> /dev/null)"
+
+    # visual studio performance tools
+
+    PATH="${PATH}$(find /cygdrive/c/Program\ Files*/Microsoft\ Visual\ Studio*/Team\ Tools/Performance\ Tools -maxdepth 2 -type f -name vsinstr.exe -printf :%h 2> /dev/null)"
+
+    # sysinternals
+
+    PATH="${PATH}$(find /cygdrive/c -mindepth 2 -maxdepth 2 -type f -name PsExec.exe -printf :%h 2> /dev/null)"
+
+    # msbuild
+
+    PATH="${PATH}$(find /cygdrive/c/Program\ Files*/MSBuild/*/Bin -maxdepth 1 -type f -name MSBuild.exe -printf :%h 2> /dev/null)"
     PATH="${PATH}$(find /cygdrive/c/Windows/Microsoft.NET/Framework/* -maxdepth 1 -type f -name MSBuild.exe -printf :%h 2> /dev/null)"
 
     # ida
 
-    PATH="${PATH}$(find /cygdrive/c/Program\ Files\ \(x86\)/IDA\ * -maxdepth 0 -type d -printf :%h/%f 2> /dev/null)"
+    PATH="${PATH}$(find /cygdrive/c/Program\ Files*/IDA* -maxdepth 1 -type f -name idaq.exe -printf :%h 2> /dev/null)"
+
+    # java
+
+    PATH="${PATH}$(find /cygdrive/c/Program\ Files*/Java/*/bin -maxdepth 1 -type f -name java.exe -printf :%h 2> /dev/null)"
 
     # bit-utils
 
@@ -55,5 +78,5 @@ if [ -d "${HOME}/info" ]; then
 fi
 
 # TODO:
-# settings for: java, android, python, sysinternals
+# path settings for: android, python, iexplore, chrome, firefox, excel, word
 
