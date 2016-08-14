@@ -362,6 +362,46 @@ http_server()
     python -m SimpleHTTPServer $PORT
 }
 
+http_auth_server()
+{
+    local PORT=80
+    if [ $# -ge 1 ]; then
+        PORT=$1
+    fi
+    python -c "
+import SocketServer
+from BaseHTTPServer import BaseHTTPRequestHandler
+class Handler(BaseHTTPRequestHandler):
+    def do_HEAD(self):
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html')
+        self.end_headers()
+    def do_AUTHHEAD(self):
+        self.send_response(401)
+        self.send_header('WWW-Authenticate', 'Basic realm=\"Test\"')
+        self.send_header('Content-type', 'text/html')
+        self.end_headers()
+    def do_GET(self):
+        ''' Present frontpage with user authentication. '''
+        if self.headers.getheader('Authorization') is None:
+            self.do_AUTHHEAD()
+            self.wfile.write('no auth header received')
+            pass
+        elif self.headers.getheader('Authorization') is not None:
+            self.do_HEAD()
+            self.wfile.write(self.headers.getheader('Authorization'))
+            self.wfile.write('authenticated!')
+            pass
+        else:
+            self.do_AUTHHEAD()
+            self.wfile.write(self.headers.getheader('Authorization'))
+            self.wfile.write('not authenticated')
+            pass
+httpd = SocketServer.TCPServer(('', 80), Handler)
+httpd.serve_forever()
+"
+}
+
 https_server()
 {
     local PORT=443
