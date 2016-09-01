@@ -370,35 +370,19 @@ http_auth_server()
     fi
     python -c "
 import SocketServer
-from BaseHTTPServer import BaseHTTPRequestHandler
-class Handler(BaseHTTPRequestHandler):
-    def do_HEAD(self):
-        self.send_response(200)
-        self.send_header('Content-type', 'text/html')
-        self.end_headers()
+from SimpleHTTPServer import SimpleHTTPRequestHandler
+class Handler(SimpleHTTPRequestHandler):
     def do_AUTHHEAD(self):
         self.send_response(401)
         self.send_header('WWW-Authenticate', 'Basic realm=\"Test\"')
         self.send_header('Content-type', 'text/html')
         self.end_headers()
     def do_GET(self):
-        ''' Present frontpage with user authentication. '''
         if self.headers.getheader('Authorization') is None:
             self.do_AUTHHEAD()
-            self.wfile.write('no auth header received')
-            pass
-        elif self.headers.getheader('Authorization') is not None:
-            self.do_HEAD()
-            self.wfile.write(self.headers.getheader('Authorization'))
-            self.wfile.write('authenticated!')
-            pass
         else:
-            self.do_AUTHHEAD()
-            self.wfile.write(self.headers.getheader('Authorization'))
-            self.wfile.write('not authenticated')
-            pass
-httpd = SocketServer.TCPServer(('', 80), Handler)
-httpd.serve_forever()
+            SimpleHTTPRequestHandler.do_GET(self)
+SocketServer.TCPServer(('', ${PORT}), Handler).serve_forever()
 "
 }
 
@@ -413,7 +397,7 @@ from OpenSSL import crypto, SSL
 from pprint import pprint
 from socket import gethostname
 from time import gmtime, mktime
-import BaseHTTPServer, SimpleHTTPServer
+import SimpleHTTPServer
 import os.path
 import ssl
 
