@@ -38,6 +38,9 @@ ln -sf $DIRPATH/.startxwinrc ~/.startxwinrc
 echo "Creating symbolic link for .infokey"
 ln -sf $DIRPATH/.infokey ~/.infokey
 
+echo "Creating symbolic link for .bash_profile"
+ln -sf $DIRPATH/.bash_profile ~/.bash_profile
+
 echo "Creating symbolic link for gnome-terminal config"
 mkdir -p ~/.gconf/apps/gnome-terminal/profiles/Default/
 ln -sf $DIRPATH/%gconf.xml ~/.gconf/apps/gnome-terminal/profiles/Default
@@ -55,4 +58,7 @@ bind -f ~/.inputrc
 echo "Pulling all git submodules"
 cd $DIRPATH
 git submodule update --init --recursive
+
+echo "Updating mandb"
+mandb
 

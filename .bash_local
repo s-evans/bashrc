@@ -55,6 +55,14 @@ if [ -z "$_PATH_SET" ]; then
 
     PATH="${PATH}$(find /cygdrive/c/Program\ Files*/Java/*/bin -maxdepth 1 -type f -name java.exe -printf :%h 2> /dev/null)"
 
+    # coverity
+
+    PATH="${PATH}$(find /cygdrive/c/Program\ Files*/Coverity/Coverity\ Static\ Analysis/bin -maxdepth 1 -type f -name cov-build.exe)"
+
+    # cmake
+
+    PATH="${PATH}$(find /cygdrive/c/Program\ Files*/Cmake*/bin -maxdepth 1 -type f -name cmake.exe)"
+
     # bit-utils
 
     if [ -d "${HOME}/.bash/bundle/bit-utils" ]; then
