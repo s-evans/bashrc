@@ -1,6 +1,8 @@
 _autorebase
 _update-info-dir
 alternatives
+aspell
+aspell-en
 astyle
 autoconf
 autoconf2.1
@@ -119,6 +121,7 @@ libclang
 libclang-devel
 libclang-devel-static
 libclang3.7
+libclang3.8
 libcloog-isl4
 libcom_err2
 libcroco0.6_3
@@ -268,6 +271,11 @@ nasm
 nc
 nc6
 ncurses
+net-snmp
+net-snmp-agent-libs
+net-snmp-libs
+net-snmp-python
+net-snmp-utils
 openssh
 openssl
 p11-kit

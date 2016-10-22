@@ -1,0 +1,12 @@
+#!/bin/bash
+
+_http_server()
+{
+    local PORT=80
+    if [ $# -ge 1 ]; then
+        PORT=$1
+    fi
+    python -m SimpleHTTPServer $PORT
+}
+
+_http_server "$@"

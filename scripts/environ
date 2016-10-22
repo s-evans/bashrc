@@ -1,0 +1,11 @@
+#!/bin/bash
+
+_environ()
+{
+    while [[ $# != 0 ]]; do
+        strings /proc/$1/environ
+        shift
+    done
+}
+
+_environ "$@"

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+_file_age()
+{
+    local now="$(date +%s)"
+    while [[ $# > 0 ]]; do
+        local file_mod="$(stat -c %Y -- "$1")"
+        if [[ $? == 0 ]]; then
+            echo "$1": `expr $now - $file_mod`
+        fi
+        shift
+    done
+}
+
+_file_age "$@"

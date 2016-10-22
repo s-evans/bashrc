@@ -1,0 +1,39 @@
+#!/bin/bash
+
+_xd()
+{
+    if [[ $# == 0 ]]; then
+        echo "extracts a file to a new directory using its filename"
+        echo "parameters: <path_to_file>"
+        return 1
+    fi
+
+    local basedir="$(pwd)"
+
+    while [[ $# > 0 ]]; do
+        if [[ ! -e $1 ]]; then
+            echo "File $1 does not exist"
+        fi
+
+        local filename="$(readlink -e "$1")"
+        local directory="${1##*/}"
+        directory="${directory%%.*}"
+
+        command mkdir "$directory" 
+
+        if [[ $? != 0 ]]; then
+            shift
+            continue
+        fi
+
+        cd "$directory"
+
+        extract "$filename"
+
+        cd "$basedir"
+
+        shift
+    done
+}
+
+_xd "$@"

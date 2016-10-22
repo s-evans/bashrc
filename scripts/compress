@@ -1,0 +1,18 @@
+#!/bin/bash
+
+_compress()
+{
+    FILE=$1
+    shift
+    case $FILE in
+        *.tar.bz2)  tar   cjf        $FILE  "$@"           ;;
+        *.tar.gz)   tar   czf        $FILE  "$@"           ;;
+        *.tgz)      tar   czf        $FILE  "$@"           ;;
+        *.jar)      zip   $FILE      "$@"     ;;
+        *.zip)      zip   $FILE      "$@"     ;;
+        *.rar)      rar   $FILE      "$@"     ;;
+        *)          echo "Filetype not recognized"  ;;
+    esac
+}
+
+_compress "$@"

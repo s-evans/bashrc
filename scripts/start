@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ "$OSTYPE" = "cygwin" ]; then
+    cygstart "$@"
+else
+    xdg-open "$@"
+fi

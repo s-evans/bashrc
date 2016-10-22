@@ -1,0 +1,11 @@
+#!/bin/bash
+
+_symdiff()
+{
+    while [[ $# > 1 ]]; do
+        sort "$1" "$2" | uniq -u
+        shift 2
+    done
+}
+
+_symdiff "$@"

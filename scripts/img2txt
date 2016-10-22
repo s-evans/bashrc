@@ -1,0 +1,60 @@
+#!/bin/bash
+
+_img2txt()
+{
+    if [[ ! `type -p convert` ]]; then
+        echo "convert not found"
+        echo "install imagemagick"
+        return 1
+    fi
+
+    if [[ ! `type -p tesseract` ]]; then
+        echo "tesseract not found"
+        echo "install tesseract"
+        return 1
+    fi
+
+    if [[ $# == 0 ]]; then
+        echo "missing filename(s)"
+        return 1
+    fi
+
+    local CMD='tesseract "$TMPTIF" stdout'
+
+    if [[ $# > 1 ]]; then
+        local CMD=$CMD' | xargs -d \\n printf "$1: %s\n"'
+    fi
+
+    while [[ $# != 0 ]]; do
+
+        if [[ ! -f $1 ]]; then
+            echo "file '$1' not found"
+            shift
+            continue
+        fi
+
+        local TMPTIF=`mktemp --suffix=.tif`
+
+        convert "$1"                                  \
+            -scale 1000%                              \
+            -blur 1x65535 -blur 1x65535 -blur 1x65535 \
+            -contrast                                 \
+            -normalize                                \
+            -despeckle -despeckle                     \
+            -type grayscale                           \
+            -sharpen 1                                \
+            -posterize 3                              \
+            -negate                                   \
+            -gamma 100                                \
+            -compress zip                             \
+            "$TMPTIF"
+
+        eval $CMD
+
+        rm -f "$TMPTIF"
+
+        shift
+    done
+}
+
+_img2txt "$@"

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+_swap()
+{
+    while [[ $# > 1 ]]; do
+        local TMPFILE=$(mktemp)
+        mv "$1" "$TMPFILE"
+        mv "$2" "$1"
+        mv "$TMPFILE" "$2"
+        shift 2
+    done
+}
+
+_swap "$@"

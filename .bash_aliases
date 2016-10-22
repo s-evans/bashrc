@@ -14,27 +14,9 @@ if [ "$ZSH" = "" ]; then
 fi
 
 ## LISTING FILES ##
-alias l.='ls -d .* --color=auto'
-alias ll='ls -l --color=auto'
-alias lla='ls -al --color=auto'
 alias ls='ls --color=auto'
-alias la='ls -A'
-alias l='ls -CF'
-alias sl='ls'
-alias lx='ls -lXB'
-alias lk='ls -lSr'
-alias lc='ls -lcr'
-alias lu='ls -lur'
-alias lr='ls -lR'
-alias lt='ls -ltr'
-alias l.='ls -d .* --color=auto'
-alias f='find'
 
 ## GREP ##
-alias g='grep'
-alias gi='grep -i'
-alias gv='grep -v'
-alias giv='grep -i -v'
 alias grep='grep --color'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -78,67 +60,6 @@ case "$OSTYPE" in
         ;;
 esac
 
-## GIT ##
-alias ga='git add'
-alias gb='git branch'
-alias gci='git commit -m'
-alias gcl='git clone'
-alias gco='git checkout'
-alias gd='git diff'
-alias gdh='git diff HEAD'
-alias gl='git log'
-alias glp='git log -p'
-alias gmv='git mv'
-alias gpl='git pull'
-alias gplo='git pull origin'
-alias gplom='git pull origin master'
-alias gps='git push'
-alias gpso='git push origin'
-alias gpsom='git push origin master'
-alias gre='git remote'
-alias grev='git remote -v'
-alias grm='git rm'
-alias grmr='git rm -r'
-alias gs='git status'
-alias gsm='git submodule'
-alias gsma='git submodule add'
-alias gsmu='git submodule update'
-alias gsmui='git submodule update --init'
-
-## SVN ##
-alias sva='svn add'
-alias svci='svn commit -m'
-alias svco='svn checkout'
-alias svd='svn diff'
-alias svdw='svn diff -x -w'
-alias svi='svn info'
-alias svli='svn list'
-alias svlir='svn list --recursive'
-alias svlo='svn log'
-alias svlod='svn log --diff'
-alias svlodw='svn log --diff -x -w'
-alias svrm='svn rm'
-alias svrv='svn revert'
-alias svs='svn status'
-alias svu='svn up'
-alias svuim='svn up --set-depth=immediates'
-alias svuin='svn up --set-depth=infinity'
-
-## CLEARCASE ##
-alias ct=cleartool
-
-## TAR ##
-alias tc='tar czvf'
-alias td='tar dzvf'
-alias tt='tar tzvf'
-alias tu='tar uzvf'
-alias tx='tar xzvf'
-
-## RSYNC ##
-alias rs='rsync'
-alias rsa='rsync -avz'
-alias rsr='rsync -av'
-
 ## DEBIAN ##
 alias agin='sudo apt-get install'
 alias agrm='sudo apt-get remove'
@@ -148,7 +69,6 @@ alias sudo='sudo ' # enable alias expansion following sudo
 
 ## GENERAL ##
 alias ec='echo'
-alias ed='vim'
 alias exp='export'
 alias fef='sed "s/^.*\\.//"'
 alias fnf='sed "s/\\.[^\\.]*$//"'
@@ -158,54 +78,29 @@ alias le='less'
 alias mnt='mount'
 alias p='pwd'
 alias sp='ssh -p'
-alias v='vim'
-alias vi='vim'
 alias wa='watch'
-alias wh='type -p'
 alias xa='xargs '
 
-## DEV RELATED ##
-alias cs='cscope -Rqbk'
-alias mk='make'
-
 ## FILE PATH UTILS ##
-alias bn='basename'
-alias dn='dirname'
 alias esc='sed "s/./\\\\&/g"'
-alias fp='readlink -f'
-alias mkd='mkdir -pv'
 alias mkdir='mkdir -pv'
 alias path='echo -e ${PATH//:/\\n}'
-alias which='type -p'
 
 ## PROCESSES ##
-alias k='kill'
-alias k9='kill -9'
-alias ka='killall'
-alias ka9='killall -9'
 alias jk='jobs -p | xargs kill -9'
-alias po='pidof'
-alias lop='lsof -p'
-alias psa='ps aux'
-
-## BITS AND BYTES ##
-alias sha1='openssl sha1'
-alias objdumpp='objdump -d -M intel-mnuemonics'
-alias hd='hexdump -Cv'
 
 ## VIM MISTAKES ##
 alias :q=exit
 alias :ed='vim'
 alias :e='vim'
+alias ed='vim'
+alias v='vim'
+alias vi='vim'
 
 ## SCREEN ##
 alias scr='screen -aA'
 alias scrr='screen -D -RR'
 alias scrl='screen -list'
-
-## FILE CONVERSION ##
-alias pdf2txt='pdftotext -layout'
-alias lo2pdf='libreoffice --headless --convert-to pdf'
 
 ## XARGS SHORTCUTS ##
 alias xbn='xargs -n1 basename'
@@ -217,39 +112,6 @@ alias xpdf2txt='xargs -n1 pdftotext -layout'
 ## CYGWIN SPECIFIC ##
 alias cmdd='cmd /C start cmd'
 alias ppwd='pwd | sed "s/./\\\\&/g" | xargs cygpath -aw'
-
-## HEAD AND TAIL ##
-alias t='tail'
-alias tf='tail -f'
-alias tn='tail -n'
-alias he='head'
-alias hn='head -n'
-
-## DIFF ##
-alias dr='diff -r'
-alias dw='diff -w'
-alias drw='diff -rw'
-
-## FILE PERMISSIONS ##
-alias -- +x='chmod +x'
-alias 000='chmod 000'
-alias 400='chmod 400'
-alias 600='chmod 600'
-alias 644='chmod 644'
-alias 655='chmod 655'
-alias 700='chmod 700'
-alias 744='chmod 744'
-alias 755='chmod 755'
-alias 777='chmod 777'
-
-## SET OPERATIONS ##
-alias max='sort -r | head -n 1'
-alias min='sort | head -n 1'
-alias mode='sort | uniq -c | sort -r | head -n 1'
-alias count='wc -l'
-alias countof='grep -xc'
-alias intersection='grep -xF -f'
-alias complement='grep -vxF -f'
 
 ## CLIPBOARD ##
 case "$OSTYPE" in
@@ -276,8 +138,5 @@ esac
 if [ "$OSTYPE" = "cygwin" ]; then
     alias su='cygstart --action=runas mintty'
     alias sudo='cygstart --action=runas '
-    alias start='cygstart'
-else
-    alias start='xdg-open'
 fi
 

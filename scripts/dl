@@ -1,0 +1,15 @@
+#!/bin/bash
+
+_dl()
+{
+    if [[ $# < 2 ]]; then
+        echo "invalid argument list"
+        return
+    fi
+
+    LINE="$1"
+    shift
+    sed -i "${LINE}d" "$@"
+}
+
+_dl "$@"

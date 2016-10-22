@@ -63,11 +63,23 @@ if [ -z "$_PATH_SET" ]; then
 
     PATH="${PATH}$(find /cygdrive/c/Program\ Files*/Cmake*/bin -maxdepth 1 -type f -name cmake.exe -printf :%h 2> /dev/null)"
 
+    # ccollab
+
+    PATH="${PATH}$(find /cygdrive/c/Program\ Files*/Collaborator\ Client -maxdepth 1 -type f -name ccollab.exe -printf :%h 2> /dev/null)"
+
+    # dr. memory
+
+    PATH="${PATH}$(find /cygdrive/c/Program\ Files*/Dr\.\ Memory/bin -maxdepth 1 -type f -name drmemory.exe -printf :%h 2> /dev/null)"
+
     # bit-utils
 
     if [ -d "${HOME}/.bash/bundle/bit-utils" ]; then
         PATH="${PATH}:${HOME}/.bash/bundle/bit-utils"
     fi
+
+    # aliases / functions
+
+    PATH="${PATH}:${HOME}/.bash/scripts"
 
 fi
 
