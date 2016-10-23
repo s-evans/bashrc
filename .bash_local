@@ -79,7 +79,7 @@ if [ -z "$_PATH_SET" ]; then
 
     # aliases / functions
 
-    PATH="${PATH}:${HOME}/.bash/scripts"
+    PATH="${HOME}/.bash/scripts:${PATH}"
 
 fi
 
