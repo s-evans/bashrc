@@ -16,74 +16,101 @@ export _cleartool_auto_init_cache=1
 
 export DISPLAY=:0
 
-# set paths 
+# load path from file
 
-if [ -z "$_PATH_SET" ]; then
+if [ -z "${_path_cache_set}" ]; then
+
+    export _path_cache_sfx=""
+    export _path_cache_pfx=""
+    export _path_cache_set=""
+
+    if [[ -e ~/.cache/path ]]; then
+        . ~/.cache/path
+    fi
+
+    PATH="${_path_cache_pfx}${PATH}${_path_cache_sfx}"
+
+fi
+
+# discover path
+
+if [ -z "${_path_cache_set}" ]; then
 
     # help viewer
 
-    PATH="${PATH}$(find /cygdrive/c/Program\ Files*/Microsoft\ Help\ Viewer/ -maxdepth 2 -type f -name HlpViewer.exe -printf :%h 2> /dev/null)"
+    _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Program\ Files*/Microsoft\ Help\ Viewer/ -maxdepth 2 -type f -name HlpViewer.exe -printf :%h 2> /dev/null)"
 
     # visual studio dev utils
 
-    PATH="${PATH}$(find /cygdrive/c/Program\ Files*/Microsoft\ Visual\ Studio*/Common7/IDE -maxdepth 1 -type f -name devenv.exe -printf :%h 2> /dev/null)"
-    PATH="${PATH}$(find /cygdrive/c/Program\ Files*/Microsoft\ Visual\ Studio*/VC/bin -maxdepth 1 -type f -name cl.exe -printf :%h 2> /dev/null)"
+    _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Program\ Files*/Microsoft\ Visual\ Studio*/Common7/IDE -maxdepth 1 -type f -name devenv.exe -printf :%h 2> /dev/null)"
+    _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Program\ Files*/Microsoft\ Visual\ Studio*/VC/bin -maxdepth 1 -type f -name cl.exe -printf :%h 2> /dev/null)"
 
     # windows debugging tools
 
-    PATH="${PATH}$(find /cygdrive/c/Program\ Files*/Windows\ Kits/*/Debuggers/* -maxdepth 1 -type f -name windbg.exe -printf :%h 2> /dev/null)"
-    PATH="${PATH}$(find /cygdrive/c/Program\ Files*/Windows\ Kits/*/bin/* -maxdepth 1 -type f -name wsddebug_client.exe -printf :%h 2> /dev/null)"
+    _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Program\ Files*/Windows\ Kits/*/Debuggers/* -maxdepth 1 -type f -name windbg.exe -printf :%h 2> /dev/null)"
+    _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Program\ Files*/Windows\ Kits/*/bin/* -maxdepth 1 -type f -name wsddebug_client.exe -printf :%h 2> /dev/null)"
 
     # visual studio performance tools
 
-    PATH="${PATH}$(find /cygdrive/c/Program\ Files*/Microsoft\ Visual\ Studio*/Team\ Tools/Performance\ Tools -maxdepth 2 -type f -name vsinstr.exe -printf :%h 2> /dev/null)"
+    _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Program\ Files*/Microsoft\ Visual\ Studio*/Team\ Tools/Performance\ Tools -maxdepth 2 -type f -name vsinstr.exe -printf :%h 2> /dev/null)"
 
     # sysinternals
 
-    PATH="${PATH}$(find /cygdrive/c -mindepth 2 -maxdepth 2 -type f -name PsExec.exe -printf :%h 2> /dev/null)"
+    _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c -mindepth 2 -maxdepth 2 -type f -name PsExec.exe -printf :%h 2> /dev/null)"
 
     # msbuild
 
-    PATH="${PATH}$(find /cygdrive/c/Program\ Files*/MSBuild/*/Bin -maxdepth 1 -type f -name MSBuild.exe -printf :%h 2> /dev/null)"
-    PATH="${PATH}$(find /cygdrive/c/Windows/Microsoft.NET/Framework/* -maxdepth 1 -type f -name MSBuild.exe -printf :%h 2> /dev/null)"
+    _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Program\ Files*/MSBuild/*/Bin -maxdepth 1 -type f -name MSBuild.exe -printf :%h 2> /dev/null)"
+    _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Windows/Microsoft.NET/Framework/* -maxdepth 1 -type f -name MSBuild.exe -printf :%h 2> /dev/null)"
 
     # ida
 
-    PATH="${PATH}$(find /cygdrive/c/Program\ Files*/IDA* -maxdepth 1 -type f -name idaq.exe -printf :%h 2> /dev/null)"
+    _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Program\ Files*/IDA* -maxdepth 1 -type f -name idaq.exe -printf :%h 2> /dev/null)"
 
     # java
 
-    PATH="${PATH}$(find /cygdrive/c/Program\ Files*/Java/*/bin -maxdepth 1 -type f -name java.exe -printf :%h 2> /dev/null)"
+    _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Program\ Files*/Java/*/bin -maxdepth 1 -type f -name java.exe -printf :%h 2> /dev/null)"
 
     # coverity
 
-    PATH="${PATH}$(find /cygdrive/c/Program\ Files*/Coverity/Coverity\ Static\ Analysis/bin -maxdepth 1 -type f -name cov-build.exe -printf :%h 2> /dev/null)"
+    _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Program\ Files*/Coverity/Coverity\ Static\ Analysis/bin -maxdepth 1 -type f -name cov-build.exe -printf :%h 2> /dev/null)"
 
     # cmake
 
-    PATH="${PATH}$(find /cygdrive/c/Program\ Files*/Cmake*/bin -maxdepth 1 -type f -name cmake.exe -printf :%h 2> /dev/null)"
+    _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Program\ Files*/Cmake*/bin -maxdepth 1 -type f -name cmake.exe -printf :%h 2> /dev/null)"
 
     # ccollab
 
-    PATH="${PATH}$(find /cygdrive/c/Program\ Files*/Collaborator\ Client -maxdepth 1 -type f -name ccollab.exe -printf :%h 2> /dev/null)"
+    _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Program\ Files*/Collaborator\ Client -maxdepth 1 -type f -name ccollab.exe -printf :%h 2> /dev/null)"
 
     # dr. memory
 
-    PATH="${PATH}$(find /cygdrive/c/Program\ Files*/Dr\.\ Memory/bin -maxdepth 1 -type f -name drmemory.exe -printf :%h 2> /dev/null)"
+    _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Program\ Files*/Dr\.\ Memory/bin -maxdepth 1 -type f -name drmemory.exe -printf :%h 2> /dev/null)"
 
     # bit-utils
 
     if [ -d "${HOME}/.bash/bundle/bit-utils" ]; then
-        PATH="${PATH}:${HOME}/.bash/bundle/bit-utils"
+        _path_cache_sfx="${_path_cache_sfx}:${HOME}/.bash/bundle/bit-utils"
     fi
 
     # aliases / functions
 
-    PATH="${HOME}/.bash/scripts:${PATH}"
+    _path_cache_pfx="${HOME}/.bash/scripts:${_path_cache_pfx}"
+
+    # mark discovery complete
+
+    _path_cache_set=true
+
+    # save to file
+
+    mkdir -p ~/.cache/
+    set | sed ' /^_path_cache_/{ /^[^ ]*=(/{ :a /)$/!{ n; ba; }; b; }; / () $/{ :b /^}$/!{ n; bb; }; b; }; b; }; d; ' > ~/.cache/path
+
+    # set path
+
+    PATH="${_path_cache_pfx}${PATH}${_path_cache_sfx}"
 
 fi
-
-export _PATH_SET=true
 
 # set MANPATH so it includes users' private man if it exists
 
