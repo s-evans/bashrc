@@ -131,6 +131,118 @@ u()
     cd $dots
 }
 
+_create_completable_alias ()
+{
+    local alias_name="${1}"
+    local alias_value="${2}"
+
+    # configure completion
+    _alias_completion_wrapper_setup "${alias_name}" "${alias_value}"
+
+    # create alias
+    alias "${alias_name}"="${alias_value}"
+}
+
+_alias_completion_wrapper_setup ()
+{
+    declare -gAx _alias_map
+    local alias_name="${1}"
+    local alias_value="${2}"
+    complete -o default -F _alias_completion_wrapper "${alias_name}"
+    _alias_map[${alias_name}]="${alias_value}"
+}
+
+_alias_completion_wrapper ()
+{
+    # rewrite current completion context before invoking
+    # actual command completion
+
+    local orig=${COMP_WORDS[0]}
+
+    # remove first word, then
+    # rewrite COMP_LINE and adjust COMP_POINT
+    local j
+    for (( j=0; j <= ${#COMP_LINE}; j++ )); do
+        [[ "$COMP_LINE" == "${COMP_WORDS[0]}"* ]] && break
+        COMP_LINE=${COMP_LINE:1}
+        ((COMP_POINT--))
+    done
+    COMP_LINE=${COMP_LINE#"${COMP_WORDS[0]}"}
+    ((COMP_POINT-=${#COMP_WORDS[0]}))
+
+    # shift COMP_WORDS elements and adjust COMP_CWORD
+    unset COMP_WORDS[0]
+    ((COMP_CWORD -= 1))
+
+    # append new prefix to COMP_WORDS
+    local alias_words=(${_alias_map[${orig}]})
+    COMP_WORDS=(${alias_words[@]} ${COMP_WORDS[@]})
+    ((COMP_CWORD += ${#alias_words[@]}))
+
+    # append new prefix to COMP_LINE
+    COMP_LINE="${_alias_map[${orig}]}${COMP_LINE}"
+    ((COMP_POINT += ${#_alias_map[${orig}]}))
+
+    COMPREPLY=()
+    local cur
+    _get_comp_words_by_ref cur
+
+    if [[ $COMP_CWORD -eq 0 ]]; then
+        local IFS=$'\n'
+        compopt -o filenames
+        COMPREPLY=( $( compgen -d -c -- "$cur" ) )
+    else
+        local cmd=${COMP_WORDS[0]} compcmd=${COMP_WORDS[0]}
+        local cspec=$( complete -p $cmd 2>/dev/null )
+
+        # If we have no completion for $cmd yet, see if we have for basename
+        if [[ ! $cspec && $cmd == */* ]]; then
+            cspec=$( complete -p ${cmd##*/} 2>/dev/null )
+            [[ $cspec ]] && compcmd=${cmd##*/}
+        fi
+        # If still nothing, just load it for the basename
+        if [[ ! $cspec ]]; then
+            compcmd=${cmd##*/}
+            _completion_loader $compcmd
+            cspec=$( complete -p $compcmd 2>/dev/null )
+        fi
+
+        if [[ -n $cspec ]]; then
+            if [[ ${cspec#* -F } != $cspec ]]; then
+                # complete -F <function>
+
+                # get function name
+                local func=${cspec#*-F }
+                func=${func%% *}
+
+                if [[ ${#COMP_WORDS[@]} -ge 2 ]]; then
+                    $func $cmd "${COMP_WORDS[${#COMP_WORDS[@]}-1]}" "${COMP_WORDS[${#COMP_WORDS[@]}-2]}"
+                else
+                    $func $cmd "${COMP_WORDS[${#COMP_WORDS[@]}-1]}"
+                fi
+
+                # restore initial compopts
+                local opt
+                while [[ $cspec == *" -o "* ]]; do
+                    # FIXME: should we take "+o opt" into account?
+                    cspec=${cspec#*-o }
+                    opt=${cspec%% *}
+                    compopt -o $opt
+                    cspec=${cspec#$opt}
+                done
+            else
+                cspec=${cspec#complete}
+                cspec=${cspec%%$compcmd}
+                COMPREPLY=( $( eval compgen "$cspec" -- '$cur' ) )
+            fi
+        elif [[ ${#COMPREPLY[@]} -eq 0 ]]; then
+            # XXX will probably never happen as long as completion loader loads
+            #     *something* for every command thrown at it ($cspec != empty)
+            _minimal
+        fi
+    fi
+}
+
 # Automatically add completion for all aliases to commands having completion functions
 function alias_completion {
     local namespace="alias_completion"
