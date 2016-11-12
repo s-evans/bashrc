@@ -1,0 +1,8 @@
+scripts for which there are no alias or function
+- could be slow in xargs
+- could be slow in the shell
+- complement <(alias | sed 's/^[^ ]* //; s/=.*//;' && typeset -F | sed 's/^.*-f //;') <(ls ~/.bash/scripts)
+
+aliases for which there is no script
+- may not work in xargs, if xargs is called with arguments
+- complement <(ls ~/.bash/scripts) <(alias | sed 's/^[^ ]* //; s/=.*//;')

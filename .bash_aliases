@@ -140,6 +140,9 @@ esac
 if [ "$OSTYPE" = "cygwin" ]; then
     alias su='cygstart --action=runas mintty'
     alias sudo='cygstart --action=runas '
+    alias start='cygstart'
+else
+    alias start='xdg-open'
 fi
 
 _create_completable_alias "+x" "chmod +x"
