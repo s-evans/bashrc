@@ -143,9 +143,10 @@ _create_completable_alias ()
     alias "${alias_name}"="${alias_value}"
 }
 
+declare -A _alias_map
+
 _alias_completion_wrapper_setup ()
 {
-    declare -gAx _alias_map
     local alias_name="${1}"
     local alias_value="${2}"
     complete -o default -F _alias_completion_wrapper "${alias_name}"
