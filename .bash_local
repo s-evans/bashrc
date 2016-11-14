@@ -5,7 +5,7 @@
 
 # enable bash completion
 
-. ~/.bash/bundle/bash-completion/bash_completion
+. ${HOME}/.bash/bundle/bash-completion/bash_completion
 
 # enable automatic caching for certain bash completion scripts upon load
 
@@ -24,8 +24,8 @@ if [ -z "${_path_cache_set}" ]; then
     export _path_cache_pfx=""
     export _path_cache_set=""
 
-    if [[ -e ~/.cache/path ]]; then
-        . ~/.cache/path
+    if [[ -e ${HOME}/.cache/path ]]; then
+        . ${HOME}/.cache/path
     fi
 
     PATH="${_path_cache_pfx}${PATH}${_path_cache_sfx}"
@@ -103,8 +103,8 @@ if [ -z "${_path_cache_set}" ]; then
 
     # save to file
 
-    mkdir -p ~/.cache/
-    set | sed ' /^_path_cache_/{ /^[^ ]*=(/{ :a /)$/!{ n; ba; }; b; }; / () $/{ :b /^}$/!{ n; bb; }; b; }; b; }; d; ' > ~/.cache/path
+    mkdir -p ${HOME}/.cache/
+    set | sed ' /^_path_cache_/{ /^[^ ]*=(/{ :a /)$/!{ n; ba; }; b; }; / () $/{ :b /^}$/!{ n; bb; }; b; }; b; }; d; ' > ${HOME}/.cache/path
 
     # set path
 
@@ -112,17 +112,55 @@ if [ -z "${_path_cache_set}" ]; then
 
 fi
 
-# set MANPATH so it includes users' private man if it exists
+# load manpath from file
 
-if [ -d "${HOME}/man" ]; then
-    MANPATH="${HOME}/man:${MANPATH}"
+if [ -z "${_manpath_cache_set}" ]; then
+
+    export _manpath_cache_sfx=""
+    export _manpath_cache_pfx=""
+    export _manpath_cache_set=""
+
+    if [[ -e ${HOME}/.cache/manpath ]]; then
+        . ${HOME}/.cache/manpath
+    fi
+
+    MANPATH="${_manpath_cache_pfx}${MANPATH}${_manpath_cache_sfx}"
+
+fi
+
+# discover manpath
+
+if [ -z "${_manpath_cache_set}" ]; then
+
+    # discover man directories
+
+    _manpath_cache_sfx="${_manpath_cache_sfx}$(find /usr /opt "${HOME}" -maxdepth 4 -type d -name man -printf :%p 2> /dev/null)"
+
+    # mark discovery complete
+
+    _manpath_cache_set=true
+
+    # save to file
+
+    mkdir -p ${HOME}/.cache/
+    set | sed ' /^_manpath_cache_/{ /^[^ ]*=(/{ :a /)$/!{ n; ba; }; b; }; / () $/{ :b /^}$/!{ n; bb; }; b; }; b; }; d; ' > ${HOME}/.cache/manpath
+
+    # set manpath
+
+    MANPATH="${_manpath_cache_pfx}${MANPATH}${_manpath_cache_sfx}"
+
 fi
 
 # set INFOPATH so it includes users' private info if it exists
 
 if [ -d "${HOME}/info" ]; then
+    # find /usr /opt ${HOME} -maxdepth 4 -type f -regex '.*[^/]\.info\(\-[0-9]+\)?\(\.gz\)?' -printf '%h\n' | sort | uniq
     INFOPATH="${HOME}/info:${INFOPATH}"
 fi
+
+# set symbol path for symbolic debugging on windows
+
+export _NT_SYMBOL_PATH="srv*C:\\symbols*https://msdl.microsoft.com/download/symbols"
 
 # TODO:
 # path settings for: android, python, iexplore, chrome, firefox, excel, word
