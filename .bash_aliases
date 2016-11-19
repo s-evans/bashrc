@@ -85,7 +85,6 @@ alias info='info --vi-keys'
 
 ## FILE PATH UTILS ##
 alias esc='sed "s/./\\\\&/g"'
-alias mkdir='mkdir -pv'
 alias path='echo -e ${PATH//:/\\n}'
 
 ## PROCESSES ##
@@ -236,7 +235,7 @@ _create_completable_alias lt "ls -ltr"
 _create_completable_alias lu "ls -lur"
 _create_completable_alias lx "ls -lXB"
 _create_completable_alias mk "make"
-_create_completable_alias mkd "makedir -pv"
+_create_completable_alias mkd "mkdir -pv"
 _create_completable_alias objdumpp "objdump -d -M intel-mnuemonics"
 _create_completable_alias po "pidoff"
 _create_completable_alias psa "ps aux"
