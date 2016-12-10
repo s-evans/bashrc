@@ -37,7 +37,6 @@ alias .9='cd ../../../../../../../../..'
 alias .10='cd ../../../../../../../../../..'
 alias .11='cd ../../../../../../../../../../..'
 
-
 ## NETWORKING ##
 case "$OSTYPE" in
     cygwin)
@@ -45,6 +44,7 @@ case "$OSTYPE" in
         alias arpp='arp -a'
         alias ifc='ipconfig'
         alias ifca='ipconfig /all'
+        alias ifconfig='ipconfig'
         alias nbl='nblookup'
         alias ns='netstat -ano'
         alias rt='route PRINT'
@@ -193,6 +193,7 @@ _create_completable_alias gl "git log"
 _create_completable_alias glm "git log --merges"
 _create_completable_alias glp "git log -p"
 _create_completable_alias gls "git ls-files"
+_create_completable_alias glsc "git ls-files --cached"
 _create_completable_alias glsd "git ls-files --deleted"
 _create_completable_alias glsi "git ls-files --others --ignored --exclude-standard"
 _create_completable_alias glsm "git ls-files --modified"
