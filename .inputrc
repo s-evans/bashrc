@@ -44,6 +44,19 @@ set editing-mode vi
 $if mode=vi
 
     set keymap vi-command
+
+    "\C-a": beginning-of-line
+    "\C-e": end-of-line
+
+    "\C-d": delete-char
+    "\M-d": kill-word
+    "\C-w": backward-kill-word
+
+    "\M-f": forward-word
+    "\M-b": backward-word
+    "\C-f": forward-char
+    "\C-b": backward-char
+
     "zz": redraw-current-line
     "gg": beginning-of-history
     "G":  end-of-history
@@ -2595,6 +2608,15 @@ $if mode=vi
 
     "\C-u": backward-kill-line
     "\C-k": kill-line
+
+    "\C-d": delete-char
+    "\M-d": kill-word
+    "\C-w": backward-kill-word
+
+    "\M-f": forward-word
+    "\M-b": backward-word
+    "\C-f": forward-char
+    "\C-b": backward-char
 
     # TODO: add mappings for single command mode
     "\C-ox": delete-char

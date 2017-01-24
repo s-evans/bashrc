@@ -37,7 +37,6 @@ alias .9='cd ../../../../../../../../..'
 alias .10='cd ../../../../../../../../../..'
 alias .11='cd ../../../../../../../../../../..'
 
-
 ## NETWORKING ##
 case "$OSTYPE" in
     cygwin)
@@ -45,6 +44,7 @@ case "$OSTYPE" in
         alias arpp='arp -a'
         alias ifc='ipconfig'
         alias ifca='ipconfig /all'
+        alias ifconfig='ipconfig'
         alias nbl='nblookup'
         alias ns='netstat -ano'
         alias rt='route PRINT'
@@ -85,7 +85,6 @@ alias info='info --vi-keys'
 
 ## FILE PATH UTILS ##
 alias esc='sed "s/./\\\\&/g"'
-alias mkdir='mkdir -pv'
 alias path='echo -e ${PATH//:/\\n}'
 
 ## PROCESSES ##
@@ -185,7 +184,7 @@ _create_completable_alias gbc "git branch --contains"
 _create_completable_alias gci "git commit -m"
 _create_completable_alias gcl "git clone"
 _create_completable_alias gco "git checkout"
-_create_completable_alias gd "git diff"
+_create_completable_alias gd "git diff --no-prefix"
 _create_completable_alias gdt "git difftool"
 _create_completable_alias gdh "git diff HEAD"
 _create_completable_alias gi "grep -i"
@@ -194,6 +193,7 @@ _create_completable_alias gl "git log"
 _create_completable_alias glm "git log --merges"
 _create_completable_alias glp "git log -p"
 _create_completable_alias gls "git ls-files"
+_create_completable_alias glsc "git ls-files --cached"
 _create_completable_alias glsd "git ls-files --deleted"
 _create_completable_alias glsi "git ls-files --others --ignored --exclude-standard"
 _create_completable_alias glsm "git ls-files --modified"
@@ -236,7 +236,7 @@ _create_completable_alias lt "ls -ltr"
 _create_completable_alias lu "ls -lur"
 _create_completable_alias lx "ls -lXB"
 _create_completable_alias mk "make"
-_create_completable_alias mkd "makedir -pv"
+_create_completable_alias mkd "mkdir -pv"
 _create_completable_alias objdumpp "objdump -d -M intel-mnuemonics"
 _create_completable_alias po "pidoff"
 _create_completable_alias psa "ps aux"

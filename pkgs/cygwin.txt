@@ -27,6 +27,7 @@ bash
 bash-completion
 binutils
 bsdiff
+bvi
 bzip2
 ca-certificates
 checkbashisms
@@ -34,6 +35,7 @@ clang
 clang-analyzer
 cmake
 coreutils
+cppcheck
 crypt
 cscope
 csih
@@ -53,6 +55,7 @@ dbus-bash-completion
 dbus-x11
 desktop-file-utils
 diffutils
+doxygen
 dos2unix
 dri-drivers
 editrights
@@ -69,6 +72,8 @@ gdb
 getent
 git
 git-completion
+git-cvs
+git-svn
 grep
 groff
 gsettings-desktop-schemas
@@ -292,6 +297,7 @@ perl-Unicode-Normalize
 perl_autorebase
 perl_base
 ping
+pkg-config
 poppler
 poppler-data
 popt
@@ -317,6 +323,7 @@ tesseract-ocr
 tesseract-ocr-eng
 texinfo
 tftp
+the_silver_searcher
 tidy
 tmux
 tree
@@ -344,6 +351,7 @@ xkbcomp
 xkeyboard-config
 xmlstarlet
 xmodmap
+xorg-docs
 xorg-server
 xorg-server-common
 xorg-x11-fonts-dpi100

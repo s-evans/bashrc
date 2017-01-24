@@ -38,8 +38,8 @@ export LESS=' -R '
 
 ## HISTORY SETTINGS ##
 export HISTTIMEFORMAT="%F %T "
-export HISTSIZE=-1
-export HISTFILESIZE=-1
+export HISTSIZE=1000000
+export HISTFILESIZE=1000000
 
 ## VARIABLES ##
 export PS1='\[\e[1;32m\]\u@\h:\W$\[\e[0m\] '
