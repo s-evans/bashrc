@@ -55,8 +55,8 @@ dbus-bash-completion
 dbus-x11
 desktop-file-utils
 diffutils
-doxygen
 dos2unix
+doxygen
 dri-drivers
 editrights
 file
@@ -64,6 +64,7 @@ findutils
 font-adobe-dpi75
 font-alias
 font-misc-misc
+fzf
 gamin
 gawk
 gcc-core
