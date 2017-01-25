@@ -10,6 +10,7 @@ pip install mypy
 pip install pep257
 pip install pyflakes
 pip install pylint
+pip install vim-vint
 
 # autocomplete
 pip install jedi
