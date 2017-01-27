@@ -47,9 +47,9 @@ if [ -z "${_path_cache_set}" ]; then
 
     # windows debugging tools
 
-    _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Program\ Files*/Windows\ Kits/*/Debuggers/* -maxdepth 1 -type f -name windbg.exe -printf :%h 2> /dev/null)"
-    _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Program\ Files*/Windows\ Kits/*/bin/* -maxdepth 1 -type f -name wsddebug_client.exe -printf :%h 2> /dev/null)"
-    _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Program\ Files*/Windows\ Kits/*/Tools/* -maxdepth 1 -type f -name winerror.exe -printf :%h 2> /dev/null)"
+    _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Program\ Files*/Windows\ Kits/*/Debuggers/x86 -maxdepth 1 -type f -name windbg.exe -printf :%h 2> /dev/null)"
+    _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Program\ Files*/Windows\ Kits/*/bin/x86 -maxdepth 1 -type f -name wsddebug_client.exe -printf :%h 2> /dev/null)"
+    _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Program\ Files*/Windows\ Kits/*/Tools/x86 -maxdepth 1 -type f -name winerror.exe -printf :%h 2> /dev/null)"
 
     # visual studio performance tools
 

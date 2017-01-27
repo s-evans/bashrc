@@ -15,6 +15,10 @@ shelltitle "$ |bash"
 startup_message off
 vbell on
 
+# logging settings
+logfile "/tmp/screenlog.%S.%n"
+logfile flush 0
+
 # vim-like window bindings
 bind + resize +5
 bind - resize -5
