@@ -111,8 +111,11 @@ alias xmv='xargs mv -t'
 alias xpdf2txt='xargs -n1 pdftotext -layout'
 
 ## CYGWIN SPECIFIC ##
-alias cmdd='cmd /C start cmd'
-alias ppwd='pwd | sed "s/./\\\\&/g" | xargs cygpath -aw'
+if [[ "$OSTYPE" == 'cygwin' ]]; then
+    alias cmdd='cmd /C start cmd'
+    alias pwdd='cygpath -aw .'
+    alias fpp='cygpath -aw'
+fi
 
 ## CLIPBOARD ##
 case "$OSTYPE" in
@@ -155,7 +158,7 @@ _create_completable_alias 744 "chmod 744"
 _create_completable_alias 755 "chmod 755"
 _create_completable_alias 777 "chmod 777"
 _create_completable_alias bn "basename"
-_create_completable_alias cs "cscope -Rqbk"
+_create_completable_alias cs "cscope -Rqbk; ctags -R;"
 _create_completable_alias ct "cleartool"
 _create_completable_alias ctco "cleartool co -nc"
 _create_completable_alias ctd "cleartool diff -diff_format -predecessor"
