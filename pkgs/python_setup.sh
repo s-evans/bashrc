@@ -58,3 +58,7 @@ pip install pdb
 
 # network
 pip install scapy
+
+# debug
+pip install voltron
+pip install pykd
