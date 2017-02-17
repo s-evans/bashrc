@@ -147,6 +147,8 @@ else
     alias start='xdg-open'
 fi
 
+alias cs="cscope -Rqbk; ctags -R;"
+
 _create_completable_alias "+x" "chmod +x"
 _create_completable_alias 000 "chmod 000"
 _create_completable_alias 400 "chmod 400"
@@ -158,7 +160,6 @@ _create_completable_alias 744 "chmod 744"
 _create_completable_alias 755 "chmod 755"
 _create_completable_alias 777 "chmod 777"
 _create_completable_alias bn "basename"
-_create_completable_alias cs "cscope -Rqbk; ctags -R;"
 _create_completable_alias ct "cleartool"
 _create_completable_alias ctco "cleartool co -nc"
 _create_completable_alias ctd "cleartool diff -diff_format -predecessor"
