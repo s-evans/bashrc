@@ -11,6 +11,8 @@ pip install pep257
 pip install pyflakes
 pip install pylint
 pip install vim-vint
+pip install 3to2
+pip install language-check
 
 # autocomplete
 pip install jedi

@@ -5,13 +5,13 @@ function lower_bound(array, target) {
     high = length(array) + 1
     while ( low < high ) {
         mid = int( ( low + high ) / 2 )
-        if ( target <= array[mid] ) {
+        if ( target < array[mid] ) {
             high = mid
         } else {
             low = mid + 1
         }
     }
-    return low + 1
+    return low - 1
 }
 
 function push(A, B) {
@@ -28,6 +28,10 @@ BEGIN {
     # declare array
     addresses[0] = 0
     delete addresses[0]
+
+    # declare array
+    input_line[0] = 0
+    delete input_line[0]
 }
 
 {
@@ -40,16 +44,15 @@ BEGIN {
         }
     } else {
         push(addresses, val)
+        push(input_line, $0)
     }
 }
-
-# TODO: print out entire input line on the right hand side of the equals sign
 
 END {
     asort(addresses, sorted, "@val_num_asc")
     len = length(query_addresses)
     for ( i = 1 ; i <= len; ++i ) {
         idx = lower_bound(sorted, query_addresses[i])
-        printf("0x%08X = 0x%08X\n", query_addresses[i], addresses[idx])
+        printf("0x%08X = 0x%08X: %s\n", query_addresses[i], addresses[idx], input_line[idx])
     }
 }
