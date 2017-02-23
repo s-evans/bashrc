@@ -28,10 +28,6 @@ BEGIN {
     # declare array
     addresses[0] = 0
     delete addresses[0]
-
-    # declare array
-    input_line[0] = 0
-    delete input_line[0]
 }
 
 {
@@ -44,15 +40,19 @@ BEGIN {
         }
     } else {
         push(addresses, val)
-        push(input_line, $0)
+        input_line[val] = $0
     }
 }
 
 END {
-    asort(addresses, sorted, "@val_num_asc")
+    asort(addresses, sorted_addresses, "@val_num_asc")
+    delete addresses
+
     len = length(query_addresses)
+
     for ( i = 1 ; i <= len; ++i ) {
-        idx = lower_bound(sorted, query_addresses[i])
-        printf("0x%08X = 0x%08X: %s\n", query_addresses[i], addresses[idx], input_line[idx])
+        idx = lower_bound(sorted_addresses, query_addresses[i])
+        address = sorted_addresses[idx]
+        printf("0x%08X = 0x%08X: %s\n", query_addresses[i], address, input_line[address])
     }
 }
