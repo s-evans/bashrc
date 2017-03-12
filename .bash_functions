@@ -312,3 +312,46 @@ function alias_completion {
     done < <(alias -p | sed -Ene "s/$alias_regex/\1 '\2' '\3'/p")
     source "$tmp_file" && rm -f "$tmp_file"
 };
+
+_cache_load()
+{
+    local cache_file="${1}"
+
+    if [[ -e "${HOME}/.cache/${cache_file}" ]]; then
+        . "${HOME}/.cache/${cache_file}"
+    fi
+}
+
+_cache_save()
+{
+    local cache_file="${1}"
+    local cache_prefix="${2}"
+
+    mkdir -p ${HOME}/.cache
+    set | sed '/^'${cache_prefix}'/{ /^[^ ]*=(/{ :a /)$/!{ n; ba; }; b; }; / () $/{ :b /^}$/!{ n; bb; }; b; }; b; }; d' > "${HOME}/.cache/${cache_file}"
+}
+
+_cache_delete()
+{
+    local cache_file="${1}"
+
+    if [[ -e "${HOME}/.cache/${cache_file}" ]]; then
+        rm "${HOME}/.cache/${cache_file}"
+    fi
+}
+
+_cache_unset()
+{
+    local cache_prefix="${1}"
+
+    . <(set | sed '/^'${cache_prefix}'/!d; s/=.*//g; s/^/unset /' )
+}
+
+_cache_clear()
+{
+    local cache_file="${1}"
+    local cache_prefix="${2}"
+
+    _cache_delete "${cache_file}"
+    _cache_unset "${cache_prefix}"
+}

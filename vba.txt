@@ -1,0 +1,62 @@
+' Open a blank document and paste the code into macro pane for the normal template and save
+
+Sub AutoOpen()
+    Word.Options.UpdateLinksAtOpen = False
+End Sub
+
+Sub SaveAsHtml()
+    On Error Resume Next
+    Application.DisplayAlerts = wdAlertsNone
+    NewFilename = ActiveDocument.FullName + ".html"
+    ActiveDocument.SaveAs FileName:=NewFilename, FileFormat:=wdFormatHTML
+    Application.Quit SaveChanges:=False
+End Sub
+
+Sub SaveAsHtmlFiltered()
+    On Error Resume Next
+    Application.DisplayAlerts = wdAlertsNone
+    NewFilename = ActiveDocument.FullName + ".html"
+    ActiveDocument.SaveAs FileName:=NewFilename, FileFormat:=wdFormatFilteredHTML
+    Application.Quit SaveChanges:=False
+End Sub
+
+Sub SaveAsOdt()
+    On Error Resume Next
+    Application.DisplayAlerts = wdAlertsNone
+    NewFilename = ActiveDocument.FullName + ".odt"
+    ActiveDocument.SaveAs FileName:=NewFilename,
+    FileFormat:=wdFormatOpenDocumentText
+    Application.Quit SaveChanges:=False
+End Sub
+
+Sub SaveAsXml()
+    On Error Resume Next
+    Application.DisplayAlerts = wdAlertsNone
+    NewFilename = ActiveDocument.FullName + ".xml"
+    ActiveDocument.SaveAs FileName:=NewFilename, FileFormat:=wdFormatXML
+    Application.Quit SaveChanges:=False
+End Sub
+
+Sub SaveAsXmlFlat()
+    On Error Resume Next
+    Application.DisplayAlerts = wdAlertsNone
+    NewFilename = ActiveDocument.FullName + ".xml"
+    ActiveDocument.SaveAs FileName:=NewFilename, FileFormat:=wdFormatFlatXML
+    Application.Quit SaveChanges:=False
+End Sub
+
+Sub SaveAsTxt()
+    On Error Resume Next
+    Application.DisplayAlerts = wdAlertsNone
+    NewFilename = ActiveDocument.FullName + ".txt"
+    ActiveDocument.SaveAs FileName:=NewFilename, FileFormat:=wdFormatText, Encoding:=msoEncodingUTF8, InsertLineBreaks:=True, AllowSubstitutions:=True, LineEnding:=wdLFOnly
+    Application.Quit SaveChanges:=False
+End Sub
+
+Sub SaveAsPdf()
+    On Error Resume Next
+    Application.DisplayAlerts = wdAlertsNone
+    NewFilename = ActiveDocument.FullName + ".pdf"
+    ActiveDocument.SaveAs FileName:=NewFilename, FileFormat:=wdFormatPDF
+    Application.Quit SaveChanges:=False
+End Sub

@@ -24,9 +24,7 @@ if [ -z "${_path_cache_set}" ]; then
     export _path_cache_pfx=""
     export _path_cache_set=""
 
-    if [[ -e ${HOME}/.cache/path ]]; then
-        . ${HOME}/.cache/path
-    fi
+    _cache_load path
 
     PATH="${_path_cache_pfx}${PATH}${_path_cache_sfx}"
 
@@ -88,6 +86,10 @@ if [ -z "${_path_cache_set}" ]; then
 
     _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Program\ Files*/Dr\.\ Memory/bin -maxdepth 1 -type f -name drmemory.exe -printf :%h 2> /dev/null)"
 
+    # Office
+
+    _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Program\ Files*/Microsoft\ Office/Office*/ -maxdepth 0 -type d -printf :%h 2> /dev/null)"
+
     # bit-utils
 
     if [ -d "${HOME}/.bash/bundle/bit-utils" ]; then
@@ -104,8 +106,7 @@ if [ -z "${_path_cache_set}" ]; then
 
     # save to file
 
-    mkdir -p ${HOME}/.cache/
-    set | sed ' /^_path_cache_/{ /^[^ ]*=(/{ :a /)$/!{ n; ba; }; b; }; / () $/{ :b /^}$/!{ n; bb; }; b; }; b; }; d; ' > ${HOME}/.cache/path
+    _cache_save path _path_cache_
 
     # set path
 
@@ -121,9 +122,7 @@ if [ -z "${_manpath_cache_set}" ]; then
     export _manpath_cache_pfx=""
     export _manpath_cache_set=""
 
-    if [[ -e ${HOME}/.cache/manpath ]]; then
-        . ${HOME}/.cache/manpath
-    fi
+    _cache_load manpath
 
     MANPATH="${_manpath_cache_pfx}${MANPATH}${_manpath_cache_sfx}"
 
@@ -143,8 +142,7 @@ if [ -z "${_manpath_cache_set}" ]; then
 
     # save to file
 
-    mkdir -p ${HOME}/.cache/
-    set | sed ' /^_manpath_cache_/{ /^[^ ]*=(/{ :a /)$/!{ n; ba; }; b; }; / () $/{ :b /^}$/!{ n; bb; }; b; }; b; }; d; ' > ${HOME}/.cache/manpath
+    _cache_save manpath _manpath_cache_
 
     # set manpath
 
@@ -164,5 +162,5 @@ fi
 export _NT_SYMBOL_PATH="srv*C:\\symbols*https://msdl.microsoft.com/download/symbols"
 
 # TODO:
-# path settings for: android, python, iexplore, chrome, firefox, excel, word
+# path settings for: android, python, iexplore, chrome, firefox
 
