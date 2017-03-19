@@ -3,6 +3,7 @@ ImageMagick-doc
 _autorebase
 _update-info-dir
 alternatives
+antiword
 aspell
 aspell-en
 astyle
@@ -305,6 +306,7 @@ poppler-data
 popt
 pylint
 python
+python-devel
 python-clang
 python-logilab-astng
 python-logilab-common
