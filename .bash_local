@@ -90,6 +90,10 @@ if [ -z "${_path_cache_set}" ]; then
 
     _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Program\ Files*/Microsoft\ Office/Office*/ -maxdepth 0 -type d -printf :%h 2> /dev/null)"
 
+    # eclipse
+
+    _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/eclipse/ -maxdepth 0 -type d -printf :%h 2> /dev/null)"
+
     # bit-utils
 
     if [ -d "${HOME}/.bash/bundle/bit-utils" ]; then
