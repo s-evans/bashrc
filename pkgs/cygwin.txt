@@ -299,6 +299,10 @@ perl-TermReadKey
 perl-Unicode-Normalize
 perl_autorebase
 perl_base
+php
+php-PEAR
+php-devel
+php-tidy
 ping
 pkg-config
 poppler
@@ -306,8 +310,8 @@ poppler-data
 popt
 pylint
 python
-python-devel
 python-clang
+python-devel
 python-logilab-astng
 python-logilab-common
 python3
