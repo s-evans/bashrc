@@ -1,0 +1,6 @@
+#!/bin/bash
+function _fpa() {
+    local IFS=$'\n'
+    command printf "$(whoami)@$(hostname -f):'%q'\n" $(readlink -e "$@")
+}
+_fpa "$@"
