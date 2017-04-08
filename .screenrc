@@ -37,7 +37,6 @@ bind Y readreg
 bind P paste
 
 # vim-like copy mode bindings
-markkeys y=V:' '=v:x=o:' '=y
 bindkey -m  stuff coCo
 bindkey -m  stuff Coco
 
