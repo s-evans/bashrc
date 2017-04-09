@@ -49,6 +49,9 @@ echo "Creating symbolic link for xterm config"
 ln -sf ${DIRPATH}/.Xresources ${HOME}/.Xresources
 ln -sf ${DIRPATH}/.Xresources ${HOME}/.Xdefaults
 
+echo "Creating symbolic link for .gitignore_global"
+ln -sf ${DIRPATH}/.gitignore_global ${HOME}/.gitignore_global
+
 echo "Copying .bash_local"
 cp -n ${DIRPATH}/.bash_local ${HOME}/.bash_local
 

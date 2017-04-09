@@ -14,7 +14,18 @@
     lola = log --graph --decorate --pretty-oneline --abbrev-commit --all
     ls = ls-files
     ign = status --ignored
+[core]
+    excludesFile = ~/.gitignore_global
 [merge]
     tool = vimdiff
 [diff]
     tool = vimdiff
+    renames = copies
+    noprefix = true
+[push]
+    default = simple
+[rerere]
+    autoUpdate = true
+    enabled = true
+[branch]
+    autoSetupMerge = true
