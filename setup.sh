@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+STARTDIR=`pwd`
 SCRIPTDIR=`dirname ${BASH_SOURCE[0]}`
 DIRPATH=`readlink -f $SCRIPTDIR`
 
@@ -52,11 +53,17 @@ ln -sf ${DIRPATH}/.Xresources ${HOME}/.Xdefaults
 echo "Creating symbolic link for .gitignore_global"
 ln -sf ${DIRPATH}/.gitignore_global ${HOME}/.gitignore_global
 
-echo "Copying .bash_local"
-cp -n ${DIRPATH}/.bash_local ${HOME}/.bash_local
+echo "Creating symbolic link for .gitconfig_global"
+ln -sf ${DIRPATH}/.gitconfig_global ${HOME}/.gitconfig_global
 
 echo "Copying .gitconfig"
 cp -n ${DIRPATH}/.gitconfig ${HOME}/.gitconfig
+
+echo "Updating .gitconfig to include .gitconfig_global"
+git config --global include.path ${HOME}/.gitconfig_global
+
+echo "Copying .bash_local"
+cp -n ${DIRPATH}/.bash_local ${HOME}/.bash_local
 
 echo "Reloading inputrc"
 bind -f ${HOME}/.inputrc
@@ -64,7 +71,7 @@ bind -f ${HOME}/.inputrc
 echo "Pulling all git submodules"
 cd ${DIRPATH}
 git submodule update --init --recursive
+cd ${STARTDIR}
 
 echo "Updating mandb"
 mandb
-
