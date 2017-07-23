@@ -13,6 +13,9 @@ if [ "$ZSH" = "" ]; then
     alias cd='cd_func'
 fi
 
+## X ##
+alias X='export DISPLAY=:0 && X $DISPLAY -multiwindow -silent-dup-error > /dev/null 2>&1 &'
+
 ## LISTING FILES ##
 alias ls='ls --color=auto'
 

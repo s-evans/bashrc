@@ -86,6 +86,7 @@ gzip
 hostname
 info
 ipc-utils
+jlint
 less
 libEGL1
 libEMF1
@@ -266,6 +267,7 @@ libxcb-shm0
 libxcb1
 libxml2
 libzip2
+linklint
 llvm
 login
 luit
@@ -273,6 +275,7 @@ lynx
 m4
 make
 man-db
+manlint
 mercurial
 mintty
 nasm
@@ -323,6 +326,7 @@ screen
 sed
 shared-mime-info
 source-highlight
+splint
 subversion
 tar
 tcsh
