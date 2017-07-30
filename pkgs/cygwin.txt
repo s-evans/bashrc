@@ -83,6 +83,7 @@ grep
 groff
 gsettings-desktop-schemas
 gzip
+help2man
 hostname
 info
 ipc-utils
@@ -268,6 +269,7 @@ libxcb1
 libxml2
 libzip2
 linklint
+links
 llvm
 login
 luit
@@ -275,6 +277,7 @@ lynx
 m4
 make
 man-db
+man-pages-posix
 manlint
 mercurial
 mintty
@@ -346,6 +349,7 @@ usbutils
 util-linux
 vim
 vim-common
+vim-doc
 vim-minimal
 w32api-headers
 w32api-runtime

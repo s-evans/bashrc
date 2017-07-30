@@ -43,6 +43,7 @@ pip install waitress
 pip install requests
 pip install requests-futures
 pip install suds
+pip install html2text
 
 # binary utilities
 pip install binstruct
