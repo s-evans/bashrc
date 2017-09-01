@@ -2656,7 +2656,7 @@ set meta-flag                        on
 set output-meta                      on
 set page-completions                 on
 set prefer-visible-bell              on
-set print-completions-horizontally   on
+set print-completions-horizontally   off
 set revert-all-at-newline            off
 set show-all-if-ambiguous            on
 set show-all-if-unmodified           off
