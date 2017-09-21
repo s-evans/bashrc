@@ -44,7 +44,7 @@ export HISTFILESIZE=1000000
 ## VARIABLES ##
 export PS1='\[\e[1;32m\]\u@\h:\W$\[\e[0m\] '
 export EDITOR='vim'
-export PAGER='less -s '
+export PAGER='less -isXR '
 export USER=`whoami`
 export USERNAME=$USER
 
