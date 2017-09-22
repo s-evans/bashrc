@@ -91,7 +91,7 @@ alias esc='sed "s/./\\\\&/g"'
 alias path='echo -e ${PATH//:/\\n}'
 
 ## PROCESSES ##
-alias jk='jobs -p | xargs kill -9'
+alias kj='jobs -p | xargs kill -9'
 
 ## VIM MISTAKES ##
 alias :q=exit
@@ -112,6 +112,7 @@ alias xdn='xargs -n1 dirname'
 alias xcp='xargs cp -t'
 alias xmv='xargs mv -t'
 alias xpdf2txt='xargs -n1 pdftotext -layout'
+alias xjoin='sed "s/./\\\\&/g" | xargs printf "%q "'
 
 ## CYGWIN SPECIFIC ##
 if [[ "$OSTYPE" == 'cygwin' ]]; then

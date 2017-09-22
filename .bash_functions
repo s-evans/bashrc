@@ -57,6 +57,13 @@ cd_func ()
     return 0
 }
 
+bpgrep()
+{
+    local PATTERN="$1"
+    shift
+    PATTERN="$PATTERN" awk '$0 ~ ENVIRON["PATTERN"]{ printf "%s:%s\n", FILENAME, FNR }' "$@"
+}
+
 mkcd()
 {
     if [[ $# != 1 ]]; then
