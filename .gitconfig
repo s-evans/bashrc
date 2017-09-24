@@ -3,5 +3,3 @@
     email = 
 [include]
     path = ~/.gitconfig_global
-[rerere]
-    enabled = 1
