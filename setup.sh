@@ -36,6 +36,12 @@ ln -sf ${DIRPATH}/.screenrc ${HOME}/.screenrc
 echo "Creating symbolic link for .infokey"
 ln -sf ${DIRPATH}/.infokey ${HOME}/.infokey
 
+echo "Creating symbolic link for .lesskey"
+ln -sf ${DIRPATH}/.lesskey ${HOME}/.lesskey
+
+echo "Compiling lesskey to create mappings for less"
+lesskey
+
 echo "Creating symbolic link for .bash_profile"
 ln -sf ${DIRPATH}/.bash_profile ${HOME}/.bash_profile
 

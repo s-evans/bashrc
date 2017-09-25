@@ -1,0 +1,18 @@
+#line-edit
+ home 
+ left
+ delete
+ end
+ right
+ backspace
+ word-delete \ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed\ed
+ down
+ up
+ kill-line
+ word-backspace
+\eB word-left
+\eD word-delete
+\eF word-right
+\eb word-left
+\ed word-delete
+\ef word-right
