@@ -1,0 +1,2 @@
+#!/bin/bash
+grep -xc "$2" "$1"

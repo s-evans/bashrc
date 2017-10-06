@@ -1,0 +1,2 @@
+#!/bin/bash
+comm --total -123 "$2" "$1" | awk '{if ( $1 > 0 ) { print 0 } else { print 1 } }'
