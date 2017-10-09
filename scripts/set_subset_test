@@ -1,2 +1,2 @@
 #!/bin/bash
-comm --total -123 "$2" "$1" | awk '{if ( $1 > 0 ) { print 0 } else { print 1 } }'
+comm -23 "$2" "$1" | awk 'END {if ( FNR > 0 ) { print 0 } else { print 1 } }'
