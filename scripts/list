@@ -1,0 +1,55 @@
+#!/bin/bash
+
+_list()
+{
+    if [[ $# == 0 ]]; then
+        echo "$0 <archives...>"
+        return
+    fi
+
+    while [[ $# != 0 ]]; do
+
+        if [[ ! -f "$1" ]] ; then
+            echo "file '$1' not found"
+            shift
+            continue
+        fi
+
+        case "$1" in
+            *.deb)
+                dpkg -c "$1" ;;
+            *.rpm)
+                rpm -qlp "$1" ;;
+            *.tar)
+                tar tvf "$1" ;;
+            *.tar.bz2)
+                tar tvjf "$1" ;;
+            *.tbz2)
+                tar tvjf "$1" ;;
+            *.tar.gz)
+                tar tvzf "$1" ;;
+            *.tgz)
+                tar tvzf "$1" ;;
+            *.tar.xz)
+                tar tvJf "$1" ;;
+            *.txz)
+                tar tvJf "$1" ;;
+            *.rar)
+                rar l "$1" ;;
+            *.zip)
+                unzip -l "$1" ;;
+            *.jar)
+                unzip -l "$1" ;;
+            *.7z)
+                7z l "$1" ;;
+            *.a)
+                ar t "$1" ;;
+            *)
+                echo "don't know how to list files in '$1'..."  ;;
+        esac
+
+        shift
+    done
+}
+
+_list "$@"

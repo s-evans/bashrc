@@ -1,0 +1,44 @@
+#!/bin/bash
+
+_archive()
+{
+    if [[ $# -lt 2 ]]; then
+        echo "$0 <archive> <files...>"
+        return
+    fi
+
+    FILE="$1"
+
+    shift
+
+    case "$FILE" in
+        *.tar)
+            tar cf "$FILE" "$@" ;;
+        *.tar.bz2)
+            tar cjf "$FILE" "$@" ;;
+        *.tbz2)
+            tar cjf "$FILE" "$@" ;;
+        *.tar.gz)
+            tar czf "$FILE" "$@" ;;
+        *.tgz)
+            tar czf "$FILE" "$@" ;;
+        *.tar.xz)
+            tar cJf "$FILE" "$@" ;;
+        *.txz)
+            tar cJf "$FILE" "$@" ;;
+        *.jar)
+            zip "$FILE" "$@" ;;
+        *.zip)
+            zip "$FILE" "$@" ;;
+        *.rar)
+            rar "$FILE" "$@" ;;
+        *.7z)
+            7z a "$FILE" "$@" ;;
+        *.a)
+            ar r "$FILE" "$@" ;;
+        *)
+            echo "Filetype not recognized" ;;
+    esac
+}
+
+_archive "$@"
