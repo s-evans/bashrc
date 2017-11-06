@@ -1,0 +1,28 @@
+#!/bin/bash
+
+function _to_text() {
+    if [[ $# -eq 0 ]]; then
+        echo "$0 <file...>"
+        return
+    fi
+
+    while [[ ! $# -eq 0 ]]; do
+
+        case "$1" in
+            *.pdf)
+                pdftotext -layout "$1" ;;
+            *.od?|*.ot?|*.sxw)
+                odt2txt "$1" --output="${1/%.+([^.])/.txt}" ;;
+            *.fod?)
+                odt2txt --raw-input "$1" --output="${1/%.+([^.])/.txt}" ;;
+            *.uo?|*.doc?(?)|*.dot|*.xl?|*.xls?|*.dif|*.dbf|*.slk|*.ppt?(?)|*.pot?(?)|*.pps?(?))
+                soffice --headless --convert-to txt:Text "$1" ;;
+            *)
+                echo "cannot convert file '$1' to text"
+        esac
+
+        shift
+    done
+}
+
+_to_text "$@"
