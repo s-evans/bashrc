@@ -14,8 +14,14 @@ export _cleartool_auto_init_cache=1
 
 # X settings
 
-# TODO: start X
-# export DISPLAY=:0
+if [ -z ${DISPLAY} ]; then
+    export DISPLAY=$(find /tmp/.X11-unix/ -type s -printf '%P\n' -quit 1 2> /dev/null | sed 's/X/:/')
+fi
+
+if [ -z ${DISPLAY} ]; then
+    export DISPLAY=:0
+    command X "${DISPLAY}" -multiwindow -silent-dup-error > /dev/null 2>&1 &
+fi
 
 # load path from file
 
