@@ -9,6 +9,9 @@
     dc   = diff --no-prefix --cached
     df   = diff --no-prefix
     dog  = log --decorate --oneline --graph
+    dt   = difftool
+    dtc  = difftool --cached
+    dty  = difftool -y
     fb   = filter-branch
     lp   = log -p
     ls   = !git --no-pager ls-files
@@ -20,6 +23,8 @@
     lsm  = !git --no-pager ls-files --modified
     lso  = !git --no-pager ls-files --others --exclude-standard
     lsr  = !git --no-pager rev-parse --show-toplevel
+    mt   = mergetool
+    mty  = mergetool -y
     pl   = pull
     plo  = pull origin
     ps   = push
