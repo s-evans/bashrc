@@ -80,7 +80,7 @@ _create_completable_alias agin 'sudo apt-get install'
 _create_completable_alias agrm 'sudo apt-get remove'
 _create_completable_alias agud 'sudo apt-get update'
 _create_completable_alias agug 'sudo apt-get upgrade'
-_create_completable_alias sudo 'sudo ' # enable alias expansion following sudo
+alias sudo='sudo ' # enable alias expansion following sudo
 
 ## GENERAL ##
 _create_completable_alias ec  'echo'
