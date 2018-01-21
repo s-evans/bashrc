@@ -13,6 +13,7 @@ pip install pylint
 pip install vim-vint
 pip install 3to2
 pip install language-check
+pip install cmakelint
 
 # autocomplete
 pip install jedi
