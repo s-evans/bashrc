@@ -33,6 +33,9 @@ ln -sf ${DIRPATH}/.tmux.conf ${HOME}/.tmux.conf
 echo "Creating symbolic link for .screenrc"
 ln -sf ${DIRPATH}/.screenrc ${HOME}/.screenrc
 
+echo "Creating symbolic link for .cmakelintrc"
+ln -sf ${DIRPATH}/.cmakelintrc ${HOME}/.cmakelintrc
+
 echo "Creating symbolic link for .infokey"
 ln -sf ${DIRPATH}/.infokey ${HOME}/.infokey
 
