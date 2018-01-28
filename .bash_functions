@@ -362,3 +362,16 @@ _cache_clear()
     _cache_delete "${cache_file}"
     _cache_unset "${cache_prefix}"
 }
+
+ycm_cmake_init()
+{
+    local cmake_lists_path="${1}"
+
+    cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON "${cmake_lists_path}"
+
+    if [[ ! -e "${cmake_lists_path}/.ycm_extra_conf.py" ]]; then
+        cp ~/.vim/bundle/ycm/third_party/ycmd/examples/.ycm_extra_conf.py "${cmake_lists_path}/.ycm_extra_conf.py"
+    fi
+
+    sed -i "/^compilation_database_folder\s*=\s*/d; 1a\\compilation_database_folder = '$(pwd)'\\" "${cmake_lists_path}/.ycm_extra_conf.py"
+}

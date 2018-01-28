@@ -139,6 +139,7 @@ libcloog-isl4
 libcom_err2
 libcroco0.6_3
 libcurl4
+libcurl-devel
 libdatrie1
 libdb4.8
 libdbus1_3
