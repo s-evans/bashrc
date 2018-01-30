@@ -165,6 +165,8 @@ if [ -z "${_manpath_cache_set}" ]; then
 
 fi
 
+export MANPATH
+
 # set INFOPATH so it includes users' private info if it exists
 
 if [ -d "${HOME}/info" ]; then
