@@ -1,11 +1,18 @@
 [alias]
     adog = log --decorate --oneline --graph --all
+    ai   = add --interactive
+    ap   = add --patch
     ba   = branch --all
     bc   = branch --contains
+    bi   = bisect
+    bib  = bisect bad
+    big  = bisect good
+    bis  = bisect start
     br   = branch
     ci   = commit
     cm   = commit -m
     co   = checkout
+    cp   = cherry-pick
     dc   = diff --no-prefix --cached
     df   = diff --no-prefix
     dog  = log --decorate --oneline --graph
@@ -13,6 +20,8 @@
     dtc  = difftool --cached
     dty  = difftool -y
     fb   = filter-branch
+    fs   = fsck
+    fsu  = fsck --unreachable --no-reflog
     lp   = log -p
     ls   = !git --no-pager ls-files
     lsb  = !git --no-pager rev-parse --abbrev-ref HEAD
@@ -31,11 +40,18 @@
     pso  = push origin
     re   = remote
     rev  = remote -v
+    rl   = reflog
     root = !git --no-pager rev-parse --show-toplevel
+    rp   = rev-parse
+    rv   = revert
     sm   = submodule
     smu  = submodule update
     smui = submodule update --init
+    smuir = submodule update --init --recursive
     st   = status
+    ui   = update-index
+    uiau = update-index --assume-unchanged
+    uinau = update-index --no-assume-unchanged
 [core]
     excludesFile = ~/.gitignore_global
 [merge]
