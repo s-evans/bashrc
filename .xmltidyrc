@@ -1,0 +1,10 @@
+force-output: yes
+indent: auto
+input-xml: yes
+output-xml: yes
+quiet: yes
+show-errors: 0
+show-warnings: no
+tidy-mark: no
+vertical-space: yes
+wrap: 0

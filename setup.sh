@@ -33,6 +33,12 @@ ln -sf ${DIRPATH}/.tmux.conf ${HOME}/.tmux.conf
 echo "Creating symbolic link for .screenrc"
 ln -sf ${DIRPATH}/.screenrc ${HOME}/.screenrc
 
+echo "Creating symbolic link for .xmltidyrc"
+ln -sf ${DIRPATH}/.xmltidyrc ${HOME}/.xmltidyrc
+
+echo "Creating symbolic link for .htmltidyrc"
+ln -sf ${DIRPATH}/.htmltidyrc ${HOME}/.htmltidyrc
+
 echo "Creating symbolic link for .cmakelintrc"
 ln -sf ${DIRPATH}/.cmakelintrc ${HOME}/.cmakelintrc
 

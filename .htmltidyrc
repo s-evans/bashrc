@@ -1,0 +1,8 @@
+force-output: yes
+indent: auto
+quiet: yes
+show-errors: 0
+show-warnings: no
+tidy-mark: no
+vertical-space: yes
+wrap: 0
