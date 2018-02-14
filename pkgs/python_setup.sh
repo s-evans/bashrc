@@ -23,6 +23,7 @@ pip install pybashcomplete
 # formatters
 pip install autopep8
 pip install yapf
+pip install cmake-format
 
 # other
 pip install virtualenv
