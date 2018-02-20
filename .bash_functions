@@ -375,3 +375,13 @@ ycm_cmake_init()
 
     sed -i "/^compilation_database_folder\s*=\s*/d; 1a\\compilation_database_folder = '$(pwd)'\\" "${cmake_lists_path}/.ycm_extra_conf.py"
 }
+
+cmake-build()
+{
+    cmake --build "$@"
+}
+
+cmake-build-type()
+{
+    cmake -DCMAKE_BUILD_TYPE="$@"
+}
