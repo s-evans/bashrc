@@ -1,0 +1,39 @@
+* Use '$<path/to/this/file' to execute this script file
+
+* VARIABLES
+as p dt
+as xa dp
+as xb db
+as xd dd
+as xf df
+as xs da
+
+* FLOW CONTROL
+as s t
+as n p
+as finish gu
+as advance pa
+as c go
+as r .restart
+
+* BREAKPOINTS
+as b bp
+as disable bd
+as enable be
+as watch ba w
+as rwatch ba r
+as awatch ba r
+as clear bc
+
+* INFO
+as ia kb1
+as ib bl
+as il dv
+as ir r
+as is lm
+as it ~*
+
+* BACKTRACE
+as bt k
+as disassemble uf
+as where k
