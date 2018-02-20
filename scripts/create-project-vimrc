@@ -1,0 +1,32 @@
+#!/bin/bash
+
+_create_project_vimrc()
+{
+    if [[ -e ./.vimrc ]]; then
+        return
+    fi
+
+    command touch ./.vimrc
+
+    command echo '" PATH "' >> ./.vimrc
+    command echo 'set path=$PWD' >> ./.vimrc
+    command echo 'set path+=/usr/include' >> ./.vimrc
+    command find ./ -mindepth 1 -type d -printf 'set path+=%P\n' >> ./.vimrc
+
+    command echo '' >> ./.vimrc
+
+    command echo '" CSCOPE "' >> ./.vimrc
+    command echo 'cs add . .' >> ./.vimrc
+    command echo 'cs add /usr/include /usr/include' >> ./.vimrc
+
+    command echo '' >> ./.vimrc
+
+    command echo '" BUILD "' >> ./.vimrc
+    command echo '" compiler msbuild' >> ./.vimrc
+    command echo '" set makeprg=./build.sh' >> ./.vimrc
+
+    command cscope -Rqbk
+    command ctags -R
+}
+
+_create_project_vimrc
