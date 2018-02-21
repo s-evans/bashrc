@@ -1,0 +1,2 @@
+#!/bin/bash
+grepdiff --output-matching=hunk "$@"

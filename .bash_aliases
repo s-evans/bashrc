@@ -288,7 +288,8 @@ _create_completable_alias rsa 'rsync -avz'
 _create_completable_alias rsr 'rsync -av'
 
 ## UTILS ##
-_create_completable_alias sha1 'openssl sha1'
+_create_completable_alias sha1     'openssl sha1'
+_create_completable_alias grephunk 'grepdiff --output-matching=hunk'
 
 ## HEAD / TAIL ##
 _create_completable_alias he 'head'
