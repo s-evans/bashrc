@@ -93,7 +93,6 @@ _create_completable_alias wa  'watch'
 _create_completable_alias xa  'xargs '
 _create_completable_alias fef 'sed "s/^.*\\.//"'
 _create_completable_alias fnf 'sed "s/\\.[^\\.]*$//"'
-_create_completable_alias info 'info --vi-keys'
 
 ## FILE PATH UTILS ##
 _create_completable_alias esc 'sed "s/./\\\\&/g"'
