@@ -167,11 +167,11 @@ else
 fi
 
 ## MISC DEV RELATED ##
-_alias_completion_wrapper_setup cs 'cscope -Rqbk; ctags -R;'
 _create_completable_alias hd       'hexdump -Cv'
 _create_completable_alias mk       'make'
 _create_completable_alias objdumpp 'objdump -d -M intel-mnuemonics'
-_create_completable_alias msbuild 'MSBuild.exe'
+_create_completable_alias msbuild  'MSBuild.exe'
+alias cs='cscope -Rqbk; ctags -R;'
 
 ## FIND ##
 _alias_completion_wrapper_setup fd 'find -type d'
