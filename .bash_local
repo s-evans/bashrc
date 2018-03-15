@@ -60,12 +60,18 @@ if [ -z "${_path_cache_set}" ]; then
 
     _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Program\ Files*/Microsoft\ Visual\ Studio*/Team\ Tools/Performance\ Tools -maxdepth 2 -type f -name vsinstr.exe -printf :%h 2> /dev/null)"
 
+    # vstest.console.exe
+
+    _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Program\ Files*/Microsoft\ Visual\ Studio*/Common7/IDE -maxdepth 4 -type f -name vstest.console.exe -printf :%h 2> /dev/null)"
+    _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Program\ Files*/Microsoft\ Visual\ Studio*/*/*/Common7/IDE -maxdepth 4 -type f -name vstest.console.exe -printf :%h 2> /dev/null)"
+
     # sysinternals
 
     _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c -mindepth 2 -maxdepth 2 -type f -name PsExec.exe -printf :%h 2> /dev/null)"
 
     # msbuild
 
+    _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Program\ Files*/Microsoft\ Visual\ Studio/*/*/MSBuild/*/Bin -maxdepth 1 -type f -name MSBuild.exe -printf :%h 2> /dev/null)"
     _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Program\ Files*/MSBuild/*/Bin -maxdepth 1 -type f -name MSBuild.exe -printf :%h 2> /dev/null)"
     _path_cache_sfx="${_path_cache_sfx}$(find /cygdrive/c/Windows/Microsoft.NET/Framework/* -maxdepth 1 -type f -name MSBuild.exe -printf :%h 2> /dev/null)"
 

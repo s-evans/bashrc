@@ -312,6 +312,7 @@ net-snmp-utils
 odt2txt
 openssh
 openssl
+openssl-dev
 p11-kit
 p11-kit-trust
 p7zip
