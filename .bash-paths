@@ -1,0 +1,79 @@
+#!/bin/bash
+
+# help viewer
+
+find /cygdrive/c/Program\ Files*/Microsoft\ Help\ Viewer -maxdepth 2 -type f -name HlpViewer.exe -printf :%h
+
+# visual studio dev utils
+
+find /cygdrive/c/Program\ Files*/Microsoft\ Visual\ Studio*/Common7/IDE -maxdepth 1 -type f -name devenv.exe -printf :%h
+find /cygdrive/c/Program\ Files*/Microsoft\ Visual\ Studio*/VC/bin -maxdepth 1 -type f -name cl.exe -printf :%h
+
+# windows debugging tools
+
+find /cygdrive/c/Program\ Files*/Windows\ Kits/*/Debuggers/x86 -maxdepth 1 -type f -name windbg.exe -printf :%h
+find /cygdrive/c/Program\ Files*/Windows\ Kits/*/bin/x86 -maxdepth 1 -type f -name wsddebug_client.exe -printf :%h
+find /cygdrive/c/Program\ Files*/Windows\ Kits/*/Tools/x86 -maxdepth 1 -type f -name winerror.exe -printf :%h
+
+# visual studio performance tools
+
+find /cygdrive/c/Program\ Files*/Microsoft\ Visual\ Studio*/Team\ Tools/Performance\ Tools -maxdepth 2 -type f -name vsinstr.exe -printf :%h
+
+# vstest.console.exe
+
+find /cygdrive/c/Program\ Files*/Microsoft\ Visual\ Studio*/Common7/IDE -maxdepth 4 -type f -name vstest.console.exe -printf :%h
+find /cygdrive/c/Program\ Files*/Microsoft\ Visual\ Studio*/*/*/Common7/IDE -maxdepth 4 -type f -name vstest.console.exe -printf :%h
+
+# sysinternals
+
+find /cygdrive/c -mindepth 2 -maxdepth 2 -type f -name PsExec.exe -printf :%h
+
+# msbuild
+
+find /cygdrive/c/Program\ Files*/Microsoft\ Visual\ Studio/*/*/MSBuild/*/Bin -maxdepth 1 -type f -name MSBuild.exe -printf :%h
+find /cygdrive/c/Program\ Files*/MSBuild/*/Bin -maxdepth 1 -type f -name MSBuild.exe -printf :%h
+find /cygdrive/c/Windows/Microsoft.NET/Framework/* -maxdepth 1 -type f -name MSBuild.exe -printf :%h
+
+# ida
+
+find /cygdrive/c/Program\ Files*/IDA* -maxdepth 1 -type f -name idaq.exe -printf :%h
+
+# java
+
+find /cygdrive/c/Program\ Files*/Java/*/bin -maxdepth 1 -type f -name java.exe -printf :%h
+
+# coverity
+
+find /cygdrive/c/Program\ Files*/Coverity/Coverity\ Static\ Analysis/bin -maxdepth 1 -type f -name cov-build.exe -printf :%h
+
+# windows cmake
+
+find /cygdrive/c/Program\ Files*/Cmake*/bin -maxdepth 1 -type f -name cmake.exe -printf :%h
+
+# ccollab
+
+find /cygdrive/c/Program\ Files*/Collaborator\ Client -maxdepth 1 -type f -name ccollab.exe -printf :%h
+
+# dr. memory
+
+find /cygdrive/c/Program\ Files*/Dr\.\ Memory/bin -maxdepth 1 -type f -name drmemory.exe -printf :%h
+
+# Office
+
+find /cygdrive/c/Program\ Files*/Microsoft\ Office/Office* -maxdepth 0 -type d -printf :%h
+
+# LibreOffice
+
+find /cygdrive/c/Program\ Files*/LibreOffice*/program/soffice -maxdepth 0 -type f -printf :%h
+
+# eclipse
+
+find /cygdrive/c/eclipse -maxdepth 0 -type d -printf :%h
+
+# bit-utils
+
+find "${HOME}/.bash/bundle/bit-utils" -maxdepth 0 -type d -printf :%h
+
+# TODO:
+# path settings for: android, python, iexplore, chrome, firefox
+
