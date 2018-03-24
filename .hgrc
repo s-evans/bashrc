@@ -1,0 +1,8 @@
+[extensions]
+extdiff =
+
+[extdiff]
+cmd.vimdiff = vimdiff
+
+[alias]
+difftool = !for file in $(hg status -n); do hg vimdiff $file; done

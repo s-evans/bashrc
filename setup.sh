@@ -71,14 +71,17 @@ ln -sf {${DIRPATH},${HOME}}/.gitignore_global
 echo "Creating symbolic link for .gitconfig_global"
 ln -sf {${DIRPATH},${HOME}}/.gitconfig_global
 
-echo "Copying .gitconfig"
+echo "Creating symbolic link for .gitconfig"
 ln -sf {${DIRPATH},${HOME}}/.gitconfig
+
+echo "Creating symbolic link for .hgrc"
+ln -sf {${DIRPATH},${HOME}}/.hgrc
 
 echo "Updating .gitconfig to include .gitconfig_global"
 git config --global include.path ${HOME}/.gitconfig_global
 
-echo "Copying .bash_local"
-cp -n {${DIRPATH},${HOME}}/.bash_local
+echo "Creating symbolic link for .bash_local"
+ln -sf {${DIRPATH},${HOME}}/.bash_local
 
 echo "Reloading inputrc"
 bind -f ${HOME}/.inputrc
