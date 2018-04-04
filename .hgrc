@@ -1,5 +1,6 @@
 [extensions]
 extdiff =
+shelve =
 
 [extdiff]
 cmd.vimdiff = vimdiff
