@@ -7,3 +7,9 @@ cmd.vimdiff = vimdiff
 
 [alias]
 difftool = !for file in $(hg status -n); do hg vimdiff $file; done
+
+[merge-tools]
+vimdiff.priority = 100
+vimdiff.executable = vim
+vimdiff.args = -f -d $output -M $local $base $other -c "wincmd J" -c "set modifiable" -c "set write"
+vimdiff.premerge = keep
