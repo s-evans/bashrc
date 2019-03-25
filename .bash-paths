@@ -37,6 +37,7 @@ find /cygdrive/c/Windows/Microsoft.NET/Framework/* -maxdepth 1 -type f -name MSB
 # ida
 
 find /cygdrive/c/Program\ Files*/IDA* -maxdepth 1 -type f -name idaq.exe -printf :%h
+find /opt/ida* -maxdepth 1 -type f -name ida -printf :%h
 
 # java
 
