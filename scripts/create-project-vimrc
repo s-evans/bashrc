@@ -10,7 +10,7 @@ _create_project_vimrc()
 " PATH "
 set path=\$PWD
 set path+=/usr/include
-$(find ./ \! -name '.*' -mindepth 1 -type d -printf 'set path+="%P"\n')
+$(find ./ -mindepth 1 \! -name '.*' -type d -printf 'set path+=%P\n')
 
 " CSCOPE "
 cscope add /usr/include /usr/include
