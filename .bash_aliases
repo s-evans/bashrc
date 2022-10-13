@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## CONDITIONAL ALIASES ##
-if [ "$ZSH" = "" ]; then
+if [[ ! -z "$ZSH" || $- =~ "i" ]]; then
     alias cd='cd_func'
 fi
 
@@ -26,7 +26,6 @@ _create_completable_alias lx  'ls -lXB'
 _create_completable_alias sl  'ls'
 
 ## GREP ##
-_create_completable_alias egrep 'egrep --color=auto'
 _create_completable_alias fgrep 'fgrep --color=auto'
 _create_completable_alias g     'grep'
 _create_completable_alias gi    'grep -i'
