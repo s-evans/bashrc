@@ -1,5 +1,14 @@
 #!/bin/bash
 
+## PATH ##
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
 ## FUNCTIONS ##
 if [ -f "${HOME}/.bash_functions" ]; then
     . "${HOME}/.bash_functions"
