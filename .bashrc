@@ -21,6 +21,10 @@ fi
 
 ## SCREEN SETTINGS ##
 
+export SCREENDIR=$HOME/.local/run/screen
+mkdir -p $SCREENDIR
+chmod 700 $SCREENDIR
+
 screen_set_window_title ()
 {
     local HPWD="$PWD"
