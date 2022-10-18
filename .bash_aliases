@@ -1,9 +1,30 @@
 #!/bin/bash
 
 ## CONDITIONAL ALIASES ##
-if [[ ! -z "$ZSH" || $- =~ "i" ]]; then
+if [[ -n "$ZSH" || $- =~ "i" ]]; then
     alias cd='cd_func'
 fi
+
+## PLATFORM DETECTION ##
+function _is_wsl() {
+    grep -qi microsoft /proc/version
+}
+
+function _is_cygwin() {
+    if [[ "$OSTYPE" == 'cygwin' ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+function _is_darwin() {
+    if [[ "$OSTYPE" =~ "darwin" ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
 
 ## X ##
 alias X='export DISPLAY=:0 && X $DISPLAY -multiwindow -silent-dup-error > /dev/null 2>&1 &'
@@ -50,29 +71,26 @@ alias .10='cd ../../../../../../../../../..'
 alias .11='cd ../../../../../../../../../../..'
 
 ## NETWORKING ##
-case "$OSTYPE" in
-    cygwin)
-        alias nsl='nslookup'
-        alias arpp='arp -a'
-        alias ifc='ipconfig'
-        alias ifca='ipconfig /all'
-        alias ifconfig='ipconfig'
-        alias nbl='nblookup'
-        alias ns='netstat -ano'
-        alias rt='route PRINT'
-        alias tracert='tracert'
-        ;;
-    *)
-        _create_completable_alias nsl     'nslookup'
-        _create_completable_alias arpp    'arp -n'
-        _create_completable_alias ifc     'ifconfig'
-        _create_completable_alias ifca    'ifconfig -a'
-        _create_completable_alias nbl     'nmblookup'
-        _create_completable_alias ns      'netstat -anop'
-        _create_completable_alias rt      'route -n'
-        _create_completable_alias tracert 'traceroute'
-        ;;
-esac
+if _is_cygwin; then
+    alias nsl='nslookup'
+    alias arpp='arp -a'
+    alias ifc='ipconfig'
+    alias ifca='ipconfig /all'
+    alias ifconfig='ipconfig'
+    alias nbl='nblookup'
+    alias ns='netstat -ano'
+    alias rt='route PRINT'
+    alias tracert='tracert'
+else
+    _create_completable_alias nsl     'nslookup'
+    _create_completable_alias arpp    'arp -n'
+    _create_completable_alias ifc     'ifconfig'
+    _create_completable_alias ifca    'ifconfig -a'
+    _create_completable_alias nbl     'nmblookup'
+    _create_completable_alias ns      'netstat -anop'
+    _create_completable_alias rt      'route -n'
+    _create_completable_alias tracert 'traceroute'
+fi
 
 ## DEBIAN ##
 _create_completable_alias agin 'sudo apt-get install'
@@ -128,41 +146,45 @@ _create_completable_alias xmv      'xargs mv -t'
 _create_completable_alias xpdf2txt 'xargs -n1 pdftotext -layout'
 _create_completable_alias xjoin    'sed "s/./\\\\&/g" | xargs printf "%q "'
 
-## CYGWIN SPECIFIC ##
-if [[ "$OSTYPE" == 'cygwin' ]]; then
+## PATHS ##
+if _is_cygwin; then
     alias cmdd='cmd /C start cmd'
     alias pwdd='cygpath -aw .'
     alias fpp='cygpath -aw'
+elif _is_wsl; then
+    alias cmdd='cmd /C start cmd'
+    alias pwdd='wslpath -aw .'
+    alias fpp='wslpath -aw'
 fi
 
 ## CLIPBOARD ##
-case "$OSTYPE" in
-    darwin*)
-        alias c='pbcopy'
-        alias v='pbpaste'
-        ;;
-    cygwin)
-        if [ `type putclip 2>&1 > /dev/null` ]; then
-            alias c='putclip'
-            alias v='getclip'
-        else
-            alias c='tee > /dev/clipboard 2> /dev/null'
-            alias v='cat /dev/clipboard'
-        fi
-        ;;
-    *)
-        alias c='xclip -i -selection clipboard'
-        alias v='xclip -o -selection clipboard'
-        ;;
-esac
+if _is_darwin; then
+    alias c='pbcopy'
+    alias v='pbpaste'
+elif _is_cygwin; then
+    if [[ $(type putclip 2>&1 > /dev/null) ]]; then
+        alias c='putclip'
+        alias v='getclip'
+    else
+        alias c='tee > /dev/clipboard 2> /dev/null'
+        alias v='cat /dev/clipboard'
+    fi
+else
+    alias c='xclip -i -selection clipboard'
+    alias v='xclip -o -selection clipboard'
+fi
 
-## OS SUPPORT ##
-if [ "$OSTYPE" = 'cygwin' ]; then
+## SUDO ##
+if _is_cygwin; then
     alias su='cygstart --action=runas mintty'
     alias sudo='cygstart --action=runas '
+fi
+
+## START ##
+if _is_cygwin; then
     alias start='cygstart'
 else
-    _create_completable_alias start 'xdg-open'
+    _create_completable_alias start 'gio open'
 fi
 
 ## MISC DEV RELATED ##
