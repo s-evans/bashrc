@@ -161,6 +161,9 @@ fi
 if _is_darwin; then
     alias c='pbcopy'
     alias v='pbpaste'
+elif _is_wsl; then
+    alias c='clip.exe'
+    alias v='powershell.exe /c Get-Clipboard'
 elif _is_cygwin; then
     if [[ $(type putclip 2>&1 > /dev/null) ]]; then
         alias c='putclip'
